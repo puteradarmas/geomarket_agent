@@ -81,7 +81,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
               type="number"
               value={budget}
               onChange={(e) => setBudget(Number(e.target.value))}
-              placeholder="Enter budget amount"
+              placeholder="Enter budget amount (Rp.)"
               min="1"
               className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
             />

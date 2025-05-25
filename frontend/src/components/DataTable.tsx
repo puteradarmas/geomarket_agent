@@ -29,8 +29,6 @@ const DataTable: React.FC<DataTableProps> = ({ formData }) => {
       location: formData.location,
       theme: formData.theme,
       budget: Math.floor(formData.budget / 8), // Distribute budget across metrics
-      category: formData.category,
-      priority: formData.priority
     }));
   };
 
