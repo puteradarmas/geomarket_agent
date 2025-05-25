@@ -7,12 +7,9 @@ import DataTable from './DataTable';
 import { Loader2 } from 'lucide-react';
 
 export interface FormData {
-  location: string;
+  location: { lat: number; lng: number } | null;
   theme: string;
   budget: number;
-  category: string;
-  timeframe: string;
-  priority: string;
 }
 
 const DataAnalysisApp = () => {
@@ -24,6 +21,23 @@ const DataAnalysisApp = () => {
     setIsLoading(true);
     setFormData(data);
     console.log('Executing analysis with data:', data);
+    
+    try {
+      const response = await fetch("http://localhost:8000/api/analyze/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) throw new Error("Network response was not ok");
+  
+      const result = await response.json();
+      console.log("Received from Django:", result);
+    } catch (err) {
+      console.error("Failed to send data:", err);
+    }
     
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));

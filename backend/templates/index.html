@@ -1,0 +1,14 @@
+{% load vite %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My App</title>
+  {% vite_hmr_client %}
+  {% vite_asset 'src/main.jsx' %}
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

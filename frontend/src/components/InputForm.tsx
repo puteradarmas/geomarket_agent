@@ -5,25 +5,31 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { FormData } from './DataAnalysisApp';
+import type { FormData } from './DataAnalysisApp';
 import { MapPin, DollarSign, Palette } from 'lucide-react';
+import LocationPicker from './LocationPicker'
 
 interface InputFormProps {
   onExecute: (data: FormData) => void;
 }
 
 const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
-  const [location, setLocation] = useState('');
   const [theme, setTheme] = useState('');
   const [budget, setBudget] = useState<number>(0);
-  const [category, setCategory] = useState('');
-  const [timeframe, setTimeframe] = useState('');
-  const [priority, setPriority] = useState('');
+  const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+    if (location) {
+      formData.append('latitude', location.lat.toString())
+      formData.append('longitude', location.lng.toString())
+    }
+
+
     
-    if (!location || !theme || budget <= 0 || !category || !timeframe || !priority) {
+    if (!location || !theme || budget <= 0 ) {
       alert('Please fill in all fields');
       return;
     }
@@ -31,10 +37,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
     onExecute({
       location,
       theme,
-      budget,
-      category,
-      timeframe,
-      priority
+      budget
     });
   };
 
@@ -50,14 +53,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
               <MapPin className="h-4 w-4" />
               Location
             </Label>
-            <Input
-              id="location"
-              type="text"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-              placeholder="Enter location (e.g., New York, London)"
-              className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
-            />
+            <LocationPicker onLocationSelect={setLocation} />
           </div>
 
           <div className="space-y-2">
@@ -89,53 +85,6 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
               min="1"
               className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
             />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Category</Label>
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger className="bg-white">
-                  <SelectValue placeholder="Select category" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border shadow-lg">
-                  <SelectItem value="business">Business</SelectItem>
-                  <SelectItem value="personal">Personal</SelectItem>
-                  <SelectItem value="research">Research</SelectItem>
-                  <SelectItem value="education">Education</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Timeframe</Label>
-              <Select value={timeframe} onValueChange={setTimeframe}>
-                <SelectTrigger className="bg-white">
-                  <SelectValue placeholder="Select timeframe" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border shadow-lg">
-                  <SelectItem value="1month">1 Month</SelectItem>
-                  <SelectItem value="3months">3 Months</SelectItem>
-                  <SelectItem value="6months">6 Months</SelectItem>
-                  <SelectItem value="1year">1 Year</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-sm font-medium text-gray-700">Priority</Label>
-              <Select value={priority} onValueChange={setPriority}>
-                <SelectTrigger className="bg-white">
-                  <SelectValue placeholder="Select priority" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border shadow-lg">
-                  <SelectItem value="low">Low</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="high">High</SelectItem>
-                  <SelectItem value="urgent">Urgent</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
           </div>
 
           <Button
