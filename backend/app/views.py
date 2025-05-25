@@ -13,9 +13,10 @@ def analyze_data(request):
 
             print("Received:", theme, budget, location)
 
-            # Do your analysis or machine learning here...
-
-            return JsonResponse({"status": "success", "message": "Analysis complete"})
+            # Semangat bikin logika ML
+            
+            
+            return JsonResponse({"status": "success replace with actual data", "message": "Actual data will be returned here."})
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
 
