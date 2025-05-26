@@ -15,7 +15,7 @@ interface InputFormProps {
 
 const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
   const [theme, setTheme] = useState('');
-  const [budget, setBudget] = useState<number>(0);
+  const [budget, setBudget] = useState<number>(1);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,7 +43,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
 
   return (
     <Card className="max-w-2xl mx-auto shadow-lg border-0 bg-white/80 backdrop-blur-sm">
-      <CardHeader className="text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
+      <CardHeader className="text-center bg-gradient-to-br from-blue-800 to-purple-700 text-white rounded-t-lg">
         <CardTitle className="text-2xl font-bold">Analysis Parameters</CardTitle>
       </CardHeader>
       <CardContent className="p-8">
@@ -66,7 +66,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
               type="text"
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
-              placeholder="Enter theme (e.g., Technology, Healthcare, Education)"
+              placeholder="Enter Additional Prompt"
               className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -89,7 +89,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
 
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
+            className="w-full bg-gradient-to-br from-blue-800/80 to-purple-600/60 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 transform hover:scale-105"
           >
             Execute Analysis
           </Button>

@@ -39,9 +39,6 @@ const DataAnalysisApp = () => {
       console.error("Failed to send data:", err);
     }
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
     setIsLoading(false);
     setShowResults(true);
   };
@@ -52,12 +49,12 @@ const DataAnalysisApp = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-white/10 backdrop-blur-md/50 rounded-lg shadow-lg">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-4xl font-bold text-gray-300 mb-4">
           Data Analysis Dashboard
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
           Enter your parameters to generate comprehensive analytics and insights
         </p>
       </div>

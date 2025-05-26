@@ -1,10 +1,11 @@
 
 import React from 'react';
 import DataAnalysisApp from '@/components/DataAnalysisApp';
+import '../index.css'; // Ensure global styles are imported
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="container mx-auto px-16 py-8 bg-transparent rounded-lg shadow-lg">
       <DataAnalysisApp />
     </div>
   );
