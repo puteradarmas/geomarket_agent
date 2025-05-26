@@ -11,7 +11,10 @@ def analyze_data(request):
             budget = data.get("budget")
             location = data.get("location")
 
-            print("Received:", theme, budget, location)
+            print("Received:", theme, budget, location,
+                  data,type(location['lat']))
+            
+
 
             # Semangat bikin logika ML
             
