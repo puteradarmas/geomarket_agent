@@ -12,15 +12,27 @@ export interface FormData {
   budget: number;
 }
 
+export interface ResultData {
+  "cafe_list": string[];
+  "opportunities_list": string[];
+  "num_of_reviews": number;
+  "avg_review_score": number;
+  "suggestion1":string;
+  "suggestion2":string;
+  "suggestion3":string;
+}
+  
 const DataAnalysisApp = () => {
   const [formData, setFormData] = useState<FormData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [resultData, setResult] = useState<ResultData | null>(null);
 
   const handleExecute = async (data: FormData) => {
     setIsLoading(true);
     setFormData(data);
     console.log('Executing analysis with data:', data);
+
     
     try {
       const response = await fetch("http://localhost:8000/api/analyze/", {
@@ -34,6 +46,7 @@ const DataAnalysisApp = () => {
       if (!response.ok) throw new Error("Network response was not ok");
   
       const result = await response.json();
+      setResult(result.message);
       console.log("Received from Django:", result);
     } catch (err) {
       console.error("Failed to send data:", err);
@@ -79,10 +92,10 @@ const DataAnalysisApp = () => {
         <InputForm onExecute={handleExecute} />
       )}
 
-      {showResults && !isLoading && formData && (
+      {showResults && !isLoading && formData && resultData&&(
         <div className="space-y-8">
-          <StatisticsDisplay formData={formData} onReset={handleReset} />
-          <DataTable formData={formData} />
+          <StatisticsDisplay formData={formData} resultData={resultData} onReset={handleReset} />
+          {/* <DataTable formData={formData} /> */}
         </div>
       )}
     </div>

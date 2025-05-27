@@ -29,7 +29,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
 
 
     
-    if (!location || !theme || budget <= 0 ) {
+    if (!theme || budget <= 0 ) {
       alert('Please fill in all fields');
       return;
     }

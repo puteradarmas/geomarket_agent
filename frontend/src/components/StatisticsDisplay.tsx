@@ -3,103 +3,113 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
-import { FormData } from './DataAnalysisApp';
+import { ResultData,FormData } from './DataAnalysisApp';
 import { TrendingUp, DollarSign, MapPin, Target } from 'lucide-react';
 
 interface StatisticsDisplayProps {
   formData: FormData;
+  resultData: ResultData;
   onReset: () => void;
 }
 
-const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData, onReset }) => {
+const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultData, onReset }) => {
   // Mock data based on form inputs
-  const barData = [
-    { name: 'Q1', value: Math.floor(formData.budget * 0.3) },
-    { name: 'Q2', value: Math.floor(formData.budget * 0.4) },
-    { name: 'Q3', value: Math.floor(formData.budget * 0.6) },
-    { name: 'Q4', value: Math.floor(formData.budget * 0.8) },
+  const inputData = [
+    { name: 'Longitude', value: 0.0},
+    { name: 'Latitude', value: 0.0},
+    { name: 'Theme', value: formData.theme },
+    { name: 'Budget', value: formData.budget},
   ];
 
-  const pieData = [
-    { name: 'Implementation', value: 35, color: '#3B82F6' },
-    { name: 'Planning', value: 25, color: '#8B5CF6' },
-    { name: 'Testing', value: 20, color: '#10B981' },
-    { name: 'Marketing', value: 20, color: '#F59E0B' },
+  const GeoStats = [
+    { name: 'Num of Reviews', value: resultData.num_of_reviews },
+    { name: 'Avg. Review Score', value: resultData.avg_review_score },
   ];
 
-  const lineData = [
-    { month: 'Jan', progress: 10 },
-    { month: 'Feb', progress: 25 },
-    { month: 'Mar', progress: 45 },
-    { month: 'Apr', progress: 60 },
-    { month: 'May', progress: 75 },
-    { month: 'Jun', progress: 90 },
+  const suggestions = [
+    { name: 'Suggestion 1', value: resultData.suggestion1  },
+    { name: 'Suggestion 2', value: resultData.suggestion2  },
+    { name: 'Suggestion 3', value: resultData.suggestion3  },
   ];
 
-  const stats = [
-    {
-      title: 'Total Budget Allocation',
-      value: `$${formData.budget.toLocaleString()}`,
-      icon: DollarSign,
-      color: 'text-green-600',
-      bgColor: 'bg-green-100'
-    },
-    {
-      title: 'Target Location',
-      value: formData.location,
-      icon: MapPin,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-100'
-    },
-    {
-      title: 'Project Theme',
-      value: formData.theme,
-      icon: Target,
-      color: 'text-purple-600',
-      bgColor: 'bg-purple-100'
-    },
-    {
-      title: 'Expected ROI',
-      value: '23.5%',
-      icon: TrendingUp,
-      color: 'text-orange-600',
-      bgColor: 'bg-orange-100'
-    }
-  ];
+  // const stats = [
+  //   {
+  //     title: 'Total Budget Allocation',
+  //     value: `$${formData.budget.toLocaleString()}`,
+  //     icon: DollarSign,
+  //     color: 'text-green-600',
+  //     bgColor: 'bg-green-100'
+  //   },
+  //   {
+  //     title: 'Target Location',
+  //     value: formData.location,
+  //     icon: MapPin,
+  //     color: 'text-blue-600',
+  //     bgColor: 'bg-blue-100'
+  //   },
+  //   {
+  //     title: 'Project Theme',
+  //     value: formData.theme,
+  //     icon: Target,
+  //     color: 'text-purple-600',
+  //     bgColor: 'bg-purple-100'
+  //   },
+  //   {
+  //     title: 'Expected ROI',
+  //     value: '23.5%',
+  //     icon: TrendingUp,
+  //     color: 'text-orange-600',
+  //     bgColor: 'bg-orange-100'
+  //   }
+  // ];
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold text-gray-800">Analysis Results</h2>
+        <h2 className="text-3xl font-bold text-gray-100">Analysis Results</h2>
         <Button onClick={onReset} variant="outline" className="hover:bg-gray-50">
           New Analysis
         </Button>
       </div>
 
       {/* Key Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {stats.map((stat, index) => {
-          const IconComponent = stat.icon;
-          return (
-            <Card key={index} className="transition-all duration-200 hover:shadow-lg">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-2">
+        <Card className="transition-all duration-200 hover:shadow-lg">
+          <CardContent className="p-4">
+            {inputData.map((data, index) => {
+              return (
+                <div key={index} className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                    <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
-                  </div>
-                  <div className={`p-3 rounded-full ${stat.bgColor}`}>
-                    <IconComponent className={`h-6 w-6 ${stat.color}`} />
+                    <p className="text-1x1 font-medium text-gray-600">{data.name}</p>
+                    <p className="text-2xl font-bold text-gray-900 mt-1">{data.value}</p>
                   </div>
                 </div>
+                );
+              })}
+          </CardContent>
+        </Card>
+         
+        
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+        {GeoStats.map((data, index) => {
+          return (
+            <Card className="transition-all duration-200 hover:shadow-lg">
+              <CardContent className="p-4">
+                    <div key={index} className="flex items-center justify-between">
+                      <div>
+                        <p className="text-1x1 font-medium text-gray-600">{data.name}</p>
+                        <p className="text-2xl font-bold text-gray-900 mt-1">{data.value}</p>
+                      </div>
+                    </div>
               </CardContent>
-            </Card>
-          );
-        })}
+            </Card>);
+          })}  
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle>Quarterly Budget Distribution</CardTitle>
@@ -115,9 +125,9 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData, onReset
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
-        </Card>
+        </Card> */}
 
-        <Card className="shadow-lg">
+        {/* <Card className="shadow-lg">
           <CardHeader>
             <CardTitle>Resource Allocation</CardTitle>
           </CardHeader>
@@ -165,7 +175,7 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData, onReset
             </LineChart>
           </ResponsiveContainer>
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   );
 };
