@@ -17,9 +17,10 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
   const inputData = [
     { name: 'Longitude', value: 0.0},
     { name: 'Latitude', value: 0.0},
-    { name: 'Theme', value: formData.theme },
     { name: 'Budget', value: formData.budget},
   ];
+
+  const prompt_theme = formData.theme || 'Default theme';
 
   const GeoStats = [
     { name: 'Num of Reviews', value: resultData.num_of_reviews },
@@ -73,7 +74,7 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
       </div>
 
       {/* Key Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2">
         <Card className="transition-all duration-200 hover:shadow-lg">
           <CardContent className="p-4">
             {inputData.map((data, index) => {
@@ -88,11 +89,20 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
               })}
           </CardContent>
         </Card>
+
+        <Card className="transition-all duration-200 hover:shadow-lg">
+          <CardContent className="p-4">
+              <div>
+                <p className="text-lg font-medium text-gray-600">Prompt</p>
+                <p className="text-mm font-bold text-gray-900 mt-1">{prompt_theme}</p>
+              </div>
+          </CardContent>
+        </Card>
          
         
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
         {GeoStats.map((data, index) => {
           return (
             <Card className="transition-all duration-200 hover:shadow-lg">

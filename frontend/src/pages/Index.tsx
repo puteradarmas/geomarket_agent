@@ -5,9 +5,17 @@ import '../index.css'; // Ensure global styles are imported
 
 const Index = () => {
   return (
-    <div className="container mx-auto px-16 py-8 bg-transparent rounded-lg shadow-lg">
-      <DataAnalysisApp />
-    </div>
+    <>
+      <div className="meteor-container">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div key={i} className="meteor" />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-16 py-8 bg-transparent rounded-lg shadow-lg">
+        <DataAnalysisApp />
+      </div>
+    </>
   );
 };
 

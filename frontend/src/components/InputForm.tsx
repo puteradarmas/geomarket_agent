@@ -59,7 +59,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
           <div className="space-y-2">
             <Label htmlFor="theme" className="text-sm font-medium text-gray-700 flex items-center gap-2">
               <Palette className="h-4 w-4" />
-              Theme
+              Prompt
             </Label>
             <Input
               id="theme"

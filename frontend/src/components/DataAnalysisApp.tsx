@@ -5,6 +5,7 @@ import InputForm from './InputForm';
 import StatisticsDisplay from './StatisticsDisplay';
 import DataTable from './DataTable';
 import { Loader2 } from 'lucide-react';
+import teamLogo from '../assets/team-logo.png';
 
 export interface FormData {
   location: { lat: number; lng: number } | null;
@@ -64,9 +65,12 @@ const DataAnalysisApp = () => {
   return (
     <div className="container mx-auto px-4 py-8 bg-white/10 backdrop-blur-md/50 rounded-lg shadow-lg">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-300 mb-4">
-          Data Analysis Dashboard
-        </h1>
+        <div className="flex items-center justify-center gap-4 mb-4">
+          <img src={teamLogo} alt="Logo" className="logo-icon" />
+          <h1 className="text-4xl font-bold text-gray-300">
+            Geo Analytical Survey
+          </h1>
+        </div>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
           Enter your parameters to generate comprehensive analytics and insights
         </p>
