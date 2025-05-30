@@ -210,6 +210,383 @@ class CafeProfile(BaseModel):
         use_enum_values = True
 ```
 
+```json
+{
+    "$defs": {
+        "AvailabilityLevel": {
+            "enum": [
+                "null",
+                "limited",
+                "good",
+                "abundant"
+            ],
+            "title": "AvailabilityLevel",
+            "type": "string"
+        },
+        "CapacitySize": {
+            "enum": [
+                "small",
+                "medium",
+                "large"
+            ],
+            "title": "CapacitySize",
+            "type": "string"
+        },
+        "DecorStyle": {
+            "enum": [
+                "industrial",
+                "modern",
+                "rustic",
+                "eclectic",
+                "minimalist"
+            ],
+            "title": "DecorStyle",
+            "type": "string"
+        },
+        "FacilityType": {
+            "enum": [
+                "outdoor_seating",
+                "parking",
+                "restroom",
+                "accessible",
+                "dog_friendly",
+                "child_friendly",
+                "group_friendly",
+                "reservable",
+                "loyalty_program",
+                "prayer_room",
+                "charging_stations",
+                "bookshelf",
+                "game_area"
+            ],
+            "title": "FacilityType",
+            "type": "string"
+        },
+        "FulfillmentMethod": {
+            "enum": [
+                "dine_in",
+                "takeout",
+                "delivery",
+                "curbside_pickup"
+            ],
+            "title": "FulfillmentMethod",
+            "type": "string"
+        },
+        "LightingStyle": {
+            "enum": [
+                "bright",
+                "dim",
+                "natural",
+                "mixed"
+            ],
+            "title": "LightingStyle",
+            "type": "string"
+        },
+        "NoiseLevel": {
+            "enum": [
+                "silent",
+                "quiet",
+                "moderate",
+                "noisy",
+                "loud"
+            ],
+            "title": "NoiseLevel",
+            "type": "string"
+        },
+        "PriceLevel": {
+            "enum": [
+                "budget",
+                "moderate",
+                "expensive",
+                "very_expensive"
+            ],
+            "title": "PriceLevel",
+            "type": "string"
+        },
+        "QualityLevel": {
+            "enum": [
+                "poor",
+                "fair",
+                "good",
+                "excellent"
+            ],
+            "title": "QualityLevel",
+            "type": "string"
+        },
+        "SeatingType": {
+            "enum": [
+                "counter",
+                "tables",
+                "couches",
+                "communal",
+                "booths"
+            ],
+            "title": "SeatingType",
+            "type": "string"
+        },
+        "ServiceStyle": {
+            "enum": [
+                "counter",
+                "table",
+                "self_serve",
+                "mixed"
+            ],
+            "title": "ServiceStyle",
+            "type": "string"
+        },
+        "ServiceType": {
+            "enum": [
+                "coffee",
+                "breakfast",
+                "brunch",
+                "lunch",
+                "dinner",
+                "dessert",
+                "beer",
+                "wine",
+                "cocktails",
+                "vegetarian"
+            ],
+            "title": "ServiceType",
+            "type": "string"
+        },
+        "SpacingLevel": {
+            "enum": [
+                "cramped",
+                "comfortable",
+                "spacious"
+            ],
+            "title": "SpacingLevel",
+            "type": "string"
+        },
+        "WaitTime": {
+            "enum": [
+                "fast",
+                "quick",
+                "moderate",
+                "slow"
+            ],
+            "title": "WaitTime",
+            "type": "string"
+        }
+    },
+    "properties": {
+        "name": {
+            "title": "Name",
+            "type": "string"
+        },
+        "location": {
+            "title": "Location",
+            "type": "string"
+        },
+        "rating": {
+            "anyOf": [
+                {
+                    "maximum": 5,
+                    "minimum": 0,
+                    "type": "number"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "title": "Rating"
+        },
+        "user_rating_count": {
+            "anyOf": [
+                {
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "title": "User Rating Count"
+        },
+        "service_types": {
+            "items": {
+                "$ref": "#/$defs/ServiceType"
+            },
+            "title": "Service Types",
+            "type": "array"
+        },
+        "fulfillment_methods": {
+            "items": {
+                "$ref": "#/$defs/FulfillmentMethod"
+            },
+            "title": "Fulfillment Methods",
+            "type": "array"
+        },
+        "price_level": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/PriceLevel"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "capacity_size": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/CapacitySize"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "seating_types": {
+            "items": {
+                "$ref": "#/$defs/SeatingType"
+            },
+            "title": "Seating Types",
+            "type": "array"
+        },
+        "spacing_level": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/SpacingLevel"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "decor_styles": {
+            "items": {
+                "$ref": "#/$defs/DecorStyle"
+            },
+            "title": "Decor Styles", "type": "array"
+        },
+        "lighting_style": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/LightingStyle"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "noise_level": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/NoiseLevel"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "wifi_quality": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/QualityLevel"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "power_outlet_availability": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/AvailabilityLevel"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "work_friendly_features": {
+            "items": {
+                "type": "string"
+            },
+            "title": "Work Friendly Features",
+            "type": "array"
+        },
+        "service_style": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ServiceStyle"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "typical_wait_time": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/WaitTime"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "staff_friendliness": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/QualityLevel"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "facilities": {
+            "items": {
+                "$ref": "#/$defs/FacilityType"
+            },
+            "title": "Facilities",
+            "type": "array"
+        },
+        "opening_hours": {
+            "anyOf": [
+                {
+                    "additionalProperties": true,
+                    "type": "object"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Opening Hours"
+        },
+        "photos": {
+            "items": {
+                "type": "string"
+            },
+            "title": "Photos",
+            "type": "array"
+        }
+    },
+    "required": [
+        "name",
+        "location",
+        "rating",
+        "user_rating_count"
+    ],
+    "title": "CafeProfile",
+    "type": "object"
+}
+```
+
 ### Process
 non-abstract fields are extracted and selected before being merged into a more condensed representations. Abstract fields such as `reviews` and `photos` are processed by LLMs to extract observable predetermined keywords. All of this are ultimately merged together.
 
