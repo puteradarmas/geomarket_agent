@@ -1,12 +1,17 @@
 # This file is part of the Django application for managing stores.
 from django.db import models
+from sqlalchemy import Column, Integer, String, Float, DateTime, func
+from sqlalchemy.ext.declarative import declarative_base
 
-class request_hist(models.Model):
-    id = models.AutoField(primary_key=True)
-    location = models.CharField(max_length=255)
-    budget = models.IntegerField()
-    theme = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
+    
 
-    def __str__(self):
-        return self.location
+Base = declarative_base()
+
+class request_hist(Base):
+    __tablename__ = 'request_hist'
+
+    id = Column(Integer, primary_key=True,autoincrement=True)
+    lat = Column(Float)
+    lgn = Column(Float)
+    additional_prompt = Column(String)
+    created_at = Column(DateTime, default=func.now())

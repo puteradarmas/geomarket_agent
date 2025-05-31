@@ -1,9 +1,23 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from sqlalchemy.orm import sessionmaker
+from .models import Base, request_hist
+from .schemas import request_schema
+from sqlalchemy import create_engine
+
 
 @csrf_exempt  # only for development, use proper CSRF in production
 def analyze_data(request):
+    
+    engine = create_engine("sqlite:///db.sqlite3", echo=True)
+    
+    # Base.metadata.drop_all(bind=engine)  # Careful: deletes data
+    # Base.metadata.create_all(bind=engine)
+    
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -11,11 +25,31 @@ def analyze_data(request):
             budget = data.get("budget")
             location = data.get("location")
             if location is None:
-                location = {"lat": 0, "lng": 0}  # Default location if not provided
+                location = {"lat": 1.0, "lng": 1.0}  # Default location if not provided
             cafe_list = ['Cafe A', 'Cafe B', 'Cafe C','A la Cafe','La la cafe']  # Example cafe list
             opportunities_list = ['Hospital A','school A','Hospital B','School B','office A']  # Example opportunities list
             num_of_reviews = 200
             avg_review_score = 3.4
+            
+            print("this much passed")
+            
+            
+            request_data = request_schema(lat=location["lat"], lgn=location["lng"], 
+                                        additional_prompt=theme)
+            
+            
+            request_hist_model = request_hist(**request_data.dict())
+            print("Request Data:", request_data)
+            print("Request Model:", request_hist_model)
+            
+            # Add and commit to the database
+            session.add(request_hist_model)
+            session.commit()
+            
+            request_hist_result = session.query(request_hist).all()
+
+            for reqs in request_hist_result:
+                print(f"ID: {reqs.id}, Name: {reqs.lat}, Age: {reqs.lgn}, Created At: {reqs.additional_prompt}, Created At: {reqs.created_at}")
 
             print("Received:", theme, budget, location,
                   data,type(location['lat']))
