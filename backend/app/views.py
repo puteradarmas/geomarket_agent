@@ -33,11 +33,11 @@ def analyze_data(request):
             
             print("this much passed")
             
-            
+            # create pydantic schema instance
             request_data = request_schema(lat=location["lat"], lgn=location["lng"], 
                                         additional_prompt=theme)
             
-            
+            # from pydantic schema, create SQLAlchemy model instance
             request_hist_model = request_hist(**request_data.dict())
             print("Request Data:", request_data)
             print("Request Model:", request_hist_model)
