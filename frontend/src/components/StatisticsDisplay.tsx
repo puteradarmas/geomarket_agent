@@ -15,12 +15,12 @@ interface StatisticsDisplayProps {
 const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultData, onReset }) => {
   // Mock data based on form inputs
   const inputData = [
-    { name: 'Longitude', value: 0.0},
-    { name: 'Latitude', value: 0.0},
+    { name: 'Longitude', value: resultData.longitude },
+    { name: 'Latitude', value: resultData.latitude },
     { name: 'Budget', value: formData.budget},
   ];
 
-  const prompt_theme = formData.theme || 'Default theme';
+  const prompt_theme = formData.additional_prompt || 'Default theme';
 
   const GeoStats = [
     { name: 'Num of Reviews', value: resultData.num_of_reviews },
@@ -117,6 +117,8 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
             </Card>);
           })}  
       </div>
+
+      
 
       {/* Charts */}
       {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

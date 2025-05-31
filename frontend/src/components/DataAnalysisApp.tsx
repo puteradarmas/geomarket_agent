@@ -9,12 +9,14 @@ import teamLogo from '../assets/team-logo.png';
 
 export interface FormData {
   location: { lat: number; lng: number } | null;
-  theme: string;
+  additional_prompt: string;
   budget: number;
 }
 
 export interface ResultData {
   "cafe_list": string[];
+  "longitude": number;
+  "latitude": number;
   "opportunities_list": string[];
   "num_of_reviews": number;
   "avg_review_score": number;
@@ -22,12 +24,45 @@ export interface ResultData {
   "suggestion2":string;
   "suggestion3":string;
 }
+
+export interface HistResult {
+  "id": Int16Array[];
+  "lat": number[];
+  "lgn": number[];
+  "address": string[];
+}
   
 const DataAnalysisApp = () => {
   const [formData, setFormData] = useState<FormData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [resultData, setResult] = useState<ResultData | null>(null);
+  const [showHistory, setShowHistory] = useState(false);
+
+  const handleShowHistory = async () => {
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:8000/api/analyze/", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+  
+      if (!response.ok) throw new Error("Network response was not ok");
+  
+      const HistResult = await response.json();
+      setResult(HistResult.message);
+      console.log("Received from Django:", HistResult);
+    } catch (err) {
+      console.error("Failed to send data:", err);
+    }
+
+    setIsLoading(false);
+    setShowHistory(true);
+  };
 
   const handleExecute = async (data: FormData) => {
     setIsLoading(true);
@@ -94,9 +129,17 @@ const DataAnalysisApp = () => {
 
       {!showResults && !isLoading && (
         <InputForm onExecute={handleExecute} />
+        // add show history button
       )}
 
       {showResults && !isLoading && formData && resultData&&(
+        <div className="space-y-8">
+          <StatisticsDisplay formData={formData} resultData={resultData} onReset={handleReset} />
+          {/* <DataTable formData={formData} /> */}
+        </div>
+      )}
+
+      {showHistory && !isLoading && (
         <div className="space-y-8">
           <StatisticsDisplay formData={formData} resultData={resultData} onReset={handleReset} />
           {/* <DataTable formData={formData} /> */}

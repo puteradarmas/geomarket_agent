@@ -14,7 +14,7 @@ interface InputFormProps {
 }
 
 const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
-  const [theme, setTheme] = useState('');
+  const [additional_prompt, setTheme] = useState('');
   const [budget, setBudget] = useState<number>(1);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
 
@@ -29,14 +29,14 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
 
 
     
-    if (!theme || budget <= 0 ) {
+    if (!additional_prompt || budget <= 0 ) {
       alert('Please fill in all fields');
       return;
     }
 
     onExecute({
       location,
-      theme,
+      additional_prompt,
       budget
     });
   };
@@ -57,14 +57,14 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="theme" className="text-sm font-medium text-gray-700 flex items-center gap-2">
+            <Label htmlFor="additional_prompt" className="text-sm font-medium text-gray-700 flex items-center gap-2">
               <Palette className="h-4 w-4" />
               Prompt
             </Label>
             <Input
-              id="theme"
+              id="additional_prompt"
               type="text"
-              value={theme}
+              value={additional_prompt}
               onChange={(e) => setTheme(e.target.value)}
               placeholder="Enter Additional Prompt"
               className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
