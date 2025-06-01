@@ -3,6 +3,7 @@ import requests
 
 # LAT_LONG = (-6.174904869095269, 106.8271353670165)
 # LATLONG[0],LAT_LONG[1]
+API_KEY = 'AIzaSyBMM3_s3QjI-5LNDDB5xwZoG28i_OBC3ek'
 
 def grab_locations_competitor(lat, lng):
     """
@@ -18,7 +19,7 @@ def grab_locations_competitor(lat, lng):
         "https://places.googleapis.com/v1/places:searchNearby",
         headers={
             "Content-Type": "application/json",
-            "X-Goog-Api-Key": "AIzaSyBMM3_s3QjI-5LNDDB5xwZoG28i_OBC3ek",
+            "X-Goog-Api-Key": API_KEY,
             "X-Goog-FieldMask": ",".join([
                 "places.accessibilityOptions",
                 "places.attributions",
@@ -93,7 +94,7 @@ def grab_locations_opportunity(lat, lng):
         "https://places.googleapis.com/v1/places:searchNearby",
         headers={
             "Content-Type": "application/json",
-            "X-Goog-Api-Key": "AIzaSyBMM3_s3QjI-5LNDDB5xwZoG28i_OBC3ek",
+            "X-Goog-Api-Key": API_KEY,
             "X-Goog-FieldMask": ",".join([
                 "places.accessibilityOptions",
                 "places.attributions",
@@ -149,6 +150,56 @@ def grab_locations_opportunity(lat, lng):
                 }
             },
         },
+    )
+
+
+    return json.dumps(results.json(), indent=2)
+
+def grab_distance(start_lat, start_lng ,dest_lat, dest_lng):
+    """
+    Function to grab locations of opportunities.
+    Args:
+    lat (float): Latitude of the location.
+    lng (float): Longitude of the location. 
+    Returns:
+    str: JSON string containing the results of the API call.
+    """
+    
+    results = requests.post(
+        "https://routes.googleapis.com/directions/v2:computeRoutes",
+        headers = {
+            "Content-Type": "application/json",
+            "X-Goog-Api-Key": API_KEY,
+            "X-Goog-FieldMask": "routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline"
+        },
+        json={
+            "origin": {
+                "location": {
+                    "latLng": {
+                        "latitude": start_lat,
+                        "longitude":start_lng
+                    }
+                }
+            },
+            "destination": {
+                "location": {
+                    "latLng": {
+                        "latitude": dest_lat,
+                        "longitude": dest_lng
+                    }
+                }
+            },
+            "travelMode": "DRIVE",
+            "routingPreference": "TRAFFIC_AWARE",
+            "computeAlternativeRoutes": False,
+            "routeModifiers": {
+                "avoidTolls": False,
+                "avoidHighways": False,
+                "avoidFerries": False
+            },
+            "languageCode": "en-US",
+            "units": "METRIC"
+        }
     )
 
 
