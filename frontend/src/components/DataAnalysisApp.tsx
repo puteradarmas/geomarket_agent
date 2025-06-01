@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import InputForm from './InputForm';
 import StatisticsDisplay from './StatisticsDisplay';
-import DataTable from './DataTable';
+import HistoryDisplay from './HistoryDisplay';
 import { Loader2 } from 'lucide-react';
 import teamLogo from '../assets/team-logo.png';
+import { Button } from '@/components/ui/button';
 
 export interface FormData {
   location: { lat: number; lng: number } | null;
@@ -25,12 +26,17 @@ export interface ResultData {
   "suggestion3":string;
 }
 
-export interface HistResult {
-  "id": Int16Array[];
-  "lat": number[];
-  "lgn": number[];
-  "address": string[];
-}
+export interface HistoryEntry {
+  "id": number;
+  "lat": number;
+  "lgn": number;
+  "address": string;
+  "created_at": string;
+};
+
+export interface HistData {
+  list: HistoryEntry[];
+};
   
 const DataAnalysisApp = () => {
   const [formData, setFormData] = useState<FormData | null>(null);
@@ -38,13 +44,14 @@ const DataAnalysisApp = () => {
   const [showResults, setShowResults] = useState(false);
   const [resultData, setResult] = useState<ResultData | null>(null);
   const [showHistory, setShowHistory] = useState(false);
+  const [historyData, setHistoryData] = useState<HistData | null>(null);
 
   const handleShowHistory = async () => {
 
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/analyze/", {
+      const response = await fetch("http://localhost:8000/api/get_history/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -53,9 +60,9 @@ const DataAnalysisApp = () => {
   
       if (!response.ok) throw new Error("Network response was not ok");
   
-      const HistResult = await response.json();
-      setResult(HistResult.message);
-      console.log("Received from Django:", HistResult);
+      const result_hist = await response.json();
+      setHistoryData(result_hist.message.hist_data);
+      console.log("Received from Django:", result_hist);
     } catch (err) {
       console.error("Failed to send data:", err);
     }
@@ -63,6 +70,20 @@ const DataAnalysisApp = () => {
     setIsLoading(false);
     setShowHistory(true);
   };
+
+  const handleOpenHistory = async () => {
+    setIsLoading(true);
+    setShowHistory(false);
+    setShowResults(false);
+    setFormData(null);
+    setResult(null);
+    console.log('Opening history...');
+
+    // Fetch history data again using DB
+
+    setShowResults(true);
+    setIsLoading(false);
+  }
 
   const handleExecute = async (data: FormData) => {
     setIsLoading(true);
@@ -107,7 +128,7 @@ const DataAnalysisApp = () => {
           </h1>
         </div>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-          Enter your parameters to generate comprehensive analytics and insights
+          Your Geo Market Analysis is just a few clicks away!
         </p>
       </div>
 
@@ -127,22 +148,21 @@ const DataAnalysisApp = () => {
         </Card>
       )}
 
-      {!showResults && !isLoading && (
-        <InputForm onExecute={handleExecute} />
-        // add show history button
+      {!showResults && !isLoading && !showHistory &&(
+        <>
+          <InputForm onExecute={handleExecute} onShowHistory={handleShowHistory} />
+        </>
       )}
 
       {showResults && !isLoading && formData && resultData&&(
         <div className="space-y-8">
           <StatisticsDisplay formData={formData} resultData={resultData} onReset={handleReset} />
-          {/* <DataTable formData={formData} /> */}
         </div>
       )}
 
       {showHistory && !isLoading && (
         <div className="space-y-8">
-          <StatisticsDisplay formData={formData} resultData={resultData} onReset={handleReset} />
-          {/* <DataTable formData={formData} /> */}
+          <HistoryDisplay HistData={historyData} onOpenHistory={handleOpenHistory} />
         </div>
       )}
     </div>

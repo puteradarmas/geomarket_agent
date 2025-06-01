@@ -103,16 +103,17 @@ def get_history(request):
         try:
             request_hist_result = session.query(request_hist).all()
 
-            id_list = [req.id for req in request_hist_result]
-            lat_list = [req.lat for req in request_hist_result]
-            lgn_list = [req.lgn for req in request_hist_result]
-            additional_prompt_list = [req.additional_prompt for req in request_hist_result]
-            created_at_list = [req.created_at for req in request_hist_result]
+            hist_data = []
+            for req in request_hist_result:
+                hist_data.append({
+                    "id": req.id,
+                    "lat": req.lat,
+                    "lgn": req.lgn,
+                    "additional_prompt": req.additional_prompt,
+                    "created_at": str(req.created_at)  # Convert datetime to string
+                })
             
-            return JsonResponse({"status": "Analyze prosessing completed", "message": {"id_list": id_list, "lat_list": lat_list, 
-                                                                                       "lgn_list":lgn_list,
-                                                                                       "additional_prompt_list":additional_prompt_list,
-                                                                                       "created_at_list":created_at_list}}, status=200)   
+            return JsonResponse({"status": "Analyze prosessing completed", "message": {"hist_data":hist_data}}, status=200)   
        
        
         except Exception as e:

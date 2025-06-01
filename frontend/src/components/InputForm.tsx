@@ -11,9 +11,10 @@ import LocationPicker from './LocationPicker'
 
 interface InputFormProps {
   onExecute: (data: FormData) => void;
+  onShowHistory: () => void;
 }
 
-const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
+const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
   const [additional_prompt, setTheme] = useState('');
   const [budget, setBudget] = useState<number>(1);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
@@ -41,18 +42,26 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute }) => {
     });
   };
 
+
   return (
     <Card className="max-w-2xl mx-auto shadow-lg border-0 bg-white/80 backdrop-blur-sm">
       <CardHeader className="text-center bg-gradient-to-br from-blue-800 to-purple-700 text-white rounded-t-lg">
         <CardTitle className="text-2xl font-bold">Analysis Parameters</CardTitle>
       </CardHeader>
       <CardContent className="p-8">
+        <div className="flex justify-end mt-2">
+          <Button onClick={onShowHistory} variant="outline" className="hover:bg-gray-50">
+            Show History
+          </Button>
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="location" className="text-sm font-medium text-gray-700 flex items-center gap-2">
               <MapPin className="h-4 w-4" />
               Location
             </Label>
+            
             <LocationPicker onLocationSelect={setLocation} />
           </div>
 

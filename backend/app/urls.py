@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import analyze_data
+from .views import analyze_data,get_history
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/analyze/", analyze_data),
+    path("api/get_history/", get_history),
 ]
