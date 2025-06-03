@@ -209,8 +209,6 @@ def grab_distance(start_lat, start_lng ,dest_lat, dest_lng):
 
 
 def grab_address(location):
-
-
     lat, lng = location['lat'], location['lng']  # Jakarta
     # api_key = 'AIzaSyBmugJei5MXFJu2525l8Bh6cPNJKUtWcS4'
 
