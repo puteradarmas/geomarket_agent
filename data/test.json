@@ -1,0 +1,435 @@
+{
+    "places": [
+        {
+      "id": "test",
+      "types": [
+        "pub",
+        "cafe",
+        "event_venue",
+        "bar",
+        "food",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Kb. Sirih Tim. Dalam No.37, RT.1/RW.5, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+      "location": {
+        "latitude": -6.1842498,
+        "longitude": 106.8304495
+      },
+      "rating": 4.5,
+      "googleMapsUri": "https://maps.google.com/?cid=73890277747290776",
+      "websiteUri": "https://youtu.be/HKTEgkdspDI",
+      "regularOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 2,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 2,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 2,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 2,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 2,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 2,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 2,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM",
+          "Tuesday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM",
+          "Wednesday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM",
+          "Thursday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM",
+          "Friday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM",
+          "Saturday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM",
+          "Sunday: 6:00\u202fAM\u2009\u2013\u20092:00\u202fAM"
+        ],
+        "nextCloseTime": "2025-05-27T19:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "priceLevel": "PRICE_LEVEL_MODERATE",
+      "userRatingCount": 4907,
+      "displayName": {
+        "text": "Melly's Garden",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Pub",
+        "languageCode": "en-US"
+      },
+      "delivery": true,
+      "dineIn": true,
+      "curbsidePickup": false,
+      "reservable": true,
+      "primaryType": "pub",
+      "shortFormattedAddress": "Jl. Kb. Sirih Tim. Dalam No.37, RT.1/RW.5, Kb. Sirih, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Coffee, cocktails & casual Indonesian grub offered in a hip, low-key venue with outdoor seating.",
+        "languageCode": "en"
+      },
+      "reviews": [
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/reviews/ChZDSUhNMG9nS0VORGctWmVycU9Ed0pREAE",
+          "relativePublishTimeDescription": "in the last week",
+          "rating": 5,
+          "text": {
+            "text": "A little bit out of the way but worth the trip, Melly\u2019s Garden is a potent mix of an Asian setting with a western pub menu. Designed as a mash up somewhere between a Chinese courtyard and an Irish Pub with touches of a temple garden, we loved our two trips to Melly\u2019s during our time in Jakarta. The servers were all warm, friendly and helpful and the Bintang was icy cold. Clean bathrooms were a welcome plus. We tried some Indonesian chicken curry and also a cheeseburger and both were above average. The city can be a bit hectic and hot as an oven but Melly\u2019s was a welcome respite from the noise and heat.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "A little bit out of the way but worth the trip, Melly\u2019s Garden is a potent mix of an Asian setting with a western pub menu. Designed as a mash up somewhere between a Chinese courtyard and an Irish Pub with touches of a temple garden, we loved our two trips to Melly\u2019s during our time in Jakarta. The servers were all warm, friendly and helpful and the Bintang was icy cold. Clean bathrooms were a welcome plus. We tried some Indonesian chicken curry and also a cheeseburger and both were above average. The city can be a bit hectic and hot as an oven but Melly\u2019s was a welcome respite from the noise and heat.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Michael M",
+            "uri": "https://www.google.com/maps/contrib/110816102038590945470/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUK5ZTsm2BeFo7kBTjzbXHQkNWLKtGCBcWymlT1R9O_zgeNlS5z=s128-c0x00000000-cc-rp-mo-ba3"
+          },
+          "publishTime": "2025-05-22T21:01:03.384952Z",
+          "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VORGctWmVycU9Ed0pREAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VORGctWmVycU9Ed0pREAE!2m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/reviews/ChZDSUhNMG9nS0VJQ0FnTUNZdnVfRUpREAE",
+          "relativePublishTimeDescription": "3 weeks ago",
+          "rating": 4,
+          "text": {
+            "text": "Large outdoor seating area with a vast selection of drinks. TVs display live sports and the vibe allows for a good time with friends. A bit on the expensive side, but the setting is worth the price.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Large outdoor seating area with a vast selection of drinks. TVs display live sports and the vibe allows for a good time with friends. A bit on the expensive side, but the setting is worth the price.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Etienne Laprise",
+            "uri": "https://www.google.com/maps/contrib/110420147589416087800/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWZxMrsBC8SjT59ovWY4eCvm_xpIUujxYHq8apsmV3jE03sRGTb_A=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2025-05-04T16:13:43.842729Z",
+          "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChZDSUhNMG9nS0VJQ0FnTUNZdnVfRUpREAE&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnTUNZdnVfRUpREAE!2m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/reviews/ChdDSUhNMG9nS0VJQ0FnSURaNDdtdXZ3RRAB",
+          "relativePublishTimeDescription": "a year ago",
+          "rating": 5,
+          "text": {
+            "text": "The place is quite hidden cannot be seen from the street. It is located accross the Park Hyatt Hotel. Surprisingly the ambience is great, with Bali vibes. The foods and drinks are also come with reasonable prices. It was Sat nite so it was a full house. They also had live music and gave free popcorn so the whole experience is so relaxing.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "The place is quite hidden cannot be seen from the street. It is located accross the Park Hyatt Hotel. Surprisingly the ambience is great, with Bali vibes. The foods and drinks are also come with reasonable prices. It was Sat nite so it was a full house. They also had live music and gave free popcorn so the whole experience is so relaxing.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Yoana Vebie",
+            "uri": "https://www.google.com/maps/contrib/117499744236308008852/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXd0Wb8DkhxnGlmANTqs7fp5m7wtbePlC9jfb_BWBBcAQGO6W5t=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2023-10-07T14:39:13.712043Z",
+          "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURaNDdtdXZ3RRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURaNDdtdXZ3RRAB!2m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/reviews/ChdDSUhNMG9nS0VJQ0FnSUNQMVp2SGdBRRAB",
+          "relativePublishTimeDescription": "6 months ago",
+          "rating": 1,
+          "text": {
+            "text": "Long wait for the foods it takes almost 1 hour only for Lasagna, and also not a fresh ingredient in tom yum, the shrimp looks bad and stinky!!\nDisappointed!\nWaitress even don\u2019t knows how to work!",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Long wait for the foods it takes almost 1 hour only for Lasagna, and also not a fresh ingredient in tom yum, the shrimp looks bad and stinky!!\nDisappointed!\nWaitress even don\u2019t knows how to work!",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "alief ananda",
+            "uri": "https://www.google.com/maps/contrib/105776844033040861462/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjVccpHk5gqMApbmiMYkJMxDqEiaNoCozJG7Esd488uTpecZG4hI=s128-c0x00000000-cc-rp-mo-ba2"
+          },
+          "publishTime": "2024-11-26T16:07:50.787258Z",
+          "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNQMVp2SGdBRRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNQMVp2SGdBRRAB!2m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/reviews/ChdDSUhNMG9nS0VJQ0FnSUNQeUk2c3N3RRAB",
+          "relativePublishTimeDescription": "6 months ago",
+          "rating": 3,
+          "text": {
+            "text": "Slow service and small portions of food, was meant to be fish and \u201cchips\u201d, hardly any chips. Plus, the fish batter was not cooked throughly.",
+            "languageCode": "en"
+          },
+          "originalText": {
+            "text": "Slow service and small portions of food, was meant to be fish and \u201cchips\u201d, hardly any chips. Plus, the fish batter was not cooked throughly.",
+            "languageCode": "en"
+          },
+          "authorAttribution": {
+            "displayName": "Lauren Dowsett",
+            "uri": "https://www.google.com/maps/contrib/106591976352807619834/reviews",
+            "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXJ6qP0jLmBvRJxuSueoqoRSlIKooFeCEQnygi2pRDuXB2e5N2p=s128-c0x00000000-cc-rp-mo-ba4"
+          },
+          "publishTime": "2024-11-21T03:24:42.763550Z",
+          "flagContentUri": "https://www.google.com/local/review/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNQeUk2c3N3RRAB&d=17924085&t=1",
+          "googleMapsUri": "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNQeUk2c3N3RRAB!2m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        }
+      ],
+      "photos": [
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQP0BhXSTbWlhe4R0ZeznjS8Hjrp6WyKETsISgusWalFtveVgpRDSU78Zy7v-407BAtIxrYRGvqpNtNhhGMFwfbxZEkPTxlOG2uBdHVyQN9qOVvKgGV-3oi5f-sasoEDP9x1DQCJE1g74gVPoxNBJDLaxQvGAtfT_kyROCvV_pxhEVZmmwAmyckikDNir15xorlNggndeuIEv66oOoiXFAVV9cxS-iLSL3StOkn6HqeP6QxOvSFwaVr4Vv_x7gThhwR7WcoSdCi03EtIIFy6Bq6O72qg8RF8JBdpVcCLkGMDw",
+          "widthPx": 3546,
+          "heightPx": 2659,
+          "authorAttributions": [
+            {
+              "displayName": "Melly's Garden Pub & Diner",
+              "uri": "https://maps.google.com/maps/contrib/115342185746997938980",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX81BulCLJh68BlLyIxe_l6JvfT3ra-ZaTH8cogwBaLHLs2Okt_=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sAF1QipP9t_giecoTE3zmsqKiXVQr6PJS_fFzcSeuTQpz&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipP9t_giecoTE3zmsqKiXVQr6PJS_fFzcSeuTQpz!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNS-QQlughDyOfceoFPpU6JX-y4JqcVsF6gRtBwlyJke58pMJCmeFKlKXha40I9emHu8uQ9YLMteD1eIFKC29v3UJcnvmfhBcY-fQdmD7V-zIrKxROFKcBFhMDk-sj-Io68pLP-6C3eM7OL9o8G29wMZBgPuhzpANTBinJa-hf5awddx7d4pHTuWhI8H1wPg1S_-NMN8p1AH2CprAzKgjZRjoGkLeT4zbyJcxeLeY4iOYoM45WvSdr3opVcEem0tKSUoEgOaDeJCgt9Tg2iX42oscdEm5s_D3AannOhsgT0uakbEFe4RKKJqZeRr-65WoKSTqkzGOrhg41k5katjdF43pBXPcFDOjWmLv8gFkRI2suqFC1jQxvs8myFqXXx5-tVT28ou2_5LDktfe35lLWUNCJgqni2rHpJV5W7uSrXxhINV",
+          "widthPx": 4032,
+          "heightPx": 3024,
+          "authorAttributions": [
+            {
+              "displayName": "Michael M",
+              "uri": "https://maps.google.com/maps/contrib/110816102038590945470",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUK5ZTsm2BeFo7kBTjzbXHQkNWLKtGCBcWymlT1R9O_zgeNlS5z=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEL_EyJG7r9fooAE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEL_EyJG7r9fooAE!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQKgtAI37KJKBZNiq9BhYTdw6WAQ1eqtBbRr3JrplBai9Nxggh88RePhKzvPmJZMRXqNyLOnsaq-xcO5E1T53in0KR9NyAAbhAaqKJVJtAVPXqs3Dup6BXBCIcOyqwde6pb7FXNxHniJ2LTRBUL7R4KMUsCzZvwGzr5H7TqZ5YNzqYZ3K2SzSz2ROh0LLVNzI1tr6kGjyHMbstNbIh0EB31oV-xHq4yQK6c33FGcUMsnCvDi5hnIQmvYfdAMjjTkoXOwwOzJqlv54532DOnfyTVEsOoTMotJ7J0d2OPVHFRcA",
+          "widthPx": 4032,
+          "heightPx": 3024,
+          "authorAttributions": [
+            {
+              "displayName": "Melly's Garden Pub & Diner",
+              "uri": "https://maps.google.com/maps/contrib/115342185746997938980",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX81BulCLJh68BlLyIxe_l6JvfT3ra-ZaTH8cogwBaLHLs2Okt_=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sAF1QipPonxGAqpIJI0uT8Q6lzU0sirTEOPmZ4ScWPgMi&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipPonxGAqpIJI0uT8Q6lzU0sirTEOPmZ4ScWPgMi!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNS8QyamfW7NxBWdwY1awLFtClyPN9IN5aZofe6OgdmWf1Bpww_H2__WXjpmtQdWyioDFUK4Y6enqmqKgkmGM2cSYPvgqBi2FnDammejt67ExR3nc5fsCYLO2ilQb2l6pxnVy0j_cXpFNdcAWOQq3zghQ08tlxSOJ6lbA2KIihlRTthcg3HxmZFRMapwJlDhhA5Ooi2MbpL_JC6DS__uLu3eJdZG-n8obnOH0rdz-GEPjD85AXGc4-E9ryYqHgiYgr6mQJNqzUhHc8b_vYtT8Kbbn4w5fI3sjTSt3mKgpW5c6089pXAbjK-BZ72EeWo4RnVQyJQKXSszt_QOnKrTT-pB9owcxnSgZ4BmVJtE2pTa6cL8JtddQgC57SgcV2-dhBT5Fyp_tPuVuCLVS5n4cthRp6FmPwgyV1cWXqHvj_bouQ",
+          "widthPx": 4032,
+          "heightPx": 2268,
+          "authorAttributions": [
+            {
+              "displayName": "iidapan",
+              "uri": "https://maps.google.com/maps/contrib/110747955492194073076",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjWHOHDlh_U6yA1nH9Dy9Z0Z_wyEYhNmTzIGZT9rZiiaSfsrJnM=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgIDtz4eLTA&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDtz4eLTA!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQNC3b16qe1QdLduHKZb12He2Hr1sWAasGdh1DtL5BHnz1T29MyCy4FAcvzFBCSngUGoiHl23g8L8uuXUnZjxbCaF8BwlQj9f5Zvm10K51DnSEmGGFbzefBIf1zy8Gyqmbqq28rVo2gW8DhGIQJD_4qh4tRYvBDevenEnWjtzZI3rm-HT-KkEqUZLmmH7rAk6s5AutKEsVs860nuUVfm1Z-gkFvCECPmMvBwdjcOd8G0DuobwtXK_UPpSpFTTbm0H77k1ITTdQGTLFAhZBAyNTOHtyA5_XR8hdwJbofPOZ09K-hrw_Onam9TIUEbAdzP96gqdgQFCs3LTwC5sYWNmlWiQdiSlsTJR1Rg_gdaCajOQf0NtbdS0b9Cm6wHZhWHvDlzq5V47PqgJztCN4GGRtE019mWd_ZlpFcLju68hMD0QTm",
+          "widthPx": 2700,
+          "heightPx": 4800,
+          "authorAttributions": [
+            {
+              "displayName": "Silma Arfiddya",
+              "uri": "https://maps.google.com/maps/contrib/107054083132336305256",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUtj3RTNqr207xrgbYBO4Xjo6uNiITVS6OM6ri1Plb8f5Pe3l7d=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEM67mMHRqfLl2wE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEM67mMHRqfLl2wE!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQX20r3plZCJxnM9ElwN_N91rm1Yme2xBiIvSZmYY6fNVRs1SHjZn5a3wC5fY8POI9fzbHGvYq2tLYwy4e33TGReWKDzfWD7OvFdn07MfkaPPKMdCPzd29QA90Q62YHj82cFpHj0TcbLF2spFGmBVgfQkAAHWklTFNBUHaeSCPZED4jrL6t_j31lQjQ6AyCj_DerbqktND-0ONh1luOnnvah48qRkzZzYWOp1TeZClTlkcUxpUU3fZZjQ7_ftPxMJm8hAreQz-RY-rCs0YWVczUib6gKjUufOepJq_jdChK5PTyLZw6ppNWwTl9mVbT5i6lrTZoS0gR8IklQmuzSrkZ_FNpWm5y5wVUZZINbvskxjZcNWXNE13--CDr_lPPvxhaIcYUbFphqOqejZEN_PrCaqrQ5zkKLG5KWTAKg9fRP6ur",
+          "widthPx": 4800,
+          "heightPx": 3600,
+          "authorAttributions": [
+            {
+              "displayName": "tatt c",
+              "uri": "https://maps.google.com/maps/contrib/111773816058416996202",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjUB5LSuZURMYCNDO4rKXyWc36vstxjtfprKK59ZP0yIv1EHwR2rUw=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICLlMzE6wE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICLlMzE6wE!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNSmr8ykrBOZ7_lpKkdf40Z4kx7k2XajLl3gl_TxXOP5brADEwSHe8CFgaBQQC7NGnsxOmRBR-RYiNhk_zb9JXN7D3LqzaZ3sdUekKEXUb3-wxWNTWKjl_U65OEFJOzqYcPI7ZOD-s50bbeGYJ4K-p7-YT-Zlz5Od4CklPesw74Zuh1uRJa75aGItrPe7q8M_z9ZdlrPeJdyq3TnRmWxXLbKje_zOJUxX-r2wqxOf9ZMaATRlTl4OcHRIcJN9GKJDNekGHdHP_iI1FIJJidiWZO6vmQ7Ng6AYn8iE0jD4s-GHF1ScpjDLyfPRqk4GPadUR7W1JRIjc3JK-GPdcl4jm9qOZI3KDbYZhqixqMUO4WEQeFiQHAIiENYRp8G5ZTHKydUXq_GcFe70--LcsYj4R9ybFB2RbtavX68g0ZnoHqy3D31",
+          "widthPx": 4032,
+          "heightPx": 3024,
+          "authorAttributions": [
+            {
+              "displayName": "TTHP",
+              "uri": "https://maps.google.com/maps/contrib/113828222971985523410",
+              "photoUri": "https://lh3.googleusercontent.com/a/ACg8ocJow3iRfQbobW3oh-lQogw-4O3kBltXWfhj24bQ3TSA5yvKHg=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICH7_mamQE&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICH7_mamQE!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQOVUHCITo6wOWKwVa8orAeCv80iNqaNvmtL3U2ANwWUySk26JHbsm48Xdd8TM5Ii-sTdVmpc9jW1O02xTK8XIxNvDTCKPu2VUfpGT_dNEQn_LlnlC_Qp8wqMcdMNkaEGz0qwVed5WGK8gETfdUNujkEwbH5kzW87Ee7zUYNNSL2MjeN_31koBiVtvSvANd7jDTkmxGiURCIRXc1bYvLKV2PexeCy48j2n1TUzDkf2DAEFTHKKynOGYbyGT-7q_3zxmcH4C6XjtUgFp1vrsu0Et7IvZoryrvUWGTUPz_L7_vA",
+          "widthPx": 3516,
+          "heightPx": 2634,
+          "authorAttributions": [
+            {
+              "displayName": "Melly's Garden Pub & Diner",
+              "uri": "https://maps.google.com/maps/contrib/115342185746997938980",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX81BulCLJh68BlLyIxe_l6JvfT3ra-ZaTH8cogwBaLHLs2Okt_=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sAF1QipOSq4ccmiLj9eR_6JJcusDCOcRI22L7v5BNRY16&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipOSq4ccmiLj9eR_6JJcusDCOcRI22L7v5BNRY16!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQpXnZPrQARMtlp9vwqlrAW1mgL4m7JpNuQKSZ3QYdKWlUEZpngHfOqZf_SkYFNSUoF0AtK7DXjUMTa-qLNAklR-vSYNDmmIndbJmlvXi-9IiHjfQn_Xj0RTGwXmDc68mQxwt64KDNyJ5SG5-_HW5qwN4BRf5zFKNEiYiyIDJxmJrVUWZgBt4IGEDyY0qHoD9V8zvmZbAl8AfX9_APAXWcpw6pPY0xCwEy6zqfjErYvhuHeYxFQ4dymyjt_Az4MGWnI16Eq-QdbbpgNn12vo-ftVP5Ppu_OetNJT2Avo63bb40z_pVvka-az8q1hKXG17De1h0m2EPzFx8hppPIsdu6yxJ7lK4RHbysaJzvnzZOxFyOG8FRUtqQGV94Vmh0035HRIVHZx4JZBg_A-YQV4Kk0R2vSsL8B0nwDwzPDDjd3Q",
+          "widthPx": 4624,
+          "heightPx": 3472,
+          "authorAttributions": [
+            {
+              "displayName": "Hendra",
+              "uri": "https://maps.google.com/maps/contrib/116218703258624823549",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjXXqs52sMrIR1HLDXaMAb3Gz6zCy0IQCOTdNObCNvs5aSVAff_r=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sCIHM0ogKEICAgICBsM75dg&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgICBsM75dg!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        },
+        {
+          "name": "places/ChIJ6UZqZCX0aS4RmHJ77dCCBgE/photos/AXQCQNQUhodGUMe6fBrhgsAhUMAlyHwx55KP0-zF3aDM52WeigJaAHAa60urBroayCDkfJ7j8q97Yc6p6lwQGBqiqwmoLklnIRV4s0Zz-8tJCUvu9YYbaK0ibz5eb4SzST4HBjzZp5U7rfcylgGaJa2OWSyOGqkWLdScAqzSxFkW6wW9QlbgveeX358BbC5pjtAVx_AusLUqVaPrqwtlq6jp_Odfh2wKyDBG3tUfv7E215I845mMcM_gFbJVFkEm6gbQGB5hPpcCqyL3XH5TlLbuXMx-2ypFZYj_-24rzO4xYnTzHA",
+          "widthPx": 1223,
+          "heightPx": 1461,
+          "authorAttributions": [
+            {
+              "displayName": "Melly's Garden Pub & Diner",
+              "uri": "https://maps.google.com/maps/contrib/115342185746997938980",
+              "photoUri": "https://lh3.googleusercontent.com/a-/ALV-UjX81BulCLJh68BlLyIxe_l6JvfT3ra-ZaTH8cogwBaLHLs2Okt_=s100-p-k-no-mo"
+            }
+          ],
+          "flagContentUri": "https://www.google.com/local/imagery/report/?cb_client=maps_api_places.places_api&image_key=!1e10!2sAF1QipNapGOt4u7Q1LQ-Gdl-4CO2tdGP-bSlETwbttuD&hl=en-US",
+          "googleMapsUri": "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sAF1QipNapGOt4u7Q1LQ-Gdl-4CO2tdGP-bSlETwbttuD!2e10!4m2!3m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298"
+        }
+      ],
+      "outdoorSeating": true,
+      "liveMusic": true,
+      "goodForChildren": false,
+      "allowsDogs": false,
+      "restroom": true,
+      "goodForGroups": true,
+      "goodForWatchingSports": true,
+      "paymentOptions": {
+        "acceptsCreditCards": true,
+        "acceptsDebitCards": true,
+        "acceptsCashOnly": false,
+        "acceptsNfc": false
+      },
+      "parkingOptions": {
+        "freeParkingLot": true,
+        "paidParkingLot": true,
+        "paidStreetParking": true
+      },
+      "accessibilityOptions": {
+        "wheelchairAccessibleParking": true,
+        "wheelchairAccessibleEntrance": true,
+        "wheelchairAccessibleSeating": true
+      },
+      "googleMapsLinks": {
+        "directionsUri": "https://www.google.com/maps/dir//''/data=!4m7!4m6!1m1!4e2!1m2!1m1!1s0x2e69f425646a46e9:0x10682d0ed7b7298!3e0",
+        "placeUri": "https://maps.google.com/?cid=73890277747290776",
+        "writeAReviewUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x2e69f425646a46e9:0x10682d0ed7b7298!12e1",
+        "reviewsUri": "https://www.google.com/maps/place//data=!4m4!3m3!1s0x2e69f425646a46e9:0x10682d0ed7b7298!9m1!1b1",
+        "photosUri": "https://www.google.com/maps/place//data=!4m3!3m2!1s0x2e69f425646a46e9:0x10682d0ed7b7298!10e5"
+      },
+      "postalAddress": {
+        "regionCode": "ID",
+        "languageCode": "en-US",
+        "postalCode": "10340",
+        "administrativeArea": "Jakarta",
+        "locality": "Menteng",
+        "sublocality": "Kebon Sirih",
+        "addressLines": [
+          "Jl. Kb. Sirih Tim. Dalam No.37",
+          "RT.1/RW.5"
+        ]
+      }
+    }
+    ]
+}

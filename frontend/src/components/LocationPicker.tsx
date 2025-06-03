@@ -12,12 +12,12 @@ const center = {
 }
 
 type Props = {
-  onLocationSelect: (location: { lat: number; lng: number }) => void
+  onLocationSelect: (location: { lat: number; lng: number, }) => void
 }
 
 const LocationPicker: React.FC<Props> = ({ onLocationSelect }) => {
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyBmugJei5MXFJu2525l8B6cPNJKUtWcS4', // 🔑 Replace with your key
+    googleMapsApiKey: 'AIzaSyBmugJei5MXFJu2525l8Bh6cPNJKUtWcS4', // 🔑 Replace with your key
   });
 
   const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(null)
