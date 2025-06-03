@@ -4,6 +4,7 @@ import requests
 # LAT_LONG = (-6.174904869095269, 106.8271353670165)
 # LATLONG[0],LAT_LONG[1]
 API_KEY = 'AIzaSyBMM3_s3QjI-5LNDDB5xwZoG28i_OBC3ek'
+api_key = 'AIzaSyBmugJei5MXFJu2525l8Bh6cPNJKUtWcS4'
 
 def grab_locations_competitor(lat, lng):
     """
@@ -205,6 +206,20 @@ def grab_distance(start_lat, start_lng ,dest_lat, dest_lng):
 
     return json.dumps(results.json(), indent=2)
 
+
+
+def grab_address(location):
+
+
+    lat, lng = location['lat'], location['lng']  # Jakarta
+    # api_key = 'AIzaSyBmugJei5MXFJu2525l8Bh6cPNJKUtWcS4'
+
+    url = f'https://maps.googleapis.com/maps/api/geocode/json?latlng={lat},{lng}&key={api_key}'
+    response = requests.get(url)
+    data = response.json()
+
+    address = data['results'][0]['formatted_address']
+    return address
 # with open("data/top-10.json", "w") as f:
 #     json.dump(results.json(), f, indent=2)
     
