@@ -19,7 +19,10 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
     { name: 'Latitude', value: resultData.latitude },
   ];
 
-  const prompt_theme = formData.additional_prompt || 'Default theme';
+  const address = resultData.address || 'Default theme';
+
+
+  const prompt_theme = resultData.additional_prompt || 'Default theme';
 
   const GeoStats = [
     { name: 'Num of Reviews', value: resultData.num_of_reviews },
@@ -90,6 +93,10 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
                 </div>
                 );
               })}
+              <div>
+                <p className="text-lg font-medium text-gray-600 mt-4">Address</p>
+                <p className="text-sm font-bold text-gray-900 mt-1">{address}</p>
+              </div>
           </CardContent>
         </Card>
 

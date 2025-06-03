@@ -7,28 +7,12 @@ import type { HistData } from './DataAnalysisApp';
 
 type HistoryDisplayProps = {
   HistData: HistData;
-  onOpenHistory: () => void;
+  onViewHistory: (id:number) => void;
 };
 
 
-const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onOpenHistory}) => {
+const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onViewHistory}) => {
 
-  const handleViewClick = async (id) => {
-    try {
-      const response = await fetch('http://localhost:8000/api/view_history/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id }), // 👈 send id in request body
-      });
-
-      const data = await response.json();
-      console.log("View API response:", data);
-    } catch (error) {
-      console.error("Failed to call API:", error);
-    }
-  }
 
   // console.log("Received from Hist Data 1:", HistData);
   // console.log("Type of HistData:", typeof HistData);
@@ -71,12 +55,12 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onOpenHistory})
                 <td className="px-4 py-2 border-b">{entry.id}</td>
                 <td className="px-4 py-2 border-b">{entry.lat}</td>
                 <td className="px-4 py-2 border-b">{entry.lgn}</td>
-                <td className="px-4 py-2 border-b">{entry.additional_prompt}</td>
+                <td className="px-4 py-2 border-b">{entry.address}</td>
                 <td className="px-4 py-2 border-b">{new Date(entry.created_at).toLocaleString()}</td>
                 <td className="px-4 py-2 border-b">
                   <Button
                     variant="outline"
-                    onClick={() => handleViewClick(entry.id)}
+                    onClick={() => onViewHistory(entry.id)}
                   >
                     View
                   </Button>

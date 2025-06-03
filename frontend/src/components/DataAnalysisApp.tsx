@@ -17,10 +17,11 @@ export interface ResultData {
   "cafe_list": string[];
   "longitude": number;
   "latitude": number;
-  "opportunities_list": string[];
+  "address": string;
   "num_of_reviews": number;
   "avg_review_score": number;
   "suggestion":string;
+  "additional_prompt": string;
 }
 
 export interface HistoryEntry {
@@ -68,13 +69,28 @@ const DataAnalysisApp = () => {
     setShowHistory(true);
   };
 
-  const handleOpenHistory = async () => {
+  const handleViewHistory = async (id:number) => {
     setIsLoading(true);
     setShowHistory(false);
     setShowResults(false);
     setFormData(null);
     setResult(null);
-    console.log('Opening history...');
+
+    try {
+      const response = await fetch('http://localhost:8000/api/view_history/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }), // 👈 send id in request body
+      });
+  
+      const data = await response.json();
+      setResult(data.message);
+      console.log("View API response:", data);
+    } catch (error) {
+      console.error("Failed to call API:", error);
+    }  
 
     // Fetch history data again using DB
 
@@ -151,7 +167,7 @@ const DataAnalysisApp = () => {
         </>
       )}
 
-      {showResults && !isLoading && formData && resultData&&(
+      {showResults && !isLoading && resultData&&(
         <div className="space-y-8">
           <StatisticsDisplay formData={formData} resultData={resultData} onReset={handleReset} />
         </div>
@@ -159,7 +175,7 @@ const DataAnalysisApp = () => {
 
       {showHistory && !isLoading && (
         <div className="space-y-8">
-          <HistoryDisplay HistData={historyData} onOpenHistory={handleOpenHistory} />
+          <HistoryDisplay HistData={historyData} onViewHistory={handleViewHistory} />
         </div>
       )}
     </div>

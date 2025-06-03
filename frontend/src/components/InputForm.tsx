@@ -16,7 +16,6 @@ interface InputFormProps {
 
 const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
   const [additional_prompt, setTheme] = useState('');
-  const [budget, setBudget] = useState<number>(1);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +29,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
 
 
     
-    if (!additional_prompt || budget <= 0 ) {
+    if (!location ) {
       alert('Please fill in all fields');
       return;
     }
