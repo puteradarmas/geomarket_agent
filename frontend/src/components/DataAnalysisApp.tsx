@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 export interface FormData {
   location: { lat: number; lng: number } | null;
   additional_prompt: string;
-  budget: number;
 }
 
 export interface ResultData {
@@ -21,9 +20,7 @@ export interface ResultData {
   "opportunities_list": string[];
   "num_of_reviews": number;
   "avg_review_score": number;
-  "suggestion1":string;
-  "suggestion2":string;
-  "suggestion3":string;
+  "suggestion":string;
 }
 
 export interface HistoryEntry {

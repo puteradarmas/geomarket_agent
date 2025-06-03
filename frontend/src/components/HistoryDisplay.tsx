@@ -13,6 +13,23 @@ type HistoryDisplayProps = {
 
 const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onOpenHistory}) => {
 
+  const handleViewClick = async (id) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/view_history/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }), // 👈 send id in request body
+      });
+
+      const data = await response.json();
+      console.log("View API response:", data);
+    } catch (error) {
+      console.error("Failed to call API:", error);
+    }
+  }
+
   // console.log("Received from Hist Data 1:", HistData);
   // console.log("Type of HistData:", typeof HistData);
 
@@ -59,7 +76,7 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onOpenHistory})
                 <td className="px-4 py-2 border-b">
                   <Button
                     variant="outline"
-                    onClick={onOpenHistory}
+                    onClick={() => handleViewClick(entry.id)}
                   >
                     View
                   </Button>

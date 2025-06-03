@@ -17,7 +17,6 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
   const inputData = [
     { name: 'Longitude', value: resultData.longitude },
     { name: 'Latitude', value: resultData.latitude },
-    { name: 'Budget', value: formData.budget},
   ];
 
   const prompt_theme = formData.additional_prompt || 'Default theme';
@@ -27,13 +26,17 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
     { name: 'Avg. Review Score', value: resultData.avg_review_score },
   ];
 
-  const suggestions = [
-    { name: 'Suggestion 1', value: resultData.suggestion1  },
-    { name: 'Suggestion 2', value: resultData.suggestion2  },
-    { name: 'Suggestion 3', value: resultData.suggestion3  },
-  ];
+  const suggestion =  resultData.suggestion || 'No suggestions available';
 
-  // const stats = [
+  // const handleDownload = () => {
+  //   const link = document.createElement('a');
+  //   link.href = 'http://localhost:8000/download';
+  //   link.setAttribute('download', 'llm_output.docx');
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // };
+  // // const stats = [
   //   {
   //     title: 'Total Budget Allocation',
   //     value: `$${formData.budget.toLocaleString()}`,
@@ -117,6 +120,23 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
             </Card>);
           })}  
       </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2">
+        <Card className="transition-all duration-200 hover:shadow-lg">
+          <CardContent className="p-4">
+            <div>
+              <p className="text-1x1 font-medium text-gray-600">Analysis and Recommendation</p>
+              <p className="whitespace-pre-line text-sm font-bold text-gray-900 mt-1">{suggestion}</p>
+            </div>
+          </CardContent>
+        </Card>;
+      </div>
+
+      {/* <div className="flex justify-between items-center">
+        <Button onClick={handleDownload} variant="outline" className="hover:bg-gray-50">
+          Download Report
+        </Button>
+      </div> */}
 
       
 
