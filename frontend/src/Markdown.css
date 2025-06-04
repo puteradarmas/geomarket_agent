@@ -1,4 +1,9 @@
 /* Markdown.css */
+
+.markdown p {
+  margin-bottom: 1em;
+}
+
 .markdown h1 {
   font-size: 2em;
   margin-top: 1em;
@@ -6,7 +11,6 @@
 
 .markdown h2 {
   font-size: 1.5em;
-  margin-top: 1em;
 }
 
 .markdown table {
@@ -19,4 +23,33 @@
   border: 1px solid #ccc;
   padding: 8px;
   text-align: left;
+}
+
+.markdown ul {
+  list-style-type: disc;
+  padding-left: 1.5rem; /* indentation */
+}
+
+.markdown ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.markdown li {
+}
+
+
+.markdown ul ul {
+  list-style-type: circle;
+  padding-left: 1.5rem;
+}
+
+.markdown ul ul ul {
+  list-style-type: square;
+  padding-left: 1.5rem;
+}
+
+.markdown ol ol {
+  list-style-type: lower-alpha;
+  padding-left: 1.5rem;
 }

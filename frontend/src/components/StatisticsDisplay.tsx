@@ -29,10 +29,10 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
 
   const prompt_theme = resultData.additional_prompt || 'Default theme';
 
-  const GeoStats = [
-    { name: 'Num of Reviews', value: resultData.num_of_reviews },
-    { name: 'Avg. Review Score', value: resultData.avg_review_score },
-  ];
+  // const GeoStats = [
+  //   { name: 'Num of Reviews', value: resultData.num_of_reviews },
+  //   { name: 'Avg. Review Score', value: resultData.avg_review_score },
+  // ];
 
   const suggestion =  resultData.suggestion || 'No suggestions available';
 
@@ -93,7 +93,7 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
                 <div key={index} className="flex items-center justify-between">
                   <div>
                     <p className="text-1x1 font-medium text-gray-600">{data.name}</p>
-                    <p className="text-2xl font-bold text-gray-900 mt-1">{data.value}</p>
+                    <p className="text-1xl font-bold text-gray-900 mt-1">{data.value}</p>
                   </div>
                 </div>
                 );
@@ -116,7 +116,7 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
          
         
       </div>
-
+{/* 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2">
         {GeoStats.map((data, index) => {
           return (
@@ -131,14 +131,14 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
               </CardContent>
             </Card>);
           })}  
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2">
         <Card className="transition-all duration-200 hover:shadow-lg w-full">
-          <CardContent className="p-4 space-y-2 break-words whitespace-pre-wrap">
-              <p className="text-1x1 font-medium text-gray-600">Analysis and Recommendation</p>
+          <CardContent className="p-4 space-y-1 break-words whitespace-pre-wrap">
+              <p className="text-1x1 font-medium text-gray-600 mb-2">Analysis and Recommendation</p>
               {/* <p className="whitespace-pre-line text-sm font-bold text-gray-900 mt-1">{suggestion}</p> */}
-              <div className='markdown'>
+              <div className='markdown max-w-3xl'>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{suggestion}</ReactMarkdown>
               </div>
           </CardContent>
