@@ -7,6 +7,7 @@ import { ResultData,FormData } from './DataAnalysisApp';
 import ReactMarkdown from "react-markdown";
 import { TrendingUp, DollarSign, MapPin, Target } from 'lucide-react';
 import remarkGfm from 'remark-gfm';
+import '@/Markdown.css';
 
 
 interface StatisticsDisplayProps {
@@ -137,7 +138,7 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
           <CardContent className="p-4 space-y-2 break-words whitespace-pre-wrap">
               <p className="text-1x1 font-medium text-gray-600">Analysis and Recommendation</p>
               {/* <p className="whitespace-pre-line text-sm font-bold text-gray-900 mt-1">{suggestion}</p> */}
-              <div className="prose prose-sm w-full max-w-none break-words whitespace-pre-wrap">
+              <div className='markdown'>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{suggestion}</ReactMarkdown>
               </div>
           </CardContent>
