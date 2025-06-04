@@ -4,15 +4,19 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 import { ResultData,FormData } from './DataAnalysisApp';
+import ReactMarkdown from "react-markdown";
 import { TrendingUp, DollarSign, MapPin, Target } from 'lucide-react';
+import remarkGfm from 'remark-gfm';
+
 
 interface StatisticsDisplayProps {
   formData: FormData;
   resultData: ResultData;
   onReset: () => void;
+  onDownload: () => void;
 }
 
-const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultData, onReset }) => {
+const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultData, onReset,onDownload }) => {
   // Mock data based on form inputs
   const inputData = [
     { name: 'Longitude', value: resultData.longitude },
@@ -129,21 +133,24 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2">
-        <Card className="transition-all duration-200 hover:shadow-lg">
-          <CardContent className="p-4">
-            <div>
+        <Card className="transition-all duration-200 hover:shadow-lg w-full">
+          <CardContent className="p-4 space-y-2 break-words whitespace-pre-wrap">
               <p className="text-1x1 font-medium text-gray-600">Analysis and Recommendation</p>
-              <p className="whitespace-pre-line text-sm font-bold text-gray-900 mt-1">{suggestion}</p>
-            </div>
+              {/* <p className="whitespace-pre-line text-sm font-bold text-gray-900 mt-1">{suggestion}</p> */}
+              <div className="prose prose-sm w-full max-w-none break-words whitespace-pre-wrap">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{suggestion}</ReactMarkdown>
+              </div>
           </CardContent>
         </Card>;
       </div>
 
-      {/* <div className="flex justify-between items-center">
-        <Button onClick={handleDownload} variant="outline" className="hover:bg-gray-50">
+
+
+      <div className="flex justify-between items-center">
+        <Button onClick={onDownload} variant="outline" className="hover:bg-gray-50">
           Download Report
         </Button>
-      </div> */}
+      </div>
 
       
 
