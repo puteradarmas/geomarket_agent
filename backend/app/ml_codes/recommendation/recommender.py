@@ -2,14 +2,14 @@ import re
 import json
 import os
 from jinja2 import Template
-from schemas import GeneralProfile, CafeProfile, UserQuery
-from recommendation.opportunity import generate_opportunity_analysis
+from app.ml_codes.schemas import GeneralProfile, CafeProfile, UserQuery
+from app.ml_codes.recommendation.opportunity import generate_opportunity_analysis
 from functools import partial
-from recommendation.swot import generate_swot_analysis
+from app.ml_codes.recommendation.swot import generate_swot_analysis
 
-from processors.place_processor import save_cache, extract_json_objects
+from app.ml_codes.processors.place_processor import save_cache, extract_json_objects
 
-from agents import gemini_agent
+from app.ml_codes.agents import gemini_agent
 
 CACHE_DIR = "outputs/recommender_intermediate"
 os.makedirs(CACHE_DIR, exist_ok=True)

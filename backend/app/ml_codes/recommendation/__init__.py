@@ -1,1 +1,1 @@
-from recommendation.recommender import generate_recommendation
+from app.ml_codes.recommendation.recommender import generate_recommendation

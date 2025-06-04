@@ -11,9 +11,9 @@ from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 
-from processors.photo_processor import process_photo
-from processors.review_processor import process_reviews, remove_think_tokens
-from schemas import CafeProfile, GeneralProfile
+from app.ml_codes.processors.photo_processor import process_photo
+from app.ml_codes.processors.review_processor import process_reviews, remove_think_tokens
+from app.ml_codes.schemas import CafeProfile, GeneralProfile
 
 llm = OpenAIModel(
     model_name="qwen3-4b",

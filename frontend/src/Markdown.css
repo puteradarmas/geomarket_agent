@@ -20,8 +20,8 @@
 
 .markdown th,
 .markdown td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border: 2px solid #ccc;
+  padding: 10px;
   text-align: left;
 }
 

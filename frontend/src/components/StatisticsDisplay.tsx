@@ -119,7 +119,7 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
           <CardContent className="p-4 space-y-1 break-words whitespace-pre-wrap">
               <p className="text-1x1 font-medium text-gray-600 mb-2">Analysis and Recommendation</p>
               {/* <p className="whitespace-pre-line text-sm font-bold text-gray-900 mt-1">{suggestion}</p> */}
-              <div className='markdown max-w-3xl'>
+              <div className='markdown'>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{suggestion}</ReactMarkdown>
               </div>
           </CardContent>

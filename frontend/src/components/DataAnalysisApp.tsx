@@ -137,7 +137,7 @@ const DataAnalysisApp = () => {
         <div className="flex items-center justify-center gap-4 mb-4">
           <img src={teamLogo} alt="Logo" className="logo-icon" />
           <h1 className="text-4xl font-bold text-gray-300">
-            Geo Analytical Survey
+            Stellar Agent
           </h1>
         </div>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">

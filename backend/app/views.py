@@ -3,7 +3,6 @@ from sqlalchemy.orm import sessionmaker
 from .models import Base, request_hist
 from .schemas import request_schema
 from sqlalchemy import create_engine
-from .ml_codes.grab_locations import grab_locations_competitor, grab_locations_opportunity,grab_address
 from markdown_pdf import MarkdownPdf,Section
 import os
 from hashlib import sha256
@@ -13,14 +12,14 @@ from django.views.decorators.csrf import csrf_exempt
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from .ml_codes.grab_locations import (
+from app.ml_codes.grab_locations import (
     grab_address,
     grab_locations_competitor,
     grab_locations_opportunity,
 )
-# from .ml_codes.processors.place_processor import process_opportunity, process_place
-# from .ml_codes.recommendation import generate_recommendation
-# from .ml_codes.schemas import CafeProfile, GeneralProfile, UserQuery
+# from app.ml_codes.processors.place_processor import process_opportunity, process_place
+# from app.ml_codes.recommendation import generate_recommendation
+# from app.ml_codes.schemas import CafeProfile, GeneralProfile, UserQuery
 from .models import request_hist
 from .schemas import request_schema
 
@@ -51,13 +50,14 @@ def analyze_data(request):
 
             address = grab_address(location) # Get address from lat/lng
 
-            json_locations_competitor = grab_locations_competitor(
-                location["lat"], location["lng"]
-            )["places"]  # Get nearby cafes
-            json_locations_opportunities = grab_locations_opportunity(
-                location["lat"], location["lng"]
-            )["places"]  # Get nearby opportunities
+            # json_locations_competitor = grab_locations_competitor(
+            #     location["lat"], location["lng"]
+            # )["places"]  # Get nearby cafes
+            # json_locations_opportunities = grab_locations_opportunity(
+            #     location["lat"], location["lng"]
+            # )["places"]  # Get nearby opportunities
 
+            # request_id = 'MONAS'
             # # Process the opportunities
             # processed_opportunities: list[GeneralProfile] = [
             #     process_opportunity(opp) for opp in json_locations_opportunities
@@ -75,9 +75,10 @@ def analyze_data(request):
             #     else:
             #         cafe_profile = process_place(competitor)
             #     processed_competitors.append(cafe_profile)
-            # request_id = sha256(
-            #     f"{additional_prompt}-{location['lat']}-{location['lng']}"
-            # ).hexdigest()
+            # request_id = 'MONAS'
+            # # request_id = sha256(
+            # #     f"{additional_prompt}-{location['lat']}-{location['lng']}"
+            # # ).hexdigest()
             # recommendation = generate_recommendation(   # Generate recommendation
             #     request_id=request_id,
             #     user_query=UserQuery(
@@ -87,8 +88,9 @@ def analyze_data(request):
             #     opportunities_list=processed_opportunities,
             #     competitor_list=processed_competitors,
             # )
-            recommendation = "This is a sample recommendation based on the provided data. Please implement the actual recommendation logic."
             
+            with open(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/MONAS.md", "r", encoding="utf-8") as f:
+                recommendation = f.read()
             # create pydantic schema instance
             request_data = request_schema(
                 lat=location["lat"],
@@ -100,7 +102,6 @@ def analyze_data(request):
 
             # from pydantic schema, create SQLAlchemy model instance
             request_hist_model = request_hist(**request_data.dict())
-            markdown_file = "outputs\recommendations\MONAS.md"
             
             # Add and commit to the database
             session.add(request_hist_model)
@@ -112,7 +113,7 @@ def analyze_data(request):
             ## Genereate PDF from recommendation
             pdf = MarkdownPdf(toc_level=2, optimize=True)         
             pdf.add_section(Section(recommendation),user_css="table, th, td {border: 1px solid black;}")          
-            pdf.save(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/reccommendation_output_"+str(request_hist_model.id)+".pdf")
+            pdf.save(r"C:/Users/puter\Documents/git/geomarket_agent_research/geomarket_agent/frontend/public/reccommendation_result/reccommendation_output_"+str(request_hist_model.id)+".pdf")
 
             # Semangat bikin logika ML
 
@@ -199,14 +200,12 @@ def view_history(request):
             
             # result_file_path = r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations"
             
-            with open(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/MONAS.md", "r", encoding="utf-8") as f:
-                md_text = f.read()
             
             return JsonResponse({"status": "Analyze prosessing completed", "message": {"request_id":hist_id,
                                                                                        "additional_prompt": additional_prompt, 
                                                                                        "longitude": location["lng"],"latitude":location["lat"],
                                                                                        "address": address,
-                                                                                       "suggestion":md_text}}, status=200)
+                                                                                       "suggestion":Suggestion}}, status=200)
        
        
         except Exception as e:

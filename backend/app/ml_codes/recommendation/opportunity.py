@@ -1,10 +1,10 @@
 import os
-from schemas import GeneralProfile, UserQuery
+from app.ml_codes.schemas import GeneralProfile, UserQuery
 from jinja2 import Template
 from pydantic_ai import Agent
 from pydantic_ai.models.gemini import GeminiModel
 from pydantic_ai.providers.google_gla import GoogleGLAProvider
-from grab_locations import grab_distance
+from app.ml_codes.grab_locations import grab_distance
 
 llm = GeminiModel(
     "gemini-2.0-flash",
