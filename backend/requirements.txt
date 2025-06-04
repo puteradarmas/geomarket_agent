@@ -13,6 +13,7 @@ django-vite==3.1.0
 django-vite-plugin==4.1.0
 djangorestframework==3.16.0
 documents==0.0.1
+python-dotenv
 fonttools==4.58.1
 google-ai-generativelanguage==0.6.15
 google-api-core==2.24.2

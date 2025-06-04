@@ -1,8 +1,8 @@
 import json
 import requests
+from app.envs import GMAPS_API_KEY, ROUTES_API_KEY
 
-API_KEY = 'AIzaSyBMM3_s3QjI-5LNDDB5xwZoG28i_OBC3ek'
-ROUTES_API_KEY = "AIzaSyBmugJei5MXFJu2525l8Bh6cPNJKUtWcS4"
+
 
 def grab_locations_competitor(lat, lng):
     """
@@ -18,7 +18,7 @@ def grab_locations_competitor(lat, lng):
         "https://places.googleapis.com/v1/places:searchNearby",
         headers={
             "Content-Type": "application/json",
-            "X-Goog-Api-Key": API_KEY,
+            "X-Goog-Api-Key": GMAPS_API_KEY,
             "X-Goog-FieldMask": ",".join([
                 "places.accessibilityOptions",
                 "places.attributions",
@@ -93,7 +93,7 @@ def grab_locations_opportunity(lat, lng, radius=4000.0):
         "https://places.googleapis.com/v1/places:searchNearby",
         headers={
             "Content-Type": "application/json",
-            "X-Goog-Api-Key": API_KEY,
+            "X-Goog-Api-Key": GMAPS_API_KEY,
             "X-Goog-FieldMask": ",".join(
                 [
                     "places.businessStatus",

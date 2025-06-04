@@ -4,9 +4,11 @@ from pydantic_ai.providers.google_gla import GoogleGLAProvider
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 
+from app.envs import GEMINI_API_KEY
+
 gemini_llm = GeminiModel(
     "gemini-2.0-flash",
-    provider=GoogleGLAProvider(api_key="AIzaSyCeSFDojYhLttdSUP2wgFkjiTHqrNptXfQ"),
+    provider=GoogleGLAProvider(api_key=GEMINI_API_KEY),
 )
 
 gemini_agent: Agent[None, str] = Agent(gemini_llm, output_type=str)
