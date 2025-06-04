@@ -5,13 +5,8 @@ from pydantic_ai import Agent
 from pydantic_ai.models.gemini import GeminiModel
 from pydantic_ai.providers.google_gla import GoogleGLAProvider
 from app.ml_codes.grab_locations import grab_distance
+from app.ml_codes.agents import gemini_agent
 
-llm = GeminiModel(
-    "gemini-2.0-flash",
-    provider=GoogleGLAProvider(api_key="AIzaSyCeSFDojYhLttdSUP2wgFkjiTHqrNptXfQ"),
-)
-
-agent: Agent[None, str] = Agent(llm, output_type=str)
 
 OPPORTUNITY_ANALYSIS_PROMPT = Template("""\
 <role>
@@ -87,7 +82,7 @@ def generate_opportunity_analysis(
                 user_query.latlong[1]
             )
     opportunities_string = [describe_opportunity(opp) for opp in opportunities_list]
-    analysis_result = agent.run_sync(
+    analysis_result = gemini_agent.run_sync(
         OPPORTUNITY_ANALYSIS_PROMPT.render(
             opportunities="\n".join(opportunities_string)
         )
