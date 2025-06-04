@@ -148,4 +148,6 @@ class CafeProfile(BaseModel):
 class request_schema(BaseModel):
     lat: float
     lgn: float
-    additional_prompt: Optional[str] = None
+    address: Optional[str] = None
+    additional_prompts: Optional[str] = None
+    reccommendation_result: str

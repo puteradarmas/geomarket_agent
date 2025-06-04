@@ -16,7 +16,6 @@ interface InputFormProps {
 
 const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
   const [additional_prompt, setTheme] = useState('');
-  const [budget, setBudget] = useState<number>(1);
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,7 +29,7 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
 
 
     
-    if (!additional_prompt || budget <= 0 ) {
+    if (!location ) {
       alert('Please fill in all fields');
       return;
     }
@@ -38,7 +37,6 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
     onExecute({
       location,
       additional_prompt,
-      budget
     });
   };
 
@@ -80,21 +78,6 @@ const InputForm: React.FC<InputFormProps> = ({ onExecute, onShowHistory }) => {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="budget" className="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <DollarSign className="h-4 w-4" />
-              Budget
-            </Label>
-            <Input
-              id="budget"
-              type="number"
-              value={budget}
-              onChange={(e) => setBudget(Number(e.target.value))}
-              placeholder="Enter budget amount (Rp.)"
-              min="1"
-              className="transition-all duration-200 focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
 
           <Button
             type="submit"

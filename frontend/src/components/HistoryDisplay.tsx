@@ -7,11 +7,12 @@ import type { HistData } from './DataAnalysisApp';
 
 type HistoryDisplayProps = {
   HistData: HistData;
-  onOpenHistory: () => void;
+  onViewHistory: (id:number) => void;
 };
 
 
-const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onOpenHistory}) => {
+const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onViewHistory}) => {
+
 
   // console.log("Received from Hist Data 1:", HistData);
   // console.log("Type of HistData:", typeof HistData);
@@ -54,12 +55,12 @@ const HistoryDisplay: React.FC<HistoryDisplayProps> = ({HistData,onOpenHistory})
                 <td className="px-4 py-2 border-b">{entry.id}</td>
                 <td className="px-4 py-2 border-b">{entry.lat}</td>
                 <td className="px-4 py-2 border-b">{entry.lgn}</td>
-                <td className="px-4 py-2 border-b">{entry.additional_prompt}</td>
+                <td className="px-4 py-2 border-b">{entry.address}</td>
                 <td className="px-4 py-2 border-b">{new Date(entry.created_at).toLocaleString()}</td>
                 <td className="px-4 py-2 border-b">
                   <Button
                     variant="outline"
-                    onClick={onOpenHistory}
+                    onClick={() => onViewHistory(entry.id)}
                   >
                     View
                   </Button>
