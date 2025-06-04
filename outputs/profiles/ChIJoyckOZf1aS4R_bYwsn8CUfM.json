@@ -1,0 +1,60 @@
+{
+  "name": "Kopi Ko Acung",
+  "latlong": [
+    -6.1835087,
+    106.8246573
+  ],
+  "location": "Jl. H. Agus Salim No.16A 2, RT.3/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.8,
+  "user_rating_count": 2218,
+  "opening_hours": [
+    "Monday: 7:00 AM – 10:00 PM",
+    "Tuesday: 7:00 AM – 10:00 PM",
+    "Wednesday: 7:00 AM – 10:00 PM",
+    "Thursday: 7:00 AM – 12:00 AM",
+    "Friday: 7:00 AM – 12:00 AM",
+    "Saturday: 7:00 AM – 12:00 AM",
+    "Sunday: 7:00 AM – 10:00 PM"
+  ],
+  "price_range": "IDR 50000-75000",
+  "one_sentence_summary": "Kopi Ko Acung in Jakarta blends modern and rustic decor with comfortable seating, moderate noise, good WiFi, and work-friendly features like charging stations, serving affordable coffee and meals for dine-in or delivery.",
+  "food_and_beverages_options": [
+    "coffee",
+    "lunch",
+    "dinner"
+  ],
+  "fulfillment_methods": [
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "large",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "modern",
+    "rustic"
+  ],
+  "lighting_style": "mixed",
+  "noise_level": "moderate",
+  "wifi_quality": "good",
+  "power_outlet_availability": "limited",
+  "work_friendly_features": [
+    "charging_stations",
+    "comfortable_seating"
+  ],
+  "service_style": "table",
+  "typical_wait_time": "moderate",
+  "staff_friendliness": "excellent",
+  "facilities": [
+    "prayer_room",
+    "restroom",
+    "group_friendly",
+    "charging_stations",
+    "reservable",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

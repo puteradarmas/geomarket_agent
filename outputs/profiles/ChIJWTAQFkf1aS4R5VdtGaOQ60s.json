@@ -1,0 +1,57 @@
+{
+  "name": "Kawisari Cafe & Eatery",
+  "latlong": [
+    -6.1834199,
+    106.825158
+  ],
+  "location": "Jl. Kebon Sirih No.77A, RT.1/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.4,
+  "user_rating_count": 2081,
+  "opening_hours": [
+    "Monday: 8:00 AM – 11:00 PM",
+    "Tuesday: 8:00 AM – 11:00 PM",
+    "Wednesday: 8:00 AM – 11:00 PM",
+    "Thursday: 8:00 AM – 11:00 PM",
+    "Friday: 8:00 AM – 11:00 PM",
+    "Saturday: 8:00 AM – 11:00 PM",
+    "Sunday: 8:00 AM – 11:00 PM"
+  ],
+  "price_range": "NO INFO",
+  "one_sentence_summary": "The cafes feature cozy, rustic interiors with wooden furniture, natural lighting, and comfortable seating, offering a blend of modern and traditional decor with accessible amenities like power outlets.",
+  "food_and_beverages_options": [
+    "coffee",
+    "breakfast"
+  ],
+  "fulfillment_methods": [
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables",
+    "booths"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "modern"
+  ],
+  "lighting_style": "dim",
+  "noise_level": "quiet",
+  "wifi_quality": null,
+  "power_outlet_availability": "abundant",
+  "work_friendly_features": [
+    "charging_stations",
+    "outdoor_seating"
+  ],
+  "service_style": "table",
+  "typical_wait_time": "moderate",
+  "staff_friendliness": "fair",
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "reservable",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

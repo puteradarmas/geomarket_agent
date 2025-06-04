@@ -1,0 +1,59 @@
+{
+  "name": "TOKO KOPI MARU",
+  "latlong": [
+    -6.1646486000000005,
+    106.8317883
+  ],
+  "location": "33, Jl. Pintu Air Raya No.33, RT.13/RW.8, Ps. Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10710, Indonesia",
+  "rating": 4.7,
+  "user_rating_count": 637,
+  "opening_hours": [
+    "Monday: Closed",
+    "Tuesday: 9:00 AM – 6:00 PM",
+    "Wednesday: 9:00 AM – 6:00 PM",
+    "Thursday: 9:00 AM – 6:00 PM",
+    "Friday: 9:00 AM – 6:00 PM",
+    "Saturday: 7:00 AM – 6:00 PM",
+    "Sunday: 7:00 AM – 6:00 PM"
+  ],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "The outdoor cafe features a rustic, aged brick wall, minimalist design, natural lighting, and work-friendly seating for casual dining.",
+  "food_and_beverages_options": [
+    "coffee",
+    "dinner"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "curbside_pickup",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "small",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "rustic",
+    "industrial",
+    "minimalist"
+  ],
+  "lighting_style": "natural",
+  "noise_level": "quiet",
+  "wifi_quality": null,
+  "power_outlet_availability": "good",
+  "work_friendly_features": [
+    "quiet environment",
+    "natural lighting",
+    "private seating"
+  ],
+  "service_style": "table",
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "parking",
+    "restroom",
+    "outdoor_seating",
+    "group_friendly"
+  ]
+}

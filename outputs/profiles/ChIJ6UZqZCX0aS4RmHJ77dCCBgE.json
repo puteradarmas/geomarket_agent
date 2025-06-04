@@ -1,0 +1,59 @@
+{
+  "name": "Melly's Garden",
+  "latlong": [
+    -6.1842498,
+    106.8304495
+  ],
+  "location": "Jl. Kb. Sirih Tim. Dalam No.37, RT.1/RW.5, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.5,
+  "user_rating_count": 4907,
+  "opening_hours": [
+    "Monday: 6:00 AM – 2:00 AM",
+    "Tuesday: 6:00 AM – 2:00 AM",
+    "Wednesday: 6:00 AM – 2:00 AM",
+    "Thursday: 6:00 AM – 2:00 AM",
+    "Friday: 6:00 AM – 2:00 AM",
+    "Saturday: 6:00 AM – 2:00 AM",
+    "Sunday: 6:00 AM – 2:00 AM"
+  ],
+  "price_range": "NO INFO",
+  "one_sentence_summary": "A cozy cafe with warm orange walls, soft lighting, varied seating, and charging stations offers a welcoming blend of traditional and modern decor for casual dining and work-friendly ambiance.",
+  "food_and_beverages_options": [
+    "coffee",
+    "wine",
+    "beer",
+    "cocktails"
+  ],
+  "fulfillment_methods": [
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "booths",
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "minimalist"
+  ],
+  "lighting_style": "mixed",
+  "noise_level": "moderate",
+  "wifi_quality": null,
+  "power_outlet_availability": null,
+  "work_friendly_features": [
+    "standing_space",
+    "charging_stations"
+  ],
+  "service_style": null,
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "charging_stations",
+    "reservable",
+    "outdoor_seating",
+    "parking"
+  ]
+}

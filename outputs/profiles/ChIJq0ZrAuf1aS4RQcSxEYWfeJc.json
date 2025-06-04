@@ -1,0 +1,55 @@
+{
+  "name": "Kopi Toko Djawa (Menteng)",
+  "latlong": [
+    -6.1872557,
+    106.8305685
+  ],
+  "location": "Jl. H. Agus Salim No.60, RT.8/RW.4, Dukuh Atas, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, Indonesia",
+  "rating": 4.4,
+  "user_rating_count": 672,
+  "opening_hours": [
+    "Monday: 8:00 AM – 10:00 PM",
+    "Tuesday: 8:00 AM – 10:00 PM",
+    "Wednesday: 8:00 AM – 10:00 PM",
+    "Thursday: 8:00 AM – 10:00 PM",
+    "Friday: 8:00 AM – 10:00 PM",
+    "Saturday: 8:00 AM – 10:00 PM",
+    "Sunday: 8:00 AM – 10:00 PM"
+  ],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "Kopi Toko Djawa in Menteng, Jakarta offers coffee and desserts with cozy seating, natural light, and a relaxed ambiance ideal for quick breaks.",
+  "food_and_beverages_options": [
+    "coffee",
+    "dessert"
+  ],
+  "fulfillment_methods": [
+    "curbside_pickup",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "modern"
+  ],
+  "lighting_style": "natural",
+  "noise_level": "quiet",
+  "wifi_quality": null,
+  "power_outlet_availability": "unavailable",
+  "work_friendly_features": [
+    "quiet environment",
+    "comfortable seating"
+  ],
+  "service_style": null,
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "parking",
+    "restroom",
+    "reservable",
+    "group_friendly"
+  ]
+}

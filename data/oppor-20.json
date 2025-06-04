@@ -1,0 +1,1689 @@
+{
+  "places": [
+    {
+      "id": "ChIJcQPMnIT1aS4R2RG3fGrmTLA",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. MH Thamrin No.1, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310, Indonesia",
+      "location": {
+        "latitude": -6.1950411999999995,
+        "longitude": 106.8210081
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Grand Indonesia",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Jl. MH Thamrin No.1, Menteng, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "This wing of a huge mall has brand-name shops & a food court, plus a fountain show & movie theater.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJ4YTZsDL0aS4RivOJNmIVHDQ",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Medan Merdeka Tim. No.1, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110, Indonesia",
+      "location": {
+        "latitude": -6.1765650999999995,
+        "longitude": 106.8305901
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Gambir Station",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Train Station",
+        "languageCode": "en-US"
+      },
+      "primaryType": "train_station",
+      "shortFormattedAddress": "Jl. Medan Merdeka Tim. No.1, Gambir, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJ1cBB2bT1aS4RIYCLbNPo2CY",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Pasar Senen No.14, Senen, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410, Indonesia",
+      "location": {
+        "latitude": -6.1747000000000005,
+        "longitude": 106.84434999999999
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Stasiun Pasar Senen",
+        "languageCode": "id"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Train Station",
+        "languageCode": "en-US"
+      },
+      "primaryType": "train_station",
+      "shortFormattedAddress": "Jl. Pasar Senen No.14, Senen, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJA9XmCCH0aS4RPwVK1nrhf30",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. M.H. Thamrin No.Kav.28-30, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, Indonesia",
+      "location": {
+        "latitude": -6.1935977,
+        "longitude": 106.82194679999999
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Plaza Indonesia",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Jl. M.H. Thamrin No.Kav.28-30, Gondangdia, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Large 7-level shopping mall with high-end boutiques, food outlets & a supermarket.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJb3ehLJ72aS4R0daz4NKrYBs",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Thamrin Boulevard, Kb. Melati, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10230, Indonesia",
+      "location": {
+        "latitude": -6.193937399999999,
+        "longitude": 106.81610049999999
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 20,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 20,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+          "Tuesday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+          "Wednesday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+          "Thursday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+          "Friday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+          "Saturday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+          "Sunday: 9:00\u202fAM\u2009\u2013\u20098:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T02:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Thamrin City",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Jl. Thamrin Boulevard, Kb. Melati, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Mall with retailers for batik fabric & Muslim clothing, plus casual eateries & a supermarket.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJLcTG4SX0aS4R9zcuO5aOrDw",
+      "types": [
+        "shopping_mall",
+        "department_store",
+        "store",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. M.H. Thamrin No.11, RT.8/RW.4, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, Indonesia",
+      "location": {
+        "latitude": -6.1877521,
+        "longitude": 106.8235864
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Sarinah",
+        "languageCode": "id"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Sarinah, Jl. M.H. Thamrin No.11, RT.8/RW.4, Gondangdia, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJm3zhDfX2aS4RQfROjxC_h7I",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Letjen S. Parman No.Kav 21, RT.12/RW.1, Tj. Duren Sel., Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470, Indonesia",
+      "location": {
+        "latitude": -6.1786943,
+        "longitude": 106.7927014
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Mall Taman Anggrek",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Taman Anggrek, Jl. Letjen S. Parman No.Kav 21, RT.12/RW.1, Tj. Duren Sel., Kota Jakarta Barat",
+      "editorialSummary": {
+        "text": "Retail chain carrying brand-name athletic shoes, apparel & accessories for men, women & children.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJ0RVwvYT2aS4RAlUv_UtqCnk",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jalan Jati Baru Raya, Jl. Cideng Timur, Kp. Bali, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10250, Indonesia",
+      "location": {
+        "latitude": -6.1856886,
+        "longitude": 106.8108579
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 6,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 15,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 15,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 6:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Tuesday: 7:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Wednesday: 7:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Thursday: 6:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Friday: 7:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Saturday: 7:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Sunday: 7:00\u202fAM\u2009\u2013\u20093:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T00:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Stasiun Tanahabang",
+        "languageCode": "id"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Train Station",
+        "languageCode": "en-US"
+      },
+      "primaryType": "train_station",
+      "shortFormattedAddress": "Jalan Jati Baru Raya, Jl. Cideng Timur"
+    },
+    {
+      "id": "ChIJY9TrwiH0aS4RrvGqlZvI_Mw",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. M.H. Thamrin No.1, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310, Indonesia",
+      "location": {
+        "latitude": -6.1965848,
+        "longitude": 106.8224882
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Grand Indonesia Mall",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Regus - Jkt Menara Bca Grand Indonesia, Jl. M.H. Thamrin No.1, Menteng, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Modern, multi-level mall featuring 100+ shops & more than 200 international restaurants & cafes.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJs3Rm5rj3aS4RM2KQVElH7Ww",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Kh Hasyim Ashari No.125, Cideng, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10150, Indonesia",
+      "location": {
+        "latitude": -6.166433,
+        "longitude": 106.80298409999999
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 21,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 21,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u20099:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "ITC Roxy Mas",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "ITC ROXY MAS, Jl. Kh Hasyim Ashari No.125, Cideng, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJgQjF7x30aS4R6z1pSrf_III",
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Shangri-La Jakarta, Kota BNI, Jl. Jenderal Sudirman No.Kav. 1, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10220, Indonesia",
+      "location": {
+        "latitude": -6.2022941,
+        "longitude": 106.81864499999999
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Shangri-La Jakarta",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Hotel",
+        "languageCode": "en-US"
+      },
+      "primaryType": "hotel",
+      "shortFormattedAddress": "Shangri-La Jakarta, Kota BNI, Jl. Jenderal Sudirman No.Kav. 1, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Plush rooms & suites in a high-end hotel offering a luxe spa, an outdoor pool & 4 restaurants.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJkwxuWUL0aS4RNv55CeSLpUs",
+      "types": [
+        "library",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Medan Merdeka Sel. No.11, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110, Indonesia",
+      "location": {
+        "latitude": -6.1811826,
+        "longitude": 106.82692039999999
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 15,
+              "minute": 30
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 19,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 9,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 15,
+              "minute": 30
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 8:00\u202fAM\u2009\u2013\u20097:00\u202fPM",
+          "Tuesday: 8:00\u202fAM\u2009\u2013\u20097:00\u202fPM",
+          "Wednesday: 8:00\u202fAM\u2009\u2013\u20097:00\u202fPM",
+          "Thursday: 8:00\u202fAM\u2009\u2013\u20097:00\u202fPM",
+          "Friday: 8:00\u202fAM\u2009\u2013\u20097:00\u202fPM",
+          "Saturday: 9:00\u202fAM\u2009\u2013\u20093:30\u202fPM",
+          "Sunday: 9:00\u202fAM\u2009\u2013\u20093:30\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T01:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "National Library of the Republic of Indonesia",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Library",
+        "languageCode": "en-US"
+      },
+      "primaryType": "library",
+      "shortFormattedAddress": "Gedung Dewan Pers, Jl. Medan Merdeka Sel. No.11, Gambir, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJhxFM9aH1aS4ROhPYq3s1-vg",
+      "types": [
+        "corporate_office",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Jenderal Sudirman No.Kav.5-6, RT.10/RW.6, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10220, Indonesia",
+      "location": {
+        "latitude": -6.2074647,
+        "longitude": 106.82160429999999
+      },
+      "regularOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 1,
+              "hour": 0,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 0,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 7,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 15,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: 7:00\u202fAM\u2009\u2013\u20093:00\u202fPM",
+          "Sunday: Closed"
+        ],
+        "nextCloseTime": "2025-06-06T17:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Menara Astra",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Corporate Office",
+        "languageCode": "en-US"
+      },
+      "primaryType": "corporate_office",
+      "shortFormattedAddress": "Jl. Jenderal Sudirman No.Kav.5-6, RT.10/RW.6, Karet Tengsin, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJ663qAxz0aS4R3x6eEyQE-RM",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "10, Jl. Kendal No.24, RW.6, Dukuh Atas, Menteng, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10310, Indonesia",
+      "location": {
+        "latitude": -6.2024498999999995,
+        "longitude": 106.8237671
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Sudirman Station",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Train Station",
+        "languageCode": "en-US"
+      },
+      "primaryType": "train_station",
+      "shortFormattedAddress": "10, Jl. Kendal No.24, RW.6, Menteng"
+    },
+    {
+      "id": "ChIJ2zV-Ccz1aS4RWwlaMym3AnM",
+      "types": [
+        "hotel",
+        "lodging",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Lap. Banteng Selatan No.1, Ps. Baru, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10710, Indonesia",
+      "location": {
+        "latitude": -6.172157299999999,
+        "longitude": 106.83582779999999
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Hotel Borobudur Jakarta",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Hotel",
+        "languageCode": "en-US"
+      },
+      "primaryType": "hotel",
+      "shortFormattedAddress": "Jl. Lap. Banteng Selatan No.1, Ps. Baru, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Upscale property featuring several eateries & a cigar bar, plus 8 tennis courts.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJ50s0zhr0aS4RnrBi51X8qXw",
+      "types": [
+        "hotel",
+        "wedding_venue",
+        "lodging",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Rajawali Place, Jl. H. R. Rasuna Said No.4 Blok Kav. B, Kuningan, Setia Budi, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12910, Indonesia",
+      "location": {
+        "latitude": -6.2063292,
+        "longitude": 106.8275025
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "The St. Regis Jakarta",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Hotel",
+        "languageCode": "en-US"
+      },
+      "primaryType": "hotel",
+      "shortFormattedAddress": "Rajawali Place, Jl. H. R. Rasuna Said No.4 Blok Kav. B, Kuningan, Setia Budi, Kota Jakarta Selatan",
+      "editorialSummary": {
+        "text": "Sophisticated hotel offering 2 restaurants & 3 bars, plus an outdoor pool & a spa.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJHbDcnQL0aS4RXrEfRpvGRYw",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. K.H. Mas Mansyur No.Kavling 121, Karet Tengsin, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10220, Indonesia",
+      "location": {
+        "latitude": -6.208878599999999,
+        "longitude": 106.818109
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 8,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 8:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T01:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Citywalk Sudirman Jakarta",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Citylofts Sudirman, Jl. K.H. Mas Mansyur No.Kavling 121, Karet Tengsin, Kota Jakarta Pusat",
+      "editorialSummary": {
+        "text": "Small & tranquil complex featuring local services & a variety of restaurants, cafes & bars.",
+        "languageCode": "en"
+      }
+    },
+    {
+      "id": "ChIJc16W8M_1aS4Ro9gwKlXJjSE",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Raya, 10710, Jl. Ir H. Juanda I B No.4, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120, Indonesia",
+      "location": {
+        "latitude": -6.1667216,
+        "longitude": 106.830473
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Stasiun Juanda",
+        "languageCode": "id"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Train Station",
+        "languageCode": "en-US"
+      },
+      "primaryType": "train_station",
+      "shortFormattedAddress": "Raya, 10710, Jl. Ir H. Juanda I B No.4, Kb. Klp., Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJ_zCQxzT0aS4RKktzPK4SrDs",
+      "types": [
+        "hospital",
+        "doctor",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. Abdul Rahman Saleh Raya No.24, RT.10/RW.5, Senen, Kec. Senen, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10410, Indonesia",
+      "location": {
+        "latitude": -6.1761897,
+        "longitude": 106.83761799999999
+      },
+      "regularOpeningHours": {
+        "openNow": true,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 0,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: Open 24 hours",
+          "Tuesday: Open 24 hours",
+          "Wednesday: Open 24 hours",
+          "Thursday: Open 24 hours",
+          "Friday: Open 24 hours",
+          "Saturday: Open 24 hours",
+          "Sunday: Open 24 hours"
+        ]
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "Gatot Soebroto Army Hospital",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Hospital",
+        "languageCode": "en-US"
+      },
+      "primaryType": "hospital",
+      "shortFormattedAddress": "Jl. Abdul Rahman Saleh Raya No.24, RT.10/RW.5, Senen, Kota Jakarta Pusat"
+    },
+    {
+      "id": "ChIJe3LXKgD1aS4RKfFxmhebB4s",
+      "types": [
+        "shopping_mall",
+        "point_of_interest",
+        "establishment"
+      ],
+      "formattedAddress": "Jl. M.H. Thamrin No.10, Kb. Melati, Kecamatan Tanah Abang, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10230, Indonesia",
+      "location": {
+        "latitude": -6.1985989,
+        "longitude": 106.82139300000001
+      },
+      "regularOpeningHours": {
+        "openNow": false,
+        "periods": [
+          {
+            "open": {
+              "day": 0,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 0,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 1,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 1,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 2,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 2,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 3,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 3,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 4,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 4,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 5,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 5,
+              "hour": 22,
+              "minute": 0
+            }
+          },
+          {
+            "open": {
+              "day": 6,
+              "hour": 10,
+              "minute": 0
+            },
+            "close": {
+              "day": 6,
+              "hour": 22,
+              "minute": 0
+            }
+          }
+        ],
+        "weekdayDescriptions": [
+          "Monday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Tuesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Wednesday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Thursday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Friday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Saturday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM",
+          "Sunday: 10:00\u202fAM\u2009\u2013\u200910:00\u202fPM"
+        ],
+        "nextOpenTime": "2025-06-03T03:00:00Z"
+      },
+      "businessStatus": "OPERATIONAL",
+      "displayName": {
+        "text": "AGORA Mall",
+        "languageCode": "en"
+      },
+      "primaryTypeDisplayName": {
+        "text": "Shopping Mall",
+        "languageCode": "en-US"
+      },
+      "primaryType": "shopping_mall",
+      "shortFormattedAddress": "Jl. M.H. Thamrin No.10, Kb. Melati, Kota Jakarta Pusat",
+      "containingPlaces": [
+        {
+          "name": "places/ChIJv9XyLCH0aS4RBsTEVPZVTV0",
+          "id": "ChIJv9XyLCH0aS4RBsTEVPZVTV0"
+        }
+      ]
+    }
+  ]
+}

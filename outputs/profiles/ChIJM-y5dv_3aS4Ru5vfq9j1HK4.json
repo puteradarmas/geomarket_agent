@@ -1,0 +1,64 @@
+{
+  "name": "Kopi Nako Monas",
+  "latlong": [
+    -6.172733999999999,
+    106.821282
+  ],
+  "location": "Jl. Abdul Muis No.20, Petojo Sel., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10160, Indonesia",
+  "rating": 4.6,
+  "user_rating_count": 3129,
+  "opening_hours": [
+    "Monday: 8:00 AM – 2:00 AM",
+    "Tuesday: 8:00 AM – 2:00 AM",
+    "Wednesday: 8:00 AM – 2:00 AM",
+    "Thursday: 8:00 AM – 2:00 AM",
+    "Friday: 8:00 AM – 2:00 AM",
+    "Saturday: 8:00 AM – 2:00 AM",
+    "Sunday: 8:00 AM – 2:00 AM"
+  ],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "A contemporary outdoor café features accessible power outlets, minimalist design, and spacious seating ideal for casual dining or short work meetings.",
+  "food_and_beverages_options": [
+    "coffee",
+    "breakfast",
+    "brunch",
+    "lunch",
+    "dinner",
+    "dessert",
+    "beer",
+    "wine",
+    "cocktails",
+    "vegetarian"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "curbside_pickup",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "large",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "modern",
+    "minimalist"
+  ],
+  "lighting_style": "natural",
+  "noise_level": "moderate",
+  "wifi_quality": null,
+  "power_outlet_availability": "limited",
+  "work_friendly_features": [],
+  "service_style": "table",
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "reservable",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

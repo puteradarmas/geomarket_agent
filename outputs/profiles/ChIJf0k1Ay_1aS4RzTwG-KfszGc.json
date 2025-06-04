@@ -1,0 +1,65 @@
+{
+  "name": "The Atjeh Connection Neo Sabang",
+  "latlong": [
+    -6.185801499999999,
+    106.8249537
+  ],
+  "location": "Jl. H. Agus Salim No.38, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.3,
+  "user_rating_count": 1353,
+  "opening_hours": [
+    "Monday: Open 24 hours",
+    "Tuesday: Open 24 hours",
+    "Wednesday: Open 24 hours",
+    "Thursday: Open 24 hours",
+    "Friday: Open 24 hours",
+    "Saturday: Open 24 hours",
+    "Sunday: Open 24 hours"
+  ],
+  "price_range": "IDR 50000-75000",
+  "one_sentence_summary": "A cozy, modern cafe with soft lighting and minimalist decor offers comfortable seating, moderate spacing, and a design suitable for casual dining or work interactions.",
+  "food_and_beverages_options": [
+    "coffee",
+    "brunch",
+    "dinner",
+    "dessert"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables",
+    "booths"
+  ],
+  "spacing_level": "spacious",
+  "decor_styles": [
+    "modern",
+    "rustic",
+    "eclectic",
+    "minimalist"
+  ],
+  "lighting_style": "mixed",
+  "noise_level": "moderate",
+  "wifi_quality": "good",
+  "power_outlet_availability": "limited",
+  "work_friendly_features": [
+    "open_kitchen",
+    "accessible_seating",
+    "private_rooms"
+  ],
+  "service_style": "table",
+  "typical_wait_time": "fast",
+  "staff_friendliness": "excellent",
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "charging_stations",
+    "reservable",
+    "child_friendly",
+    "parking",
+    "bookshelf"
+  ]
+}

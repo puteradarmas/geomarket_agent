@@ -1,0 +1,51 @@
+{
+  "name": "Stroom Coffee",
+  "latlong": [
+    -6.180407700000001,
+    106.83278849999999
+  ],
+  "location": "Jl. M.I. Ridwan Rais No.1, RT.7/RW.1, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110, Indonesia",
+  "rating": 4.4,
+  "user_rating_count": 345,
+  "opening_hours": [
+    "Monday: 8:00 AM – 10:00 PM",
+    "Tuesday: 8:00 AM – 10:00 PM",
+    "Wednesday: 8:00 AM – 10:00 PM",
+    "Thursday: 8:00 AM – 10:00 PM",
+    "Friday: 8:00 AM – 10:00 PM",
+    "Saturday: 9:00 AM – 10:00 PM",
+    "Sunday: 9:00 AM – 10:00 PM"
+  ],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "These cafes feature minimalist designs with natural materials, cozy outdoor seating, coffee menus, comfortable interiors, ample lighting, and work-friendly ambiance with accessible power outlets.",
+  "food_and_beverages_options": [],
+  "fulfillment_methods": [
+    "curbside_pickup",
+    "dine_in"
+  ],
+  "capacity_size": "small",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "minimalist"
+  ],
+  "lighting_style": "natural",
+  "noise_level": "quiet",
+  "wifi_quality": null,
+  "power_outlet_availability": "unavailable",
+  "work_friendly_features": [
+    "quiet environment",
+    "cozy atmosphere"
+  ],
+  "service_style": null,
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "parking",
+    "restroom",
+    "outdoor_seating",
+    "child_friendly"
+  ]
+}

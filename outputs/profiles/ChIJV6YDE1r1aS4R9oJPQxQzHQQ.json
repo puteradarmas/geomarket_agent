@@ -1,0 +1,56 @@
+{
+  "name": "ANEKA 57",
+  "latlong": [
+    -6.1633930999999995,
+    106.8264458
+  ],
+  "location": "Jl. Pecenongan No.57, Kb. Klp., Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10120, Indonesia",
+  "rating": 4.5,
+  "user_rating_count": 342,
+  "opening_hours": [
+    "Monday: Closed",
+    "Tuesday: 7:00 AM – 7:00 PM",
+    "Wednesday: 7:00 AM – 7:00 PM",
+    "Thursday: 7:00 AM – 7:00 PM",
+    "Friday: 7:00 AM – 7:00 PM",
+    "Saturday: 8:00 AM – 8:00 PM",
+    "Sunday: 8:00 AM – 8:00 PM"
+  ],
+  "price_range": "IDR 50000-75000",
+  "one_sentence_summary": "ANEKA 57 is a cozy, rustic-modern café with bright lighting and comfortable seating, offering coffee and pastries in a friendly, work-friendly atmosphere.",
+  "food_and_beverages_options": [
+    "coffee",
+    "dessert"
+  ],
+  "fulfillment_methods": [
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "small",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "rustic",
+    "modern"
+  ],
+  "lighting_style": "bright",
+  "noise_level": "moderate",
+  "wifi_quality": "unavailable",
+  "power_outlet_availability": "limited",
+  "work_friendly_features": [
+    "counter",
+    "seating"
+  ],
+  "service_style": "table",
+  "typical_wait_time": "fast",
+  "staff_friendliness": "fair",
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

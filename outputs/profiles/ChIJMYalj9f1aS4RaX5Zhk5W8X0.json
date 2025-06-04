@@ -1,0 +1,63 @@
+{
+  "name": "Titik Temu Cafe - Sarinah",
+  "latlong": [
+    -6.1878880999999994,
+    106.8234838
+  ],
+  "location": "Jl. M. H. Thamrin. 11 Lt 1 Unit 04-04A, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, Indonesia",
+  "rating": 4.6,
+  "user_rating_count": 615,
+  "opening_hours": [
+    "Monday: 9:00 AM – 1:00 AM",
+    "Tuesday: 9:00 AM – 1:00 AM",
+    "Wednesday: 9:00 AM – 1:00 AM",
+    "Thursday: 9:00 AM – 1:00 AM",
+    "Friday: 9:00 AM – 3:00 AM",
+    "Saturday: 7:00 AM – 3:00 AM",
+    "Sunday: 7:00 AM – 1:00 AM"
+  ],
+  "price_range": "NO INFO",
+  "one_sentence_summary": "The cafes feature modern, well-lit interiors with a mix of natural and artificial lighting, offering power outlets, outdoor seating, and a work-friendly atmosphere for casual dining.",
+  "food_and_beverages_options": [
+    "coffee",
+    "breakfast",
+    "brunch",
+    "lunch",
+    "dinner",
+    "dessert"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "curbside_pickup",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables"
+  ],
+  "spacing_level": "spacious",
+  "decor_styles": [
+    "modern",
+    "minimalist"
+  ],
+  "lighting_style": "mixed",
+  "noise_level": "quiet",
+  "wifi_quality": null,
+  "power_outlet_availability": "unavailable",
+  "work_friendly_features": [
+    "minimalist decor",
+    "modern furniture"
+  ],
+  "service_style": "table",
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "reservable",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

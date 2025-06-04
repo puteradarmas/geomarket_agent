@@ -1,0 +1,1 @@
+from recommendation.recommender import generate_recommendation

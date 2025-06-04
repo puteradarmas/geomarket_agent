@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -91,7 +91,7 @@ class WaitTime(str, Enum):
 
 
 class AvailabilityLevel(str, Enum):
-    NONE = "none"
+    UNAVAILABLE = "unavailable"
     LIMITED = "limited"
     GOOD = "good"
     ABUNDANT = "abundant"
@@ -118,20 +118,28 @@ class FacilityType(str, Enum):
     BOOKSHELF = "bookshelf"
     GAME_AREA = "game_area"
 
+class UserQuery(BaseModel):
+    description: str
+    latlong: list[float, float] = None
+
 class GeneralProfile(BaseModel):
     name: str
-    primary_type: str
-    types: list[str]
-    active_hours: str
+    type: str
+    latlong: list[float, float]
+    opening_hours: list[str]
+    summaries: list[str]
+    distance_to_point: list[tuple[str, str, str]] = []
 
 class CafeProfile(BaseModel):
     # Core Identification
     name: Optional[str] = None
+    latlong: Optional[list[float, float]] = None
     location: Optional[str] = None
-    rating: Optional[float] = Field(ge=0, le=5, default=-1, validate_default=False)
-    user_rating_count: Optional[int] = Field(ge=0, default=-1, validate_default=False)
+    rating: Optional[float] = Field(None, ge=0, le=5, validate_default=False, allow_inf_nan=True)
+    user_rating_count: Optional[int] = Field(None, ge=0, validate_default=False, allow_inf_nan=True)
     opening_hours: Optional[list[str]] = None
     price_range: Optional[str] = None
+    one_sentence_summary: Optional[str] = None
 
     # Service Offerings
     food_and_beverages_options: List[ServiceType] = Field(default_factory=list)

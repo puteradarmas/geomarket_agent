@@ -1,0 +1,63 @@
+{
+  "name": "Starbucks Djakarta Theater",
+  "latlong": [
+    -6.1867174,
+    106.8234991
+  ],
+  "location": "Jl. M.H. Thamrin No.9 2, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.6,
+  "user_rating_count": 3914,
+  "opening_hours": [
+    "Monday: Open 24 hours",
+    "Tuesday: Open 24 hours",
+    "Wednesday: Open 24 hours",
+    "Thursday: Open 24 hours",
+    "Friday: Open 24 hours",
+    "Saturday: Open 24 hours",
+    "Sunday: Open 24 hours"
+  ],
+  "price_range": "IDR 50000-75000",
+  "one_sentence_summary": "Starbucks Djakarta Theater is a modern, minimalist café in Jakarta offering coffee, breakfast, and desserts with comfortable seating, excellent Wi-Fi, and abundant power outlets, ideal for work or casual dining.",
+  "food_and_beverages_options": [
+    "coffee",
+    "breakfast",
+    "lunch",
+    "dessert"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables",
+    "counter"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "modern",
+    "minimalist"
+  ],
+  "lighting_style": "mixed",
+  "noise_level": "moderate",
+  "wifi_quality": "excellent",
+  "power_outlet_availability": "abundant",
+  "work_friendly_features": [
+    "Excellent WiFi",
+    "Abundant power outlets",
+    "Comfortable seating",
+    "Quiet environment"
+  ],
+  "service_style": "counter",
+  "typical_wait_time": "fast",
+  "staff_friendliness": "good",
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "charging_stations",
+    "outdoor_seating",
+    "parking",
+    "bookshelf"
+  ]
+}

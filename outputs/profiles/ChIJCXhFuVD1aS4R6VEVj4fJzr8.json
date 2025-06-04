@@ -1,0 +1,50 @@
+{
+  "name": "Kuliner Jalan Sabang",
+  "latlong": [
+    -6.1863066,
+    106.8252243
+  ],
+  "location": "RR7G+F3H, Jl. H. Agus Salim, RT.8/RW.4, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta, Indonesia",
+  "rating": 4.7,
+  "user_rating_count": 31,
+  "opening_hours": [],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "Kuliner Jalan Sabang is a small, street-side café in Jakarta with rustic and minimalist decor, offering coffee, beer, cocktails, and vegetarian dishes via dine-in, takeout, and delivery, but staff friendliness is mixed due to pushy beggars.",
+  "food_and_beverages_options": [
+    "coffee",
+    "beer",
+    "wine",
+    "cocktails",
+    "vegetarian"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "curbside_pickup",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "small",
+  "seating_types": [
+    "counter",
+    "tables"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "rustic",
+    "minimalist"
+  ],
+  "lighting_style": "mixed",
+  "noise_level": "moderate",
+  "wifi_quality": "unavailable",
+  "power_outlet_availability": "unavailable",
+  "work_friendly_features": [],
+  "service_style": "mixed",
+  "typical_wait_time": "moderate",
+  "staff_friendliness": "unavailable",
+  "facilities": [
+    "outdoor_seating",
+    "group_friendly",
+    "charging_stations",
+    "child_friendly"
+  ]
+}

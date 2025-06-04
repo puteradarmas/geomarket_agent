@@ -1,0 +1,58 @@
+{
+  "name": "Sabang 16 Kopi & Srikaya",
+  "latlong": [
+    -6.183510999999999,
+    106.8246576
+  ],
+  "location": "Jl. H. Agus Salim No.16 2, RT.2/RW.1, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.5,
+  "user_rating_count": 2238,
+  "opening_hours": [
+    "Monday: 7:00 AM – 10:00 PM",
+    "Tuesday: 7:00 AM – 10:00 PM",
+    "Wednesday: 7:00 AM – 10:00 PM",
+    "Thursday: 7:00 AM – 10:00 PM",
+    "Friday: 7:00 AM – 10:00 PM",
+    "Saturday: 7:00 AM – 10:00 PM",
+    "Sunday: 7:00 AM – 10:00 PM"
+  ],
+  "price_range": "IDR 25000-75000",
+  "one_sentence_summary": "Cozy, rustic-modern café in Jakarta offering diverse coffee, meals, and drinks with friendly staff, outdoor seating, and moderate noise for a comfortable dining experience.",
+  "food_and_beverages_options": [
+    "coffee",
+    "breakfast",
+    "brunch"
+  ],
+  "fulfillment_methods": [
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables",
+    "communal"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "eclectic",
+    "rustic"
+  ],
+  "lighting_style": "natural",
+  "noise_level": "moderate",
+  "wifi_quality": null,
+  "power_outlet_availability": "limited",
+  "work_friendly_features": [
+    "outdoor_seating"
+  ],
+  "service_style": "table",
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "reservable",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

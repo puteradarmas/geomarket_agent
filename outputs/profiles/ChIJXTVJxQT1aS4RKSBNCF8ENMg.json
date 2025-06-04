@@ -1,0 +1,45 @@
+{
+  "name": "AMING COFFEE JUANDA",
+  "latlong": [
+    -6.167280600000001,
+    106.831046
+  ],
+  "location": "Raffles square, Jl. Ir. H. Juanda, Pasar Baru, Sawah Besar, Central Jakarta City, Jakarta, Indonesia",
+  "rating": 4.6,
+  "user_rating_count": 651,
+  "opening_hours": [
+    "Monday: 7:00 AM – 11:00 PM",
+    "Tuesday: 7:00 AM – 11:00 PM",
+    "Wednesday: 7:00 AM – 11:00 PM",
+    "Thursday: 7:00 AM – 11:00 PM",
+    "Friday: 7:00 AM – 12:00 AM",
+    "Saturday: 7:00 AM – 12:00 AM",
+    "Sunday: 7:00 AM – 12:00 AM"
+  ],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "Aming Coffee offers a modern, minimalist café environment featuring charging stations, cozy seating with moderate spacing, and a welcoming atmosphere centered around coffee and light, natural lighting, and clean, simple decor.",
+  "food_and_beverages_options": [],
+  "fulfillment_methods": [
+    "dine_in"
+  ],
+  "capacity_size": null,
+  "seating_types": [],
+  "spacing_level": null,
+  "decor_styles": [],
+  "lighting_style": null,
+  "noise_level": null,
+  "wifi_quality": null,
+  "power_outlet_availability": null,
+  "work_friendly_features": [],
+  "service_style": null,
+  "typical_wait_time": null,
+  "staff_friendliness": null,
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "reservable",
+    "outdoor_seating",
+    "child_friendly",
+    "parking"
+  ]
+}

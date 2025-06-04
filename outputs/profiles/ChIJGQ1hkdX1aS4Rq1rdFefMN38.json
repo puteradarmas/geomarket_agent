@@ -1,0 +1,61 @@
+{
+  "name": "Jakarta Coffee House",
+  "latlong": [
+    -6.187468399999999,
+    106.82802880000001
+  ],
+  "location": "Jl. K.H. Wahid Hasyim No.59 4, RT.1/RW.3, Kb. Sirih, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10340, Indonesia",
+  "rating": 4.5,
+  "user_rating_count": 590,
+  "opening_hours": [
+    "Monday: 6:00 AM – 12:00 AM",
+    "Tuesday: 6:00 AM – 12:00 AM",
+    "Wednesday: 6:00 AM – 12:00 AM",
+    "Thursday: 6:00 AM – 12:00 AM",
+    "Friday: 6:00 AM – 12:00 AM",
+    "Saturday: 6:00 AM – 12:00 AM",
+    "Sunday: 6:00 AM – 12:00 AM"
+  ],
+  "price_range": "IDR 25000-50000",
+  "one_sentence_summary": "The image shows a cozy café with wooden tables, modern seating, and neutral decor, blending warmth and functionality for a relaxed atmosphere.",
+  "food_and_beverages_options": [
+    "coffee",
+    "dessert"
+  ],
+  "fulfillment_methods": [
+    "takeout",
+    "curbside_pickup",
+    "delivery",
+    "dine_in"
+  ],
+  "capacity_size": "medium",
+  "seating_types": [
+    "tables",
+    "counter"
+  ],
+  "spacing_level": "comfortable",
+  "decor_styles": [
+    "modern",
+    "rustic",
+    "minimalist"
+  ],
+  "lighting_style": "natural",
+  "noise_level": "moderate",
+  "wifi_quality": null,
+  "power_outlet_availability": "limited",
+  "work_friendly_features": [
+    "clean layout",
+    "efficient service",
+    "comfortable seating"
+  ],
+  "service_style": "mixed",
+  "typical_wait_time": "moderate",
+  "staff_friendliness": "good",
+  "facilities": [
+    "restroom",
+    "group_friendly",
+    "reservable",
+    "outdoor_seating",
+    "parking"
+  ]
+}
