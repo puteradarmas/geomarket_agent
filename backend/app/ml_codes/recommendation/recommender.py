@@ -330,7 +330,7 @@ def generate_recommendation(
     user_query: UserQuery,
     opportunities_list: list[GeneralProfile],
     competitor_list: list[CafeProfile]
-):  
+) -> str:  
     cache_file = os.path.join(CACHE_DIR, f"{request_id}.json")
     if os.path.exists(cache_file):
         with open(cache_file, "r") as f:

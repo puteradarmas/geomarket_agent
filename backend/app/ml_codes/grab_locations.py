@@ -77,7 +77,7 @@ def grab_locations_competitor(lat, lng):
     )
 
 
-    return json.dumps(results.json(), indent=2)
+    return results.json()
 
 def grab_locations_opportunity(lat, lng, radius=4000.0):
     """
@@ -132,7 +132,7 @@ def grab_locations_opportunity(lat, lng, radius=4000.0):
             },
         },
     )
-    return json.dumps(results.json(), indent=2)
+    return results.json()
 
 def grab_distance(start_lat, start_lng, dest_lat, dest_lng):
     """
