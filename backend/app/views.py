@@ -6,7 +6,7 @@ from .models import Base, request_hist
 from .schemas import request_schema
 from sqlalchemy import create_engine
 from .ml_codes.grab_locations import grab_locations_competitor, grab_locations_opportunity,grab_address
-from .ml_codes.final_recommendation import run_recommendation
+from markdown_pdf import MarkdownPdf,Section
 import os
 
 
@@ -35,15 +35,7 @@ def analyze_data(request):
             json_locations_competitor = grab_locations_competitor(location["lat"], location["lng"]) # Get nearby cafes
             json_locations_opportunities = grab_locations_opportunity(location["lat"], location["lng"]) # Get nearby opportunities
             
-            ## Add processing review dan gambar here hingga menjadi parameterized, menggunakan json_locations
-            
-            ## Jalanan generate summary, jangan lupa label kalau dia opportunity atau competitor
-            
-            ## Generate opportunity dan competitor summary
-            
-            ## Generate recommendation via Gemini 2.0-flash
-            
-            final_recommendation_prompt = run_recommendation('prompt')
+            ## Integrate recommendation model here
             
             
             cafe_list = ['Cafe A', 'Cafe B', 'Cafe C','A la Cafe','La la cafe']  # Example cafe list
@@ -68,6 +60,7 @@ We recommend focusing on the **northern zone** due to higher population density.
             request_hist_model = request_hist(**request_data.dict())
             print("Request Data:", request_data)
             print("Request Model:", request_hist_model)
+            markdown_file = "outputs\recommendations\MONAS.md"
             
             # Add and commit to the database
             session.add(request_hist_model)
@@ -85,7 +78,8 @@ We recommend focusing on the **northern zone** due to higher population density.
                                                                                        "opportunities_list": opportunities_list, 
                                                                                        "num_of_reviews": num_of_reviews, 
                                                                                        "avg_review_score": avg_review_score,
-                                                                                       "suggestion":Suggestion}}, status=200)
+                                                                                       "suggestion":Suggestion,
+                                                                                       "markdown_loc":markdown_file}}, status=200)
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)
 
@@ -145,6 +139,23 @@ def view_history(request):
             additional_prompt = req_hist_data.additional_prompts
             Suggestion = req_hist_data.reccommendation_result
             
+            # result_file_path = r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations"
+            
+            with open(r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\MONAS.md", "r", encoding="utf-8") as f:
+                md_text = f.read()
+                
+            pdf = MarkdownPdf(toc_level=2, optimize=True)
+            
+            pdf.add_section(Section(md_text),user_css="table, th, td {border: 1px solid black;}")
+            
+            pdf.save(r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\output.pdf")
+                
+            # generate_pdf(r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\MONAS.md",
+            #              r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\output.pdf")
+
+            # # output = pypandoc.convert_file(r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\MONAS.md", 'pdf', outputfile=r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\output.pdf")
+            # print("PDF created:", output)
+            
             
             
             # request_hist_result = session.query(request_hist).all()
@@ -162,7 +173,7 @@ def view_history(request):
             return JsonResponse({"status": "Analyze prosessing completed", "message": {"additional_prompt": additional_prompt, 
                                                                                        "longitude": location["lng"],"latitude":location["lat"],
                                                                                        "address": address,
-                                                                                       "suggestion":Suggestion}}, status=200)
+                                                                                       "suggestion":md_text}}, status=200)
        
        
         except Exception as e:
