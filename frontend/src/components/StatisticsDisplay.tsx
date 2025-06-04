@@ -14,10 +14,9 @@ interface StatisticsDisplayProps {
   formData: FormData;
   resultData: ResultData;
   onReset: () => void;
-  onDownload: () => void;
 }
 
-const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultData, onReset,onDownload }) => {
+const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultData, onReset }) => {
   // Mock data based on form inputs
   const inputData = [
     { name: 'Longitude', value: resultData.longitude },
@@ -36,44 +35,26 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
 
   const suggestion =  resultData.suggestion || 'No suggestions available';
 
+  const request_id = resultData.request_id || 'No request ID available';
+
+  const handleDownload = () => {
+  const fileUrl = "/reccommendation_result/reccommendation_output_"+request_id+".pdf";
+  const link = document.createElement("a");
+  link.href = fileUrl;
+  link.setAttribute("download", "reccommendation_output_"+request_id+".pdf");
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  };
+
   // const handleDownload = () => {
   //   const link = document.createElement('a');
   //   link.href = 'http://localhost:8000/download';
-  //   link.setAttribute('download', 'llm_output.docx');
+  //   link.setAttribute('download', 'llm_output.pdf');
   //   document.body.appendChild(link);
   //   link.click();
   //   document.body.removeChild(link);
   // };
-  // // const stats = [
-  //   {
-  //     title: 'Total Budget Allocation',
-  //     value: `$${formData.budget.toLocaleString()}`,
-  //     icon: DollarSign,
-  //     color: 'text-green-600',
-  //     bgColor: 'bg-green-100'
-  //   },
-  //   {
-  //     title: 'Target Location',
-  //     value: formData.location,
-  //     icon: MapPin,
-  //     color: 'text-blue-600',
-  //     bgColor: 'bg-blue-100'
-  //   },
-  //   {
-  //     title: 'Project Theme',
-  //     value: formData.theme,
-  //     icon: Target,
-  //     color: 'text-purple-600',
-  //     bgColor: 'bg-purple-100'
-  //   },
-  //   {
-  //     title: 'Expected ROI',
-  //     value: '23.5%',
-  //     icon: TrendingUp,
-  //     color: 'text-orange-600',
-  //     bgColor: 'bg-orange-100'
-  //   }
-  // ];
 
   return (
     <div className="space-y-6">
@@ -148,81 +129,11 @@ const StatisticsDisplay: React.FC<StatisticsDisplayProps> = ({ formData,resultDa
 
 
       <div className="flex justify-between items-center">
-        <Button onClick={onDownload} variant="outline" className="hover:bg-gray-50">
+        <Button onClick={handleDownload} variant="outline" className="hover:bg-gray-50">
           Download Report
         </Button>
       </div>
 
-      
-
-      {/* Charts */}
-      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle>Quarterly Budget Distribution</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={barData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip formatter={(value) => [`$${value}`, 'Amount']} />
-                <Bar dataKey="value" fill="#3B82F6" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card> */}
-
-        {/* <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle>Resource Allocation</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={pieData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={100}
-                  dataKey="value"
-                  label={({ name, value }) => `${name}: ${value}%`}
-                >
-                  {pieData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-      </div>
-
-      <Card className="shadow-lg">
-        <CardHeader>
-          <CardTitle>Progress Timeline</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={lineData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip formatter={(value) => [`${value}%`, 'Progress']} />
-              <Line 
-                type="monotone" 
-                dataKey="progress" 
-                stroke="#8B5CF6" 
-                strokeWidth={3}
-                dot={{ fill: '#8B5CF6', strokeWidth: 2, r: 6 }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </CardContent>
-      </Card> */}
     </div>
   );
 };

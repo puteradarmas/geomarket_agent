@@ -14,7 +14,7 @@ export interface FormData {
 }
 
 export interface ResultData {
-  "cafe_list": string[];
+  "request_id": string;
   "longitude": number;
   "latitude": number;
   "address": string;

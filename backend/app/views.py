@@ -18,9 +18,9 @@ from .ml_codes.grab_locations import (
     grab_locations_competitor,
     grab_locations_opportunity,
 )
-from .ml_codes.processors.place_processor import process_opportunity, process_place
-from .ml_codes.recommendation import generate_recommendation
-from .ml_codes.schemas import CafeProfile, GeneralProfile, UserQuery
+# from .ml_codes.processors.place_processor import process_opportunity, process_place
+# from .ml_codes.recommendation import generate_recommendation
+# from .ml_codes.schemas import CafeProfile, GeneralProfile, UserQuery
 from .models import request_hist
 from .schemas import request_schema
 
@@ -49,7 +49,7 @@ def analyze_data(request):
                     "lng": 106.816666,
                 }  # Default location if not provided
 
-            address = grab_address(location)
+            address = grab_address(location) # Get address from lat/lng
 
             json_locations_competitor = grab_locations_competitor(
                 location["lat"], location["lng"]
@@ -58,34 +58,37 @@ def analyze_data(request):
                 location["lat"], location["lng"]
             )["places"]  # Get nearby opportunities
 
-            processed_opportunities: list[GeneralProfile] = [
-                process_opportunity(opp) for opp in json_locations_opportunities
-            ]
+            # # Process the opportunities
+            # processed_opportunities: list[GeneralProfile] = [
+            #     process_opportunity(opp) for opp in json_locations_opportunities
+            # ]
 
-            processed_competitors: list[CafeProfile] = []
+            # processed_competitors: list[CafeProfile] = []
 
-            for competitor in json_locations_competitor:
-                place_id = competitor["id"]
-                fullpath = os.path.join(PROFILES_CACHE_PATH, f"{place_id}.json")
-                if os.path.exists(fullpath):
-                    with open(fullpath, "r") as f:
-                        cafe_profile = CafeProfile.model_validate_json(f.read())
-                else:
-                    cafe_profile = process_place(competitor)
-                processed_competitors.append(cafe_profile)
-            request_id = sha256(
-                f"{additional_prompt}-{location['lat']}-{location['lng']}"
-            ).hexdigest()
-            recommendation = generate_recommendation(
-                request_id=request_id,
-                user_query=UserQuery(
-                    description=additional_prompt,
-                    latlong=[location["lat"], location["lng"]],
-                ),
-                opportunities_list=processed_opportunities,
-                competitor_list=processed_competitors,
-            )
-
+            # # Process the competitors
+            # for competitor in json_locations_competitor:
+            #     place_id = competitor["id"]
+            #     fullpath = os.path.join(PROFILES_CACHE_PATH, f"{place_id}.json") # Cache path for competitors profiles
+            #     if os.path.exists(fullpath):
+            #         with open(fullpath, "r") as f:
+            #             cafe_profile = CafeProfile.model_validate_json(f.read())
+            #     else:
+            #         cafe_profile = process_place(competitor)
+            #     processed_competitors.append(cafe_profile)
+            # request_id = sha256(
+            #     f"{additional_prompt}-{location['lat']}-{location['lng']}"
+            # ).hexdigest()
+            # recommendation = generate_recommendation(   # Generate recommendation
+            #     request_id=request_id,
+            #     user_query=UserQuery(
+            #         description=additional_prompt,
+            #         latlong=[location["lat"], location["lng"]],
+            #     ),
+            #     opportunities_list=processed_opportunities,
+            #     competitor_list=processed_competitors,
+            # )
+            recommendation = "This is a sample recommendation based on the provided data. Please implement the actual recommendation logic."
+            
             # create pydantic schema instance
             request_data = request_schema(
                 lat=location["lat"],
@@ -97,8 +100,6 @@ def analyze_data(request):
 
             # from pydantic schema, create SQLAlchemy model instance
             request_hist_model = request_hist(**request_data.dict())
-            print("Request Data:", request_data)
-            print("Request Model:", request_hist_model)
             markdown_file = "outputs\recommendations\MONAS.md"
             
             # Add and commit to the database
@@ -106,6 +107,12 @@ def analyze_data(request):
             session.commit()
 
             print("Data saved to database successfully. ID:", request_hist_model.id)
+            
+            
+            ## Genereate PDF from recommendation
+            pdf = MarkdownPdf(toc_level=2, optimize=True)         
+            pdf.add_section(Section(recommendation),user_css="table, th, td {border: 1px solid black;}")          
+            pdf.save(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/reccommendation_output_"+str(request_hist_model.id)+".pdf")
 
             # Semangat bikin logika ML
 
@@ -113,6 +120,7 @@ def analyze_data(request):
                 {
                     "status": "Analyze prosessing completed",
                     "message": {
+                        "request_id": request_hist_model.id,
                         "additional_prompt": additional_prompt,
                         "longitude": location["lng"],
                         "latitude": location["lat"],
@@ -193,34 +201,9 @@ def view_history(request):
             
             with open(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/MONAS.md", "r", encoding="utf-8") as f:
                 md_text = f.read()
-                
-            pdf = MarkdownPdf(toc_level=2, optimize=True)
             
-            pdf.add_section(Section(md_text),user_css="table, th, td {border: 1px solid black;}")
-            
-            pdf.save(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/output.pdf")
-                
-            # generate_pdf(r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\MONAS.md",
-            #              r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\output.pdf")
-
-            # # output = pypandoc.convert_file(r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\MONAS.md", 'pdf', outputfile=r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations\output.pdf")
-            # print("PDF created:", output)
-            
-            
-            
-            # request_hist_result = session.query(request_hist).all()
-
-            # hist_data = []
-            # for req in request_hist_result:
-            #     hist_data.append({
-            #         "id": req.id,
-            #         "lat": req.lat,
-            #         "lgn": req.lgn,
-            #         "additional_prompt": req.additional_prompt,
-            #         "created_at": str(req.created_at)  # Convert datetime to string
-                # })
-            
-            return JsonResponse({"status": "Analyze prosessing completed", "message": {"additional_prompt": additional_prompt, 
+            return JsonResponse({"status": "Analyze prosessing completed", "message": {"request_id":hist_id,
+                                                                                       "additional_prompt": additional_prompt, 
                                                                                        "longitude": location["lng"],"latitude":location["lat"],
                                                                                        "address": address,
                                                                                        "suggestion":md_text}}, status=200)
