@@ -17,7 +17,7 @@ type Props = {
 
 const LocationPicker: React.FC<Props> = ({ onLocationSelect }) => {
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyBmugJei5MXFJu2525l8Bh6cPNJKUtWcS4', // 🔑 Replace with your key
+    googleMapsApiKey:  import.meta.env.GOOGLE_API_KEY, // 🔑 Replace with your key
   });
 
   const [marker, setMarker] = useState<{ lat: number; lng: number } | null>(null)

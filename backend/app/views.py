@@ -50,44 +50,44 @@ def analyze_data(request):
 
             address = grab_address(location) # Get address from lat/lng
 
-            # json_locations_competitor = grab_locations_competitor(
-            #     location["lat"], location["lng"]
-            # )["places"]  # Get nearby cafes
-            # json_locations_opportunities = grab_locations_opportunity(
-            #     location["lat"], location["lng"]
-            # )["places"]  # Get nearby opportunities
+            json_locations_competitor = grab_locations_competitor(
+                location["lat"], location["lng"]
+            )["places"]  # Get nearby cafes
+            json_locations_opportunities = grab_locations_opportunity(
+                location["lat"], location["lng"]
+            )["places"]  # Get nearby opportunities
 
-            # request_id = 'MONAS'
-            # # Process the opportunities
-            # processed_opportunities: list[GeneralProfile] = [
-            #     process_opportunity(opp) for opp in json_locations_opportunities
-            # ]
+            request_id = 'MONAS'
+            # Process the opportunities
+            processed_opportunities: list[GeneralProfile] = [
+                process_opportunity(opp) for opp in json_locations_opportunities
+            ]
 
-            # processed_competitors: list[CafeProfile] = []
+            processed_competitors: list[CafeProfile] = []
 
-            # # Process the competitors
-            # for competitor in json_locations_competitor:
-            #     place_id = competitor["id"]
-            #     fullpath = os.path.join(PROFILES_CACHE_PATH, f"{place_id}.json") # Cache path for competitors profiles
-            #     if os.path.exists(fullpath):
-            #         with open(fullpath, "r") as f:
-            #             cafe_profile = CafeProfile.model_validate_json(f.read())
-            #     else:
-            #         cafe_profile = process_place(competitor)
-            #     processed_competitors.append(cafe_profile)
-            # request_id = 'MONAS'
-            # # request_id = sha256(
-            # #     f"{additional_prompt}-{location['lat']}-{location['lng']}"
-            # # ).hexdigest()
-            # recommendation = generate_recommendation(   # Generate recommendation
-            #     request_id=request_id,
-            #     user_query=UserQuery(
-            #         description=additional_prompt,
-            #         latlong=[location["lat"], location["lng"]],
-            #     ),
-            #     opportunities_list=processed_opportunities,
-            #     competitor_list=processed_competitors,
-            # )
+            # Process the competitors
+            for competitor in json_locations_competitor:
+                place_id = competitor["id"]
+                fullpath = os.path.join(PROFILES_CACHE_PATH, f"{place_id}.json") # Cache path for competitors profiles
+                if os.path.exists(fullpath):
+                    with open(fullpath, "r") as f:
+                        cafe_profile = CafeProfile.model_validate_json(f.read())
+                else:
+                    cafe_profile = process_place(competitor)
+                processed_competitors.append(cafe_profile)
+            request_id = 'MONAS'
+            # request_id = sha256(
+            #     f"{additional_prompt}-{location['lat']}-{location['lng']}"
+            # ).hexdigest()
+            recommendation = generate_recommendation(   # Generate recommendation
+                request_id=request_id,
+                user_query=UserQuery(
+                    description=additional_prompt,
+                    latlong=[location["lat"], location["lng"]],
+                ),
+                opportunities_list=processed_opportunities,
+                competitor_list=processed_competitors,
+            )
             
             with open(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/MONAS.md", "r", encoding="utf-8") as f:
                 recommendation = f.read()
