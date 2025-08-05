@@ -324,7 +324,6 @@ def extract_json_objects(text, decoder=json.JSONDecoder()):
     """
     pos = 0
     while True:
-        print("a")
         match = text.find("{", pos)
         print(match)
         if match == -1:
