@@ -149,3 +149,8 @@ dist/
 # Environment
 .env
 .DS_Store
+
+#
+
+backend/outputs
+*.md

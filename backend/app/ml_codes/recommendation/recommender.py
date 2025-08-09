@@ -7,7 +7,7 @@ from app.ml_codes.recommendation.opportunity import generate_opportunity_analysi
 from functools import partial
 from app.ml_codes.recommendation.swot import generate_swot_analysis
 
-from app.ml_codes.processors.place_processor import save_cache, extract_json_objects
+from app.ml_codes.processors.place_processor import persist_cache, extract_json_objects
 
 from app.ml_codes.agents import gemini_agent
 
@@ -161,24 +161,35 @@ Previously you have made several analysis of the cafe. These will be your input 
 <instruction>
 Compile the informations provided to create a recommendation report.
 Follow the provided format to generate your report.
-First reason and think out loud about each segments of the report, identify and analyze the relevant inputs to generate the analysis for each section. Enclose your reasoning in the provided `reasoning` XML tag below.
-After you finished reasoning and feels satisfied, generate the report as your final answer, enclosed by `output` XML tags. Strictly follow the output format.
+First reason about each segments of the report, identify and analyze the relevant inputs to generate the analysis for each section. Enclose your reasoning in the provided `reasoning` XML tag below.
+After you finished reasoning and feels satisfied, generate the report as your final answer, enclosed by `output` XML tags.
+Your output must be markdown-formatted following the format and layout of the given output format.
 </instruction>
 <output_format>
 # Cafe Opportunity Analysis: [cafe name if provided]
 
 ## 1. Demographic Opportunity Snapshot
-- Summary of target demographics
-- Suggested concept and theme
-- Fullfillment methods
-- Facilities and other experience enhancers
-- Operating factors
-- Pricing level
+### Summary of target demographics
+the summary of the target demographic
+### Concept and theme
+explanation of the planned concept and theme
+### Important considerations
+#### Fullfillment methods
+explanation of what and why to consider for fullfillment 
+#### Facilities and other experience enhancers
+explanation of what and why to consider for facilities, besides the one already mentioned 
+#### Operating factors
+explanation of what and why to consider for other operating factors of the cafe, for example opening hours 
+#### Pricing level
+explanation of the suggested pricing level and why
 
 ## 2. Competitive Landscape
-- Market gap analysis from the POV of the client's cafe
-- Competitor vulnerability map
-- Positioning of the client's concept
+### Market gap analysis from the POV of the client's cafe
+your analysis on what the client might lack to enhance the competitiveness of their cafe (with respect to the demographic) but still keeping its concept and character
+### Competitor vulnerability map
+based on the competitor swots, list and identify important points that might be key to gain competitiveness against surrounding cafe
+### Positioning of the client's concept
+The SWOT analysis of the client's concept based on the surrounding demographic
 
 ## 3. Strategic Recommendations
 - A table with columns `Priority`, `Aspect`, `Action`, `Reasoning`
@@ -316,10 +327,10 @@ def cached_generation_and_parsing(
         else:
             raw_return_value = wrapped_function()
             cache_object[rawkey] = raw_return_value
-            save_cache(cache_path, cache_object)
+            persist_cache(cache_path, cache_object)
         return_value = parse_function(llm_output=raw_return_value)
         cache_object[cache_key] = return_value
-        save_cache(cache_path, cache_object)
+        persist_cache(cache_path, cache_object)
     print(cache_object[rawkey])
     print(return_value)
     return return_value

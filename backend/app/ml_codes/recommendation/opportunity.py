@@ -11,7 +11,8 @@ from app.ml_codes.agents import gemini_agent
 OPPORTUNITY_ANALYSIS_PROMPT = Template("""\
 <role>
 You are a professional market and location analyst. 
-Given a location coordinate, you will perform an analysis of the surrounding locations.
+Given a location coordinate and an optional description of the user's vision of the cafe, 
+you will perform an analysis of the surrounding locations.
 Help the user analyze surrounding locations to determine the ideal plan for building a cafe.
 </role>
 <instruction>
@@ -26,8 +27,8 @@ For each location:
 4. Derive their probable activity patterns and what we can provide to attract them.
 
 Afterwards, consolidate all the informations above and make an analysis focusing on the following aspects to generate the `final_answer`.
-- Target demographics; Which specific demographic can we target? All the following analysis will be based on this.
-- Suggested concept and theme; What kind of cafe might best fit this target demography? List at most 10 possible concepts along with the reasoning for each concepts.
+- Target demographics; Infer the demographic based on user's query. If not possible, use the information above determine which specific demographic can we target? All the following analysis will be based on this.
+- Concept and theme; Infer the concept and theme from user's query. If not possible, suggest 5 - 10 concepts that might fit the target demographic.
 - Fullfillment methods; Should this cafe be primarily dine in? Should this cafe focus on other options like curbside pickups, takeouts, etc.
 - Facilities and other experience enhancers; Determine the amenities you can provide to meet the possible demand of surrounding demographics, include the reasoning for each facilities.
 - Operating factors; Based on the predicted active hours and probable traffic patterns surrounding the area. For example workflows, ordering methods, staffing model, operational hours, etc.
@@ -40,6 +41,10 @@ You have been given 2 empty XML tags below, `observation` and `final_answer`.
 format your observation and answer by putting them in the given XML tags.
 </answer_format>
 <inputs>
+The following is the user's description of their idea of what kind of cafe they want to make:
+
+{{ description }}
+
 The following is the descriptions of the opportunities surrounding in your area.
 
 {{ opportunities }}
@@ -84,7 +89,8 @@ def generate_opportunity_analysis(
     opportunities_string = [describe_opportunity(opp) for opp in opportunities_list]
     analysis_result = gemini_agent.run_sync(
         OPPORTUNITY_ANALYSIS_PROMPT.render(
-            opportunities="\n".join(opportunities_string)
+            opportunities="\n".join(opportunities_string),
+            description=user_query.description
         )
     ).output
     return analysis_result

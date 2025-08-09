@@ -1,14 +1,10 @@
 import json
-from sqlalchemy.orm import sessionmaker
-from .models import Base, request_hist
-from .schemas import request_schema
-from sqlalchemy import create_engine
-from markdown_pdf import MarkdownPdf,Section
 import os
 from hashlib import sha256
 
 from django.http import FileResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from markdown_pdf import MarkdownPdf, Section
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -17,10 +13,14 @@ from app.ml_codes.grab_locations import (
     grab_locations_competitor,
     grab_locations_opportunity,
 )
-# from app.ml_codes.processors.place_processor import process_opportunity, process_place
-# from app.ml_codes.recommendation import generate_recommendation
-# from app.ml_codes.schemas import CafeProfile, GeneralProfile, UserQuery
-from .models import request_hist
+from app.ml_codes.processors.place_processor import (
+    process_competitor_place,
+    process_opportunity,
+)
+from app.ml_codes.recommendation import generate_recommendation
+from app.ml_codes.schemas import CafeProfile, GeneralProfile, UserQuery
+
+from .models import Base, request_hist
 from .schemas import request_schema
 
 PROFILES_CACHE_PATH = "outputs/profiles/"
@@ -48,7 +48,7 @@ def analyze_data(request):
                     "lng": 106.816666,
                 }  # Default location if not provided
 
-            address = grab_address(location) # Get address from lat/lng
+            address = grab_address(location)  # Get address from lat/lng
 
             json_locations_competitor = grab_locations_competitor(
                 location["lat"], location["lng"]
@@ -57,7 +57,7 @@ def analyze_data(request):
                 location["lat"], location["lng"]
             )["places"]  # Get nearby opportunities
 
-            request_id = 'MONAS'
+            request_id = "MONAS"
             # Process the opportunities
             processed_opportunities: list[GeneralProfile] = [
                 process_opportunity(opp) for opp in json_locations_opportunities
@@ -68,18 +68,19 @@ def analyze_data(request):
             # Process the competitors
             for competitor in json_locations_competitor:
                 place_id = competitor["id"]
-                fullpath = os.path.join(PROFILES_CACHE_PATH, f"{place_id}.json") # Cache path for competitors profiles
+                fullpath = os.path.join(
+                    PROFILES_CACHE_PATH, f"{place_id}.json"
+                )  # Cache path for competitors profiles
                 if os.path.exists(fullpath):
                     with open(fullpath, "r") as f:
                         cafe_profile = CafeProfile.model_validate_json(f.read())
                 else:
-                    cafe_profile = process_place(competitor)
+                    cafe_profile = process_competitor_place(competitor)
                 processed_competitors.append(cafe_profile)
-            request_id = 'MONAS'
             # request_id = sha256(
             #     f"{additional_prompt}-{location['lat']}-{location['lng']}"
             # ).hexdigest()
-            recommendation = generate_recommendation(   # Generate recommendation
+            recommendation = generate_recommendation(  # Generate recommendation
                 request_id=request_id,
                 user_query=UserQuery(
                     description=additional_prompt,
@@ -88,8 +89,12 @@ def analyze_data(request):
                 opportunities_list=processed_opportunities,
                 competitor_list=processed_competitors,
             )
-            
-            with open(r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/MONAS.md", "r", encoding="utf-8") as f:
+
+            with open(
+                r"C:/Users/puter/Documents/git/geomarket_agent_research/geomarket_agent/outputs/recommendations/MONAS.md",
+                "r",
+                encoding="utf-8",
+            ) as f:
                 recommendation = f.read()
             # create pydantic schema instance
             request_data = request_schema(
@@ -102,18 +107,24 @@ def analyze_data(request):
 
             # from pydantic schema, create SQLAlchemy model instance
             request_hist_model = request_hist(**request_data.dict())
-            
+
             # Add and commit to the database
             session.add(request_hist_model)
             session.commit()
 
             print("Data saved to database successfully. ID:", request_hist_model.id)
-            
-            
+
             ## Genereate PDF from recommendation
-            pdf = MarkdownPdf(toc_level=2, optimize=True)         
-            pdf.add_section(Section(recommendation),user_css="table, th, td {border: 1px solid black;}")          
-            pdf.save(r"C:/Users/puter\Documents/git/geomarket_agent_research/geomarket_agent/frontend/public/reccommendation_result/reccommendation_output_"+str(request_hist_model.id)+".pdf")
+            pdf = MarkdownPdf(toc_level=2, optimize=True)
+            pdf.add_section(
+                Section(recommendation),
+                user_css="table, th, td {border: 1px solid black;}",
+            )
+            pdf.save(
+                r"C:/Users/puter\Documents/git/geomarket_agent_research/geomarket_agent/frontend/public/reccommendation_result/reccommendation_output_"
+                + str(request_hist_model.id)
+                + ".pdf"
+            )
 
             # Semangat bikin logika ML
 
@@ -197,16 +208,23 @@ def view_history(request):
             address = req_hist_data.address
             additional_prompt = req_hist_data.additional_prompts
             Suggestion = req_hist_data.reccommendation_result
-            
+
             # result_file_path = r"C:\Users\puter\Documents\git\geomarket_agent_research\geomarket_agent\outputs\recommendations"
-            
-            
-            return JsonResponse({"status": "Analyze prosessing completed", "message": {"request_id":hist_id,
-                                                                                       "additional_prompt": additional_prompt, 
-                                                                                       "longitude": location["lng"],"latitude":location["lat"],
-                                                                                       "address": address,
-                                                                                       "suggestion":Suggestion}}, status=200)
-       
-       
+
+            return JsonResponse(
+                {
+                    "status": "Analyze prosessing completed",
+                    "message": {
+                        "request_id": hist_id,
+                        "additional_prompt": additional_prompt,
+                        "longitude": location["lng"],
+                        "latitude": location["lat"],
+                        "address": address,
+                        "suggestion": Suggestion,
+                    },
+                },
+                status=200,
+            )
+
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=400)

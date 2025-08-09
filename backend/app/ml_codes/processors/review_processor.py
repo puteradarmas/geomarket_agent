@@ -12,11 +12,7 @@ from pydantic_ai import Agent, BinaryContent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 
-llm = OpenAIModel(
-    model_name="qwen3-4b",
-    provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
-)
-agent: Agent[str] = Agent(model=llm, output_type=str)
+from app.ml_codes.agents import qwen_agent as agent
 
 PROCESS_REVIEW_PROMPT = Template("""\
 Given the following reviews of a cafe:

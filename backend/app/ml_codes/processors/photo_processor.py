@@ -2,12 +2,8 @@ from jinja2 import Template
 from pydantic_ai import Agent, BinaryContent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
+from app.ml_codes.agents import qwen_vlm_agent as agent
 
-vlm = OpenAIModel(
-    model_name="qwen2.5vl:3b",
-    provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
-)
-agent: Agent[None, str] = Agent(model=vlm, output_type=str)
 
 VLM_PROMPT = """\
 Given a picture of a cafe, describe the image by looking for and paying attention to the following aspects:

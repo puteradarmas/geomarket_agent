@@ -12,21 +12,20 @@ from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 
 from app.ml_codes.processors.photo_processor import process_photo
-from app.ml_codes.processors.review_processor import process_reviews, remove_think_tokens
-from app.ml_codes.schemas import CafeProfile, GeneralProfile
-
-llm = OpenAIModel(
-    model_name="qwen3-4b",
-    provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
+from app.ml_codes.processors.review_processor import (
+    process_reviews,
+    remove_think_tokens,
 )
-agent: Agent[str] = Agent(model=llm, output_type=str)
+from app.ml_codes.schemas import CafeProfile, GeneralProfile, filter_invalid_enums
+from app.ml_codes.agents import qwen_agent as agent
+from app.envs import GMAPS_API_KEY
 
 
 OUTPUT_DIR = "outputs/intermediate"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-CACHE_DIR = "cache/img"
-GMAPS_API_KEY = "AIzaSyBMM3_s3QjI-5LNDDB5xwZoG28i_OBC3ek"
+CACHE_DIR = "outputs/imgcache"
+os.makedirs(CACHE_DIR, exist_ok=True)
 
 
 CONSOLIDATE_SUMMARIES_PROMPT = Template("""\
@@ -76,20 +75,78 @@ Photo summaries:
 """)
 
 REFORMAT_PROMPT_TEMPLATE = Template("""\
-Reformat the following llm output:
+# task
+Reformat the following json llm output:
 
 {{ llm_output }}
 
-So that it follows this schema:
+So that its content follows this schema:
 
 {{ schema }}
 
-The following are the only changes you are allowed to make:
-1. Changing a field key to match the schema.
-2. Mapping a value to one of the enumerated values for each fields, where applicable.
-3. If multiple json objects are present, merge them into one object.
+Return the reformated json object.
 
-Return the full reformated json object.
+# changes you are allowed to make
+## Changing a field key to match the schema.
+### Example
+raw output:
+```
+{
+    "food_menu": ["meat", "vegetarian"]
+}
+```
+schema:
+```
+{
+    ...
+    "properties": {
+        "food": {
+            ... # Assume no other restrictions
+        }
+    }
+}
+```
+reformat output:
+```
+{
+    "food": ["meat", "vegetarian"]
+}
+```
+Explanation: "food_menu" is not in the schema, but it can be mapped to "food" because it is the closest in meaning and schema.
+## For enumerated fields, match the values to the valid enum values. Remove values that cannot be mapped.
+MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
+MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
+MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
+MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
+MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
+### Example
+raw output:
+```
+{
+    "beverages": ["coffee latte", "matcha latte", "pineapple juice"]
+}
+```
+schema:
+```
+{
+    ...
+    "properties": {
+        "beverages": {
+            "enum": ["coffee", "non-coffee-dairy"]
+            ... # Assume no other restrictions
+        }
+    }
+}
+```
+reformat output:
+```
+{
+    "beverages": ["coffee", "non-coffee-dairy"]
+}
+```
+Explanation: "beverages" has a set of enumerated values. Coffee latte can be mapped to coffee. Matcha latte can be mapped to non-coffee-dairy. pineapple juice does not match any, so it is removed.
+## If multiple json objects are present, merge them into one object. Make sure to apply above transformation too before merging.
+
 /nothink\
 """)
 
@@ -120,7 +177,12 @@ def extract_api_informations(place_object: dict) -> dict:
     return {
         "name": place_object["displayName"]["text"],
         "location": place_object["formattedAddress"],
-        "latlong": (place_object["location"]["latitude"], place_object["location"]["longitude"]) if "location" in place_object else None,
+        "latlong": (
+            place_object["location"]["latitude"],
+            place_object["location"]["longitude"],
+        )
+        if "location" in place_object
+        else None,
         "rating": place_object.get("rating", "NO INFO"),
         "user_rating_count": place_object.get("userRatingCount", "NO INFO"),
         "opening_hours": place_object.get("regularOpeningHours", {}).get(
@@ -130,8 +192,12 @@ def extract_api_informations(place_object: dict) -> dict:
         if "priceRange" in place_object
         else "NO INFO",
         "editorialSummary": place_object.get("editorialSummary", {}).get("text", ""),
-        "generativeSummary": place_object.get("generativeSummary", {}).get("overview", {}).get("text", ""),
-        "reviewSummary": place_object.get("reviewSummary", {}).get("text", {}).get("text", ""),
+        "generativeSummary": place_object.get("generativeSummary", {})
+        .get("overview", {})
+        .get("text", ""),
+        "reviewSummary": place_object.get("reviewSummary", {})
+        .get("text", {})
+        .get("text", ""),
         "flags": {
             k: place_object[k]
             for k in [
@@ -211,7 +277,7 @@ def grab_photos_bytes(photos: list[dict]) -> list[bytes]:
     return photobytes
 
 
-def save_cache(cache_path, cache_object):
+def persist_cache(cache_path, cache_object):
     with open(cache_path, "w") as f:
         json.dump(cache_object, f, indent=2)
 
@@ -247,15 +313,24 @@ def consolidate_summaries(cafe_raw_features: dict) -> CafeProfile:
 
 def process_opportunity(place_object: dict) -> GeneralProfile:
     editorialSummary = place_object.get("editorialSummary", {}).get("text", "")
-    generativeSummary = place_object.get("generativeSummary", {}).get("overview", {}).get("text", "")
-    reviewSummary = place_object.get("reviewSummary", {}).get("text", {}).get("text", "")
+    generativeSummary = (
+        place_object.get("generativeSummary", {}).get("overview", {}).get("text", "")
+    )
+    reviewSummary = (
+        place_object.get("reviewSummary", {}).get("text", {}).get("text", "")
+    )
     all_summaries = [editorialSummary, generativeSummary, reviewSummary]
     return GeneralProfile(
         name=place_object["displayName"]["text"],
         type=place_object["primaryTypeDisplayName"]["text"],
-        latlong=[place_object["location"]["latitude"], place_object["location"]["longitude"]],
-        opening_hours=place_object.get("regularOpeningHours", {}).get("weekdayDescriptions", ["NO INFO"]),
-        summaries=[s for s in all_summaries if s != ""]
+        latlong=[
+            place_object["location"]["latitude"],
+            place_object["location"]["longitude"],
+        ],
+        opening_hours=place_object.get("regularOpeningHours", {}).get(
+            "weekdayDescriptions", ["NO INFO"]
+        ),
+        summaries=[s for s in all_summaries if s != ""],
     )
 
 
@@ -338,7 +413,7 @@ def extract_json_objects(text, decoder=json.JSONDecoder()):
             pos = match + 1
 
 
-def attempt_json_parse(llm_output: str) -> CafeProfile:
+def attempt_json_parse(llm_output: str, desperate: bool = False) -> CafeProfile:
     llm_output = remove_think_tokens(llm_output)
     print(llm_output)
     json_objects = []
@@ -354,7 +429,8 @@ def attempt_json_parse(llm_output: str) -> CafeProfile:
                 jsobj["rating"] = None
             if "user_rating_count" in jsobj and jsobj["user_rating_count"] == -1:
                 jsobj["user_rating_count"] = None
-            parsed_object = CafeProfile.model_validate(jsobj)
+            with filter_invalid_enums(desperate):
+                parsed_object = CafeProfile.model_validate(jsobj)
             parsed_objects.append(parsed_object)
         except Exception as ex:
             print(ex)
@@ -367,10 +443,14 @@ def attempt_json_parse(llm_output: str) -> CafeProfile:
 def create_general_summary(generated_profile: CafeProfile) -> str:
     profile_obj = generated_profile.model_dump(mode="json")
     all_summaries = []
-    all_summaries.append(f"Cafe name: {profile_obj['name']}. Location: {profile_obj['location']}.")
-    if (rating:=profile_obj["rating"] is not None) and (urc:=profile_obj["user_rating_count"] is not None):
+    all_summaries.append(
+        f"Cafe name: {profile_obj['name']}. Location: {profile_obj['location']}."
+    )
+    if (rating := profile_obj["rating"] is not None) and (
+        urc := profile_obj["user_rating_count"] is not None
+    ):
         all_summaries.append(f" Rating: {rating}/5 from {urc} reviewers.")
-        
+
     for key in [
         "price_range",
         "food_and_beverages_options",
@@ -387,15 +467,14 @@ def create_general_summary(generated_profile: CafeProfile) -> str:
         "service_style",
         "typical_wait_time",
         "staff_friendliness",
-        "facilities"
+        "facilities",
     ]:
-        if value:=profile_obj[key]:
+        if value := profile_obj[key]:
             if type(value) is list:
                 all_summaries.append(f"{key.replace('_', ' ')}: [{','.join(value)}]")
             else:
                 all_summaries.append(f"{key.replace('_', ' ')}: {value}")
-    return ' '.join(all_summaries)
-        
+    return " ".join(all_summaries)
 
 
 def generate_place_summary(
@@ -428,7 +507,9 @@ def generate_place_summary(
     return place_summary
 
 
-def process_place(place_object: dict, max_reformat_attempts: int = 3) -> CafeProfile:
+def process_competitor_place(
+    place_object: dict, max_reformat_attempts: int = 3
+) -> CafeProfile:
     placeid = place_object["id"]
     fullcachepath = os.path.join(OUTPUT_DIR, f"{placeid}.json")
     print(f"Finding cache for {placeid}...")
@@ -443,7 +524,7 @@ def process_place(place_object: dict, max_reformat_attempts: int = 3) -> CafePro
         print("calculating API INFO...")
         api_info = extract_api_informations(place_object)
         cafe_raw_features["api_info"] = api_info
-        save_cache(fullcachepath, cafe_raw_features)
+        persist_cache(fullcachepath, cafe_raw_features)
     else:
         print("API INFO already calculated. skipping..")
     reviews = place_object["reviews"]
@@ -452,7 +533,7 @@ def process_place(place_object: dict, max_reformat_attempts: int = 3) -> CafePro
         print("calculating review summary...")
         review_summary = process_reviews(reviews)
         cafe_raw_features["review_summary"] = review_summary
-        save_cache(fullcachepath, cafe_raw_features)
+        persist_cache(fullcachepath, cafe_raw_features)
     else:
         print("reviewsummary already calculated.. skipping..")
     photo_summaries = []
@@ -467,7 +548,7 @@ def process_place(place_object: dict, max_reformat_attempts: int = 3) -> CafePro
             photo_bytes = grab_photo_from_gmaps(photo["name"])
             photo_summary = process_photo([photo_bytes])
             cafe_raw_features["photos_summaries"][photo_identifier] = photo_summary
-            save_cache(fullcachepath, cafe_raw_features)
+            persist_cache(fullcachepath, cafe_raw_features)
         photo_summaries.append(photo_summary)
     print("finished processing all photos")
     if "final_raw_summary" in cafe_raw_features:
@@ -477,7 +558,7 @@ def process_place(place_object: dict, max_reformat_attempts: int = 3) -> CafePro
         print("calculating consolidated summary..")
         consolidator_output = consolidate_summaries(cafe_raw_features)
         cafe_raw_features["final_raw_summary"] = consolidator_output
-        save_cache(fullcachepath, cafe_raw_features)
+        persist_cache(fullcachepath, cafe_raw_features)
         print("finished consolidated summary..")
 
     reformat_output = consolidator_output
@@ -502,19 +583,20 @@ def process_place(place_object: dict, max_reformat_attempts: int = 3) -> CafePro
             reformat_flag = True
             print(f"Parsing failed.. Reason: {ex}")
     if parsed_output is None:
-        return None
+        print(f"{placeid} failed parsing. Defaulting to extreme schema enforcing.")
+        parsed_output = attempt_json_parse(reformat_output, desperate=True)
 
     parsed_output = merge_api_info_with_profile(
         parsed_output, cafe_raw_features["api_info"]
     )
-    
+
     if "one_sentence_summary" not in cafe_raw_features:
         one_sentence_summary = generate_place_summary(cafe_raw_features, parsed_output)
         cafe_raw_features["one_sentence_summary"] = one_sentence_summary
-        save_cache(fullcachepath, cafe_raw_features)
+        persist_cache(fullcachepath, cafe_raw_features)
     else:
         one_sentence_summary = cafe_raw_features["one_sentence_summary"]
-    
+
     parsed_output.one_sentence_summary = one_sentence_summary
-    
+
     return parsed_output

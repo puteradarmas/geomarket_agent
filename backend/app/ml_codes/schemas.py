@@ -1,7 +1,75 @@
+import threading
 from enum import Enum
-from typing import List, Optional, Union
+from typing import List, Optional, Dict
 
-from pydantic import BaseModel, Field
+from contextlib import contextmanager
+
+from pydantic import BaseModel, Field, field_validator, ValidationError
+
+
+class FilteringContext:
+    _local = threading.local()
+    
+    @classmethod
+    def set_filter_mode(cls, enabled: bool):
+        """Enable or disable enum filtering globally"""
+        cls._local.filter_invalid_enums = enabled
+    
+    @classmethod
+    def is_filter_enabled(cls) -> bool:
+        """Check if enum filtering is currently enabled"""
+        return getattr(cls._local, 'filter_invalid_enums', False)
+
+@contextmanager
+def filter_invalid_enums(enabled: bool = True):
+    """Context manager to temporarily enable/disable enum filtering"""
+    original = FilteringContext.is_filter_enabled()
+    FilteringContext.set_filter_mode(enabled)
+    try:
+        yield
+    finally:
+        FilteringContext.set_filter_mode(original)
+
+
+class FilterableEnumModel(BaseModel):
+    """Base model that supports toggleable enum filtering"""
+    
+    @classmethod
+    def __init_subclass__(cls, **kwargs):
+        """Initialize the enum registry when subclass is created"""
+        super().__init_subclass__(**kwargs)
+        cls.enum_field_registry = {}
+    
+    @classmethod
+    def register_enum_field(cls, field_name: str, enum_class: type):
+        """Register a field as an enum list field"""
+        if not hasattr(cls, 'enum_field_registry'):
+            cls.enum_field_registry = {}
+        cls.enum_field_registry[field_name] = enum_class
+    
+    @field_validator('*', mode='before')
+    @classmethod
+    def filter_enum_lists(cls, v, info):
+        """Universal validator for all enum list fields"""
+        field_name = info.field_name
+        
+        # Skip if filtering is disabled or this isn't a registered enum field
+        if not FilteringContext.is_filter_enabled():
+            return v
+        
+        registry = getattr(cls, 'enum_field_registry', {})
+        if field_name not in registry:
+            return v
+            
+        if not isinstance(v, list):
+            return v
+        
+        enum_class = registry[field_name]
+        valid_enum_values = set(item.value for item in enum_class)
+        
+        # Filter out invalid values
+        valid_values = [item for item in v if item in valid_enum_values]
+        return valid_values
 
 
 class PriceLevel(str, Enum):
@@ -130,7 +198,7 @@ class GeneralProfile(BaseModel):
     summaries: list[str]
     distance_to_point: list[tuple[str, str, str]] = []
 
-class CafeProfile(BaseModel):
+class CafeProfile(FilterableEnumModel):
     # Core Identification
     name: Optional[str] = None
     latlong: Optional[list[float, float]] = None
@@ -174,3 +242,9 @@ class CafeProfile(BaseModel):
 
     class Config:
         use_enum_values = True
+
+CafeProfile.register_enum_field("food_and_beverages_options", ServiceType)
+CafeProfile.register_enum_field("fulfillment_methods", FulfillmentMethod)
+CafeProfile.register_enum_field("seating_types", SeatingType)
+CafeProfile.register_enum_field("decor_styles", DecorStyle)
+CafeProfile.register_enum_field("facilities", FacilityType)
