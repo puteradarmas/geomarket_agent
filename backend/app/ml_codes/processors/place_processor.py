@@ -415,13 +415,11 @@ def extract_json_objects(text, decoder=json.JSONDecoder()):
 
 def attempt_json_parse(llm_output: str, desperate: bool = False) -> CafeProfile:
     llm_output = remove_think_tokens(llm_output)
-    print(llm_output)
     json_objects = []
     for json_object in extract_json_objects(llm_output):
         json_objects.append(json_object)
     if not json_objects:
         raise ValueError("Cannot find json in output")
-    print(json_objects)
     parsed_objects = []
     for jsobj in json_objects:
         try:
@@ -436,6 +434,7 @@ def attempt_json_parse(llm_output: str, desperate: bool = False) -> CafeProfile:
             print(ex)
             continue
     if len(parsed_objects) != 1:
+        print(json_objects)
         raise ValueError(f"Found {len(parsed_objects)} object instead of just 1")
     return parsed_objects[0]
 

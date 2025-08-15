@@ -61,15 +61,18 @@ class FilterableEnumModel(BaseModel):
         if field_name not in registry:
             return v
             
-        if not isinstance(v, list):
-            return v
-        
-        enum_class = registry[field_name]
-        valid_enum_values = set(item.value for item in enum_class)
-        
-        # Filter out invalid values
-        valid_values = [item for item in v if item in valid_enum_values]
-        return valid_values
+        if isinstance(v, list):    
+            enum_class = registry[field_name]
+            valid_enum_values = set(item.value for item in enum_class)
+            
+            # Filter out invalid values
+            valid_values = [item for item in v if item in valid_enum_values]
+            return valid_values
+        else:
+            enum_class = registry[field_name]
+            valid_enum_values = set(item.value for item in enum_class)
+            if v not in valid_enum_values:
+                return None 
 
 
 class PriceLevel(str, Enum):
@@ -248,3 +251,12 @@ CafeProfile.register_enum_field("fulfillment_methods", FulfillmentMethod)
 CafeProfile.register_enum_field("seating_types", SeatingType)
 CafeProfile.register_enum_field("decor_styles", DecorStyle)
 CafeProfile.register_enum_field("facilities", FacilityType)
+CafeProfile.register_enum_field("capacity_size", CapacitySize)
+CafeProfile.register_enum_field("spacing_level", SpacingLevel)
+CafeProfile.register_enum_field("lighting_style", LightingStyle)
+CafeProfile.register_enum_field("noise_level", NoiseLevel)
+CafeProfile.register_enum_field("wifi_quality", QualityLevel)
+CafeProfile.register_enum_field("power_outlet_availability", AvailabilityLevel)
+CafeProfile.register_enum_field("service_style", ServiceStyle)
+CafeProfile.register_enum_field("typical_wait_time", WaitTime)
+CafeProfile.register_enum_field("staff_friendliness", QualityLevel)
