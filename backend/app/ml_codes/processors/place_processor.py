@@ -29,10 +29,9 @@ os.makedirs(CACHE_DIR, exist_ok=True)
 
 
 CONSOLIDATE_SUMMARIES_PROMPT = Template("""\
-<background>
+# ROLE
 You are a professional cafe analyst piecing together multiple informations about the same cafe into one unified structured information.
-</background>
-<instruction>
+# INSTRUCTION
 You will be given multiple summaries derived from differing sources. All of the summaries refer to the same cafe.
 You will also be given a schema explaining the fields and possible values for each field for a JSON object.
 Here is the breakdown of your task:
@@ -43,20 +42,20 @@ Here is the breakdown of your task:
 4. Then output the final JSON object that follows the schema. You must output only a single JSON object.
 
 Not following the breakdown properly and not adhering to the rules will make you unhelpful.
-</instruction>
-<merging_strategies>
+
+## MERGING STRATEGY 
 Use the following strategy to merge values
 - Values describing availability: as long as one information confirms it exists, it exists.
 - Values describing quantity: do majority voting excluding the zero / null values. Always err upwards.
 - Lists: merge all the lists together, keep unique values only
-</merging_strategies>
-<rules>
+
+## RULES
 Adhere to the following rules:
 - Leave fields empty (give them a value of `null`) when you cannot find information about them.
 - Do not try to assume or infer a missing information without a reliable indicator. No info means null.
 - Only generate one final JSON object. This JSON object must follow the schema.
-</rules>
-<inputs>
+
+## INPUTS
 Editorial summaries:
 
 {{editorial_summaries}}
@@ -68,86 +67,6 @@ Review summary:
 Photo summaries:
 
 {{photo_summaries}}
-</inputs>
-<schema>
-{{schema}}
-</schema>
-""")
-
-REFORMAT_PROMPT_TEMPLATE = Template("""\
-# task
-Reformat the following json llm output:
-
-{{ llm_output }}
-
-So that its content follows this schema:
-
-{{ schema }}
-
-Return the reformated json object.
-
-# changes you are allowed to make
-## Changing a field key to match the schema.
-### Example
-raw output:
-```
-{
-    "food_menu": ["meat", "vegetarian"]
-}
-```
-schema:
-```
-{
-    ...
-    "properties": {
-        "food": {
-            ... # Assume no other restrictions
-        }
-    }
-}
-```
-reformat output:
-```
-{
-    "food": ["meat", "vegetarian"]
-}
-```
-Explanation: "food_menu" is not in the schema, but it can be mapped to "food" because it is the closest in meaning and schema.
-## For enumerated fields, match the values to the valid enum values. Remove values that cannot be mapped.
-MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
-MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
-MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
-MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
-MAP VALUES INTO ITS ENUM OR REMOVE IF NOT POSSIBLE
-### Example
-raw output:
-```
-{
-    "beverages": ["coffee latte", "matcha latte", "pineapple juice"]
-}
-```
-schema:
-```
-{
-    ...
-    "properties": {
-        "beverages": {
-            "enum": ["coffee", "non-coffee-dairy"]
-            ... # Assume no other restrictions
-        }
-    }
-}
-```
-reformat output:
-```
-{
-    "beverages": ["coffee", "non-coffee-dairy"]
-}
-```
-Explanation: "beverages" has a set of enumerated values. Coffee latte can be mapped to coffee. Matcha latte can be mapped to non-coffee-dairy. pineapple juice does not match any, so it is removed.
-## If multiple json objects are present, merge them into one object. Make sure to apply above transformation too before merging.
-
-/nothink\
 """)
 
 ONE_SENTENCE_SUMMARIZER = Template("""\
@@ -299,9 +218,9 @@ def consolidate_summaries(cafe_raw_features: dict) -> CafeProfile:
             review_summary=cafe_raw_features["review_summary"],
             photo_summaries="\n".join(
                 [f" - {v}" for v in cafe_raw_features["photos_summaries"].values()]
-            ),
-            schema=CafeProfile.model_json_schema(),
-        )
+            )
+        ),
+        output_type=CafeProfile
     )
     usage = llm_output.usage()
     print(
@@ -560,33 +479,8 @@ def process_competitor_place(
         persist_cache(fullcachepath, cafe_raw_features)
         print("finished consolidated summary..")
 
-    reformat_output = consolidator_output
-    parsed_output: CafeProfile = None
-    reformat_flag = False
-    print("Starting parsing and reformatting..")
-    for i in range(max_reformat_attempts + 1):
-        try:
-            if reformat_flag:
-                print("Attempting reformat..")
-                reformat_output = agent.run_sync(
-                    REFORMAT_PROMPT_TEMPLATE.render(
-                        llm_output=remove_think_tokens(reformat_output),
-                        schema=CafeProfile.model_json_schema(),
-                    )
-                ).output
-            print("Parsing..")
-            parsed_output = attempt_json_parse(reformat_output)
-            print("Parsing completed..")
-            break
-        except Exception as ex:
-            reformat_flag = True
-            print(f"Parsing failed.. Reason: {ex}")
-    if parsed_output is None:
-        print(f"{placeid} failed parsing. Defaulting to extreme schema enforcing.")
-        parsed_output = attempt_json_parse(reformat_output, desperate=True)
-
     parsed_output = merge_api_info_with_profile(
-        parsed_output, cafe_raw_features["api_info"]
+        consolidator_output, cafe_raw_features["api_info"]
     )
 
     if "one_sentence_summary" not in cafe_raw_features:

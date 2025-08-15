@@ -10,162 +10,149 @@ from app.ml_codes.recommendation.swot import generate_swot_analysis
 from app.ml_codes.processors.place_processor import persist_cache, extract_json_objects
 
 from app.ml_codes.agents import gemini_agent
+from app.ml_codes.schemas import ReasoningAndOutput
+
+from typing import TypeVar, Callable
+
+ParsedOutputType = TypeVar("ParsedOutputType")
+ModelOutputType = TypeVar("ModelOutputType")
 
 CACHE_DIR = "outputs/recommender_intermediate"
 os.makedirs(CACHE_DIR, exist_ok=True)
 
-GAP_ANALYSIS_PROMPT_TEMPLATE = Template("""
-<role>
+GAP_ANALYSIS_PROMPT_TEMPLATE = Template("""\
+# Role
 You are a senior business analyst specializing in retail and F&B gap analyses. Conduct a professional gap analysis for a cafe business using ONLY user-provided data. Never invent facts or make assumptions.
-</role>
 
-<instruction>
+# Instruction
 Follow the provided analysis framework and adhere to the output format provided below.
-First, think and reason about each steps of your detailed analysis. Fill the `reasoning` tag provided below.
-Afterwards, generate your final answer following the output format in the `output` tag.
-</instruction>
+First, think and reason about each steps of your detailed analysis. Put your reasoning in a separate `reasoning` section.
+Afterwards, generate your final answer following the output format in the `output` section.
 
-<background_context>
+# Background Context
 The user is establishing/optimizing a cafe in a competitive area nearby cafes. You will receive:
 1. Demographic analysis of the immediate area provided in `demographic_analysis`
 2. SWOT analysis of the user's cafe concept, provided in `user_swot`
 3. SWOTs analysis of competitor cafes, provide in `competitor_cafe_swots`
-</background_context>
 
-<rules>
+# Rules
 - Strictly use only provided data - never invent or extrapolate
 - State "Insufficient data: [missing element]" if inputs are incomplete
 - Quantify comparisons using relative terms (e.g., "20% higher pricing")
 - Prioritize actionable opportunities with clear exploitation paths
 - Maintain neutral objectivity when analyzing all SWOTs
-</rules>
 
-<analysis_framework>
+# Analysis Framework
 1. UNMET NEEDS: Identify demographic needs unaddressed by ANY cafe (including user's), supported by demographic data
 2. POSITIONING: Compare user's concept vs competitors by comparing SWOTs strengths/weaknesses
 3. VULNERABILITIES: Extract confirmed weaknesses from competitor SWOTs provided in `competitor_cafe_swots` and map to user's strengths provided in `user_swot`
 4. FIT GAPS: Evaluate alignment between ALL cafes and demographic data
-</analysis_framework>
 
-<output_format>
-<gap_analysis_report>
-<report_title>Gap Analysis: [User's Cafe Name]</report_title>
-
-<unmet_demographic_needs>
-<identified_gaps>
+# Output Format
+```markdown
+# 1. Unmet Demographic Needs
+## Identified Gaps
 - [Specific need] (Evidence: [Demographic data reference])
 - [Specific need] (Evidence: [Demographic data reference])
-</identified_gaps>
-<competitor_coverage_gap>[Summary statement]</competitor_coverage_gap>
-</unmet_demographic_needs>
 
-<concept_positioning>
-<strengths>[Advantage vs competitors] (Source: [User SWOT Strength])</strengths>
-<weaknesses>[Disadvantage vs competitors] (Source: [User SWOT Weakness])</weaknesses>
-<differentiation_score>[High/Medium/Low] based on uniqueness</differentiation_score>
-</concept_positioning>
+## Competitor Coverage Gap
+[Summary statement]
 
-<competitor_vulnerabilities>
-<vulnerability>
-<competitor>[Competitor 1]</competitor>
-<weakness>[Specific weakness]</weakness>
-<opportunity>[Matching user strength]</opportunity>
-</vulnerability>
-<vulnerability>
-<competitor>[Competitor 2]</competitor>
-<weakness>[Specific weakness]</weakness>
-<opportunity>[Matching user strength]</opportunity>
-</vulnerability>
-...
-<vulnerability>
-<competitor>[Competitor N]</competitor>
-<weakness>[Specific weakness]</weakness>
-<opportunity>[Matching user strength]</opportunity>
-</vulnerability>
-</competitor_vulnerabilities>
+# 2. Concept Positioning
+## Strengths
+[Advantage vs competitors] (Source: [User SWOT Strength])
 
-<demographic_fit_gaps>
-<users_cafe_fit>
-<alignment>[Aspect matching demographics]</alignment>
-<misalignment>[Aspect conflicting demographics] (Source: [Data reference])</misalignment>
-</users_cafe_fit>
+## Weaknesses
+[Disadvantage vs competitors] (Source: [User SWOT Weakness])
 
-<competitor_fit_summary>
-<competitor name="[Competitor 1]">
-<pricing_misalignment>[Description]</pricing_misalignment>
-<experience_gaps>[Description]</experience_gaps>
-<service_limitations>[Description]</service_limitations>
-</competitor>
-<competitor name="[Competitor 2]">
-<pricing_misalignment>[Description]</pricing_misalignment>
-<experience_gaps>[Description]</experience_gaps>
-<service_limitations>[Description]</service_limitations>
-</competitor>
-...
-<competitor name="[Competitor N]">
-<pricing_misalignment>[Description]</pricing_misalignment>
-<experience_gaps>[Description]</experience_gaps>
-<service_limitations>[Description]</service_limitations>
-</competitor>
-</competitor_fit_summary>
+## Differentiation Score
+[High/Medium/Low] based on uniqueness
 
-<critical_gaps>[Shared weaknesses across all cafes]</critical_gaps>
-</demographic_fit_gaps>
+# 3. Competitor Vulnerabilities
+| Competitor | Weakness | Opportunity |
+|------------|----------|-------------|
+| [Competitor 1] | [Specific weakness] | [Matching user strength] |
+| [Competitor 2] | [Specific weakness] | [Matching user strength] |
+| [Competitor N] | [Specific weakness] | [Matching user strength] |
 
-<strategic_recommendations>
-<priority_opportunities>
+# 4. Demographic Fit Gaps
+## User's Cafe Fit
+**Alignment:** [Aspect matching demographics]
+
+**Misalignment:** [Aspect conflicting demographics] (Source: [Data reference])
+
+## Competitor Fit Summary
+### [Competitor 1]
+- **Pricing Misalignment:** [Description]
+- **Experience Gaps:** [Description]
+- **Service Limitations:** [Description]
+
+### [Competitor 2]
+- **Pricing Misalignment:** [Description]
+- **Experience Gaps:** [Description]
+- **Service Limitations:** [Description]
+
+### [Competitor N]
+- **Pricing Misalignment:** [Description]
+- **Experience Gaps:** [Description]
+- **Service Limitations:** [Description]
+
+## Critical Gaps
+[Shared weaknesses across all cafes]
+
+# 5. Strategic Recommendations
+## Priority Opportunities
 1. [Actionable opportunity] (Targets: [Specific gap/weakness])
 2. [Actionable opportunity] (Targets: [Specific gap/weakness])
-...
 N. [Actionable opportunity] (Targets: [Specific gap/weakness])
-</priority_opportunities>
-<concept_adjustments>[Data-backed operational changes]</concept_adjustments>
-<risk_mitigation>[Critical user weaknesses to address]</risk_mitigation>
-</strategic_recommendations>
-</gap_analysis_report>
-</output_format>
 
-<user_inputs>
+## Concept Adjustments
+[Data-backed operational changes]
 
-<demographic_analysis>
+## Risk Mitigation
+[Critical user weaknesses to address]
+```
+
+# User Inputs
+
+## Demographic Analysis
 {{demographic_analysis}}
-</demographic_analysis>
 
-<user_swot>
+## User SWOT
 {{user_swot}}
-</user_swot>
 
-<competitor_cafe_swots>
+## Competitor Cafe SWOTs
 {{competitor_swot}}
-</competitor_cafe_swots>
-</user_inputs>
-<reasoning>
-FILL WITH YOUR REASONING
-</reasoning>
-<output>
-YOUR FINAL ANSWER GOES HERE. FOLLOW THE FORMAT
-</output>
 """)
 
 RECOMMENDATION_GENERATION_PROMPT_TEMPLATE = Template("""\
-<role>
+# Business Analyst - Cafe Recommendation Report
+
+# Role
 You are a professional business analyst. Having done your research, you are here to compile a final recommendation report.
-</role>
-<background>
+
+# Background
 You are handling a client's request. Given a location and their concept / idea for a cafe, you were tasked to gather information to ultimately compile an analysis of recommendations for the client.
+
 Previously you have made several analysis of the cafe. These will be your input to make the recommendation report:
 1. A demographics / opportunity analysis from analyzing the types of locations around a cafe location.
 2. A gap analysis of how much the client's cafe fit the opportunity analysis, compared to its nearby competitors (other cafes). This gap analysis has already indirectly integrated the competitor's informations from making comparison.
 3. A SWOT analysis of the client's cafe concept made against the opportunity analysis.
-</background>
-<instruction>
+
+# Instruction
 Compile the informations provided to create a recommendation report.
 Follow the provided format to generate your report.
-First reason about each segments of the report, identify and analyze the relevant inputs to generate the analysis for each section. Enclose your reasoning in the provided `reasoning` XML tag below.
-After you finished reasoning and feels satisfied, generate the report as your final answer, enclosed by `output` XML tags.
+First reason about each segments of the report, identify and analyze the relevant inputs to generate the analysis for each section. Put your reasoning in a separate `reasoning` section.
+After you finished reasoning and feels satisfied, generate the report as your final answer, in the `output` section.
 Your output must be markdown-formatted following the format and layout of the given output format.
-</instruction>
-<output_format>
+
+# Rules
+- The report must follow the above structure without any additions.
+- Making up facts is unhelpful and harmful.
+- Making up another format is also unhelpful and harmful.
+
+# Output Format
+```markdown
 # Cafe Opportunity Analysis: [cafe name if provided]
 
 ## 1. Demographic Opportunity Snapshot
@@ -202,36 +189,24 @@ Example for (3):
 | Priority | Aspect            | Action                          | Reasoning                                            |
 |----------|-------------------|---------------------------------|------------------------------------------------------|
 | High     | Operating factors | Open earlier starting from 6 AM | To cater to workers / university students commuting  |
-</output_format>
-<inputs>
-<demographics_opportunity_analysis>
+```
+
+# Inputs
+## Demographics Opportunity Analysis
 Below is the opportunity analysis based on the inferred demography of the area:
 {{ demographics_opportunity_analysis }}
-</demographics_opportunity_analysis>
-<gap_analysis>
+
+## Gap Analysis
 Below is the gap analysis done by comparing the SWOTs analysis of each cafes with each other. The SWOT is analyzed based on how each cafe fares against the opportunity analyzed above.
 {{ gap_analysis }}
-</gap_analysis>
-<client_swot>
+
+## Client SWOT
 The SWOT of the client cafe:
 {{ client_swot }}
-</client_swot>
-<client_competitors_swots>
+
+## Client Competitors SWOTs
 The SWOTs of all of the competing cafes:
 {{ competitor_swot }}
-</client_competitors_swots>
-</inputs>
-<rules>
-- The report must follow the above structure without any additions.
-- Making up facts is unhelpful and harmful.
-- Making up another format is also unhelpful and harmful.
-</rules>
-<reasoning>
-YOUR REASONING GOES HERE.
-</reasoning>
-<output>
-YOUR OUTPUT GOES HERE. FOLLOW THE MARKDOWN FORMAT PROVIDED ABOVE.
-</output>
 """)
 
 def generate_gap_analysis(
@@ -246,9 +221,10 @@ def generate_gap_analysis(
         )
     print(f"===============================\nFULL PROMPT : \n\n {full_prompt} \n\n =======================================")
     gap_analysis_output = gemini_agent.run_sync(
-        full_prompt
+        full_prompt,
+        output_type=ReasoningAndOutput
     ).output
-    return gap_analysis_output
+    return gap_analysis_output.output
 
 def generate_recommendations(
     gap_analysis: str,
@@ -264,10 +240,11 @@ def generate_recommendations(
     )
     print(f"===============================\nFULL PROMPT : \n\n {full_prompt} \n\n =======================================")
     recommendation_output = gemini_agent.run_sync(
-        full_prompt
+        full_prompt,
+        output_type=ReasoningAndOutput
     ).output
     
-    return recommendation_output
+    return recommendation_output.output
 
 def grab_markdown(
     llm_output: str
@@ -315,9 +292,9 @@ def cached_generation_and_parsing(
     cache_object: dict,
     cache_path: str,
     cache_key: str,
-    wrapped_function: callable,
-    parse_function: callable
-):
+    wrapped_function: Callable[..., ModelOutputType],
+    parse_function: Callable[[ModelOutputType,], ParsedOutputType]
+) :
     rawkey = "raw_" + cache_key
     if cache_key in cache_object:
         return_value = cache_object[cache_key]
@@ -354,50 +331,43 @@ def generate_recommendation(
         cache_file,
         "opportunity_summary",
         partial(generate_opportunity_analysis, opportunities_list=opportunities_list, user_query=user_query),
-        partial(grab_xml_tag, tagname="final_answer")
+        lambda x: x
     )
     print("Generating opportunity analysis DONE.")
-    # print(opportunity_summary)
     print("generating competitor swot")
     competitor_swot = cached_generation_and_parsing(
         cached_results,
         cache_file,
         "competitor_swot",
         partial(generate_swot_analysis, subject_list=competitor_list, opportunity_summary=opportunity_summary),
-        grab_json_values
+        lambda x: x
     )
     print("generating competitor swot DONE")
-    # print(competitor_swot)
     print("generating self SWOT")
     self_swot = cached_generation_and_parsing(
         cached_results,
         cache_file,
         "self_swot",
         partial(generate_swot_analysis, subject_list=[user_query], opportunity_summary=opportunity_summary),
-        grab_json_values
+        lambda x: x
     )
     print("generating self SWOT DONE")
-    # print(self_swot)
     print("generating gap analysis")
-    gap_analysis = cached_generation_and_parsing(
+    gap_analysis: str = cached_generation_and_parsing(
         cached_results,
         cache_file,
         "gap_analysis",
         partial(generate_gap_analysis, self_swot=self_swot, competitor_swot=competitor_swot, opportunity_summary=opportunity_summary),
-        partial(grab_xml_tag, tagname="gap_analysis_report")
+        lambda x: x
     )
     print("generating gap analysis DONE")
-    # print(gap_analysis)
     print("generating recommendation")
     recommendations = cached_generation_and_parsing(
         cached_results,
         cache_file,
         "recommendation",
         partial(generate_recommendations, gap_analysis=gap_analysis, self_swot=self_swot, competitor_swot=competitor_swot, opportunity_summary=opportunity_summary),
-        partial(compose_multiple_transforms, callables=[
-            partial(grab_xml_tag, tagname="output"),
-            grab_markdown
-        ])
+        lambda x: x
     )
     print("generating recommendation DONE")
     return recommendations

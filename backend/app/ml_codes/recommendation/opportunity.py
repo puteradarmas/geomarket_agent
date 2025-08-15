@@ -6,16 +6,16 @@ from pydantic_ai.models.gemini import GeminiModel
 from pydantic_ai.providers.google_gla import GoogleGLAProvider
 from app.ml_codes.grab_locations import grab_distance
 from app.ml_codes.agents import gemini_agent
+from app.ml_codes.schemas import ReasoningAndOutput
 
 
 OPPORTUNITY_ANALYSIS_PROMPT = Template("""\
-<role>
+# ROLE
 You are a professional market and location analyst. 
 Given a location coordinate and an optional description of the user's vision of the cafe, 
 you will perform an analysis of the surrounding locations.
 Help the user analyze surrounding locations to determine the ideal plan for building a cafe.
-</role>
-<instruction>
+# INSTRUCTION
 Follow these steps to chunk and breakdown your task.
 
 First, you need to make an analysis of the surrounding locations.
@@ -35,12 +35,17 @@ Afterwards, consolidate all the informations above and make an analysis focusing
 - Pricing level; Self explanatory
 
 Separate your `observation` from your `final_answer`. Use the provided template below.
-</instruction>
-<answer_format>
-You have been given 2 empty XML tags below, `observation` and `final_answer`.
-format your observation and answer by putting them in the given XML tags.
-</answer_format>
-<inputs>
+# FORMAT
+First generate your reasoning, then your final answer. Use the following format:
+```
+# REASONING
+... 
+
+# ANSWER 
+...
+```
+
+# INPUTS
 The following is the user's description of their idea of what kind of cafe they want to make:
 
 {{ description }}
@@ -48,13 +53,6 @@ The following is the user's description of their idea of what kind of cafe they 
 The following is the descriptions of the opportunities surrounding in your area.
 
 {{ opportunities }}
-</inputs>
-<reasoning>
-YOUR REASONING GOES HERE
-</reasoning>
-<final_answer>
-YOUR FINAL ANSWER GOES HERE
-</final_answer>
 """)
 
 
@@ -91,8 +89,9 @@ def generate_opportunity_analysis(
         OPPORTUNITY_ANALYSIS_PROMPT.render(
             opportunities="\n".join(opportunities_string),
             description=user_query.description
-        )
+        ),
+        output_type=ReasoningAndOutput
     ).output
-    return analysis_result
+    return analysis_result.output
     
         

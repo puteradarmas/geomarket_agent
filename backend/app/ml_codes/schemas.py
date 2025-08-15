@@ -81,9 +81,16 @@ class PriceLevel(str, Enum):
     EXPENSIVE = "expensive"
     VERY_EXPENSIVE = "very_expensive"
 
+class BeverageItems(str, Enum):
+    pass
 
-class ServiceType(str, Enum):
+class FoodItems(str, Enum):
+    pass
+
+class MenuItems(str, Enum):
     COFFEE = "coffee"
+    DAIRY = "dairy"
+    TEA = "tea"
     BREAKFAST = "breakfast"
     BRUNCH = "brunch"
     LUNCH = "lunch"
@@ -200,20 +207,34 @@ class GeneralProfile(BaseModel):
     opening_hours: list[str]
     summaries: list[str]
     distance_to_point: list[tuple[str, str, str]] = []
+    
+class ReasoningAndOutput(BaseModel):
+    reasoning: str
+    output: str
+    
+class SWOTAnalysis(BaseModel):
+    strength: str = Field(description="strength points of the cafe")
+    weakness: str = Field(description="weakness points of the cafe")
+    opportunity: str = Field(description="opportunities that the cafe may have")
+    threat: str = Field(description="threats to the cafe's business")
+
+class CafeSWOTAnalysis(BaseModel):
+    reasoning: str
+    output: list[dict[str, SWOTAnalysis]] = Field(description="list of SWOT analysis for each cafe")
 
 class CafeProfile(FilterableEnumModel):
     # Core Identification
-    name: Optional[str] = None
-    latlong: Optional[list[float, float]] = None
-    location: Optional[str] = None
-    rating: Optional[float] = Field(None, ge=0, le=5, validate_default=False, allow_inf_nan=True)
-    user_rating_count: Optional[int] = Field(None, ge=0, validate_default=False, allow_inf_nan=True)
-    opening_hours: Optional[list[str]] = None
-    price_range: Optional[str] = None
-    one_sentence_summary: Optional[str] = None
+    name: Optional[str] = Field(description="Name of the cafe. Leave empty if no information.")
+    latlong: Optional[list[float, float]] = Field(description="Latitude and longitude of the cafe. Leave empty if no info.")
+    location: Optional[str] = Field(description="address of the cafe. Leave empty.")
+    rating: Optional[float] = Field(None, ge=0, le=5, validate_default=False, allow_inf_nan=True, description="rating, leave empty if no info.")
+    user_rating_count: Optional[int] = Field(None, ge=0, validate_default=False, allow_inf_nan=True, description="count of user ratings. leave empty.")
+    opening_hours: Optional[list[str]] = Field(description="LLM DONT FILL THIS")
+    price_range: Optional[str] = Field(description="LLM DONT FILL THIS")
+    one_sentence_summary: Optional[str] = Field(description="LLM DONT FILL THIS")
 
     # Service Offerings
-    food_and_beverages_options: List[ServiceType] = Field(default_factory=list)
+    food_and_beverages_options: List[MenuItems] = Field(default_factory=list)
     fulfillment_methods: List[FulfillmentMethod] = Field(default_factory=list)
 
     # Physical Space
@@ -246,7 +267,7 @@ class CafeProfile(FilterableEnumModel):
     class Config:
         use_enum_values = True
 
-CafeProfile.register_enum_field("food_and_beverages_options", ServiceType)
+CafeProfile.register_enum_field("food_and_beverages_options", MenuItems)
 CafeProfile.register_enum_field("fulfillment_methods", FulfillmentMethod)
 CafeProfile.register_enum_field("seating_types", SeatingType)
 CafeProfile.register_enum_field("decor_styles", DecorStyle)

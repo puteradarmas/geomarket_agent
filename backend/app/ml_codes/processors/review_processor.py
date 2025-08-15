@@ -20,16 +20,17 @@ Given the following reviews of a cafe:
 {{reviews}}
 
 Perform an analysis by looking for evidence of and paying attention for the following aspects:
-- staff_friendliness
-- typical_wait_time
-- service_style (described ordering/service process)
-- noise_level (described acoustic environment)
-- wifi_quality (does it exist? how reliable is it? poor/fair/good/excellent) 
+- comments on staff friendliness
+- typical waiting time
+- available ordering / service
+- noise level, does it have live music? is it too close to the roadside?
+- wifi availability and its quality if it exists 
 - facilities (mentioned amenities: something like OUTDOOR_SEATING, BOOKSHELF, GAME_AREA, PRAYER_ROOM, CHARGING_STATIONS)
-- power_outlet_availability
-- work_friendly_features (mentions of laptop use/study suitability)
+- availability of power outlets
+- is the cafe friendly for working?
 
-Use plain text without any markdown formatting in your analysis. It is okay to give your analysis a structure.
+Structure the analysis using markdown, each section as its own header and results as bullet list. 
+When information is unavailable, say there's no info on that.
 /nothink\
 """)
 
