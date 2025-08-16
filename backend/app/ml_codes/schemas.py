@@ -1,6 +1,6 @@
 import threading
 from enum import Enum
-from typing import List, Optional, Dict
+from typing import List, Optional, Type
 
 from contextlib import contextmanager
 
@@ -82,15 +82,20 @@ class PriceLevel(str, Enum):
     VERY_EXPENSIVE = "very_expensive"
 
 class BeverageItems(str, Enum):
-    pass
+    COFFEE = "coffee"
+    TEA = "tea"
+    DAIRY = "dairy based drinks"
+    JUICE = "juice"
+    REFRESHING = "refreshing drinks"
 
 class FoodItems(str, Enum):
-    pass
+    LIGHT_BITES = "light bites"
+    PASTA = "pasta"
+    RICE_BASED = "rice"
 
 class MenuItems(str, Enum):
     COFFEE = "coffee"
     DAIRY = "dairy"
-    TEA = "tea"
     BREAKFAST = "breakfast"
     BRUNCH = "brunch"
     LUNCH = "lunch"
@@ -124,6 +129,7 @@ class CapacitySize(str, Enum):
 
 
 class SeatingType(str, Enum):
+    OUTDOOR_SEATING = "outdoor_seating"
     COUNTER = "counter"
     TABLES = "tables"
     COUCHES = "couches"
@@ -182,7 +188,6 @@ class SpacingLevel(str, Enum):
 
 
 class FacilityType(str, Enum):
-    OUTDOOR_SEATING = "outdoor_seating"
     PARKING = "parking"
     RESTROOM = "restroom"
     ACCESSIBLE = "accessible"
@@ -224,48 +229,61 @@ class CafeSWOTAnalysis(BaseModel):
 
 class CafeProfile(FilterableEnumModel):
     # Core Identification
-    name: Optional[str] = Field(description="Name of the cafe. Leave empty if no information.")
-    latlong: Optional[list[float, float]] = Field(description="Latitude and longitude of the cafe. Leave empty if no info.")
-    location: Optional[str] = Field(description="address of the cafe. Leave empty.")
-    rating: Optional[float] = Field(None, ge=0, le=5, validate_default=False, allow_inf_nan=True, description="rating, leave empty if no info.")
-    user_rating_count: Optional[int] = Field(None, ge=0, validate_default=False, allow_inf_nan=True, description="count of user ratings. leave empty.")
-    opening_hours: Optional[list[str]] = Field(description="LLM DONT FILL THIS")
-    price_range: Optional[str] = Field(description="LLM DONT FILL THIS")
-    one_sentence_summary: Optional[str] = Field(description="LLM DONT FILL THIS")
+    name: Optional[str] = Field(description="Name of the cafe")
+    latlong: Optional[list[float, float]] = Field(description="Latitude and longitude of the cafe.")
+    location: Optional[str] = Field(description="address of the cafe.")
+    rating: Optional[float] = Field(None, ge=0, le=5, validate_default=False, allow_inf_nan=True, description="cafe rating.")
+    user_rating_count: Optional[int] = Field(None, ge=0, validate_default=False, allow_inf_nan=True, description="count of user ratings")
+    opening_hours: Optional[list[str]] = Field(description="opening hours of the cafe")
+    price_range: Optional[str] = Field(description="price range")
+    one_sentence_summary: Optional[str] = Field(description="one sentence summary describing the cafe")
 
     # Service Offerings
-    food_and_beverages_options: List[MenuItems] = Field(default_factory=list)
-    fulfillment_methods: List[FulfillmentMethod] = Field(default_factory=list)
+    food_and_beverages_options: List[MenuItems] = Field(default_factory=list, description="food and beverages options available")
+    fulfillment_methods: List[FulfillmentMethod] = Field(default_factory=list, description="fullfilment / ordering methods")
 
     # Physical Space
-    capacity_size: Optional[CapacitySize] = None
-    seating_types: List[SeatingType] = Field(default_factory=list)
-    spacing_level: Optional[SpacingLevel] = None
+    capacity_size: Optional[CapacitySize] = Field(default=None, description="how spacious is the cafe")
+    seating_types: List[SeatingType] = Field(default_factory=list, description="kinds of seating available in the cafe")
+    spacing_level: Optional[SpacingLevel] = Field(default=None, description="spacing between seats")
 
     # Ambience Characteristics
-    decor_styles: List[DecorStyle] = Field(default_factory=list)
-    lighting_style: Optional[LightingStyle] = None
-    noise_level: Optional[NoiseLevel] = None
+    decor_styles: List[DecorStyle] = Field(default_factory=list, description="Style of the interior design")
+    lighting_style: Optional[LightingStyle] = Field(default=None, description="lighting condition of the cafe")
+    noise_level: Optional[NoiseLevel] = Field(default=None, description="observed noise level")
 
     # Work Environment
-    wifi_quality: Optional[QualityLevel] = None
-    power_outlet_availability: Optional[AvailabilityLevel] = None
+    wifi_quality: Optional[QualityLevel] = Field(default=None, description="how good the wifi is if it's available")
+    power_outlet_availability: Optional[AvailabilityLevel] = Field(default=None, description="does the cafe have power outlets")
     work_friendly_features: List[str] = Field(
-        default_factory=list
+        default_factory=list,
+        description="qualities of the cafe that supports working"
     )  # laptop_friendly, study_atmosphere
 
     # Service Experience
-    service_style: Optional[ServiceStyle] = None
-    typical_wait_time: Optional[WaitTime] = None
-    staff_friendliness: Optional[QualityLevel] = None
+    service_style: Optional[ServiceStyle] = Field(default=None, description="serving system in the cafe")
+    typical_wait_time: Optional[WaitTime] = Field(default=None, description="how long does it take for orders to arrive")
+    staff_friendliness: Optional[QualityLevel] = Field(default=None, description="how friendly are the staffs")
 
     # Facilities & Amenities
-    facilities: List[FacilityType] = Field(default_factory=list)
-
-    # Operational Info
+    facilities: List[FacilityType] = Field(default_factory=list, description="facilities and amenities provided by the cafe")
 
     class Config:
         use_enum_values = True
+
+class CafeProfileAndReasoning(BaseModel):
+    reasoning: str
+    profile: CafeProfile
+
+def get_fields_and_descriptions(model_class: Type[BaseModel], exclude_fields: set | None =None):
+    if exclude_fields is None:
+        exclude_fields = set()
+    descriptions = []
+    for name, info in model_class.model_fields.items():
+        if exclude_fields and name in exclude_fields:
+            continue
+        descriptions.append(f"{name}: {info.description}")
+    return "\n".join(descriptions)
 
 CafeProfile.register_enum_field("food_and_beverages_options", MenuItems)
 CafeProfile.register_enum_field("fulfillment_methods", FulfillmentMethod)

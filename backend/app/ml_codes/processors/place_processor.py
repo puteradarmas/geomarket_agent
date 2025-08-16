@@ -16,7 +16,13 @@ from app.ml_codes.processors.review_processor import (
     process_reviews,
     remove_think_tokens,
 )
-from app.ml_codes.schemas import CafeProfile, GeneralProfile, filter_invalid_enums
+from app.ml_codes.schemas import (
+    CafeProfile,
+    CafeProfileAndReasoning,
+    GeneralProfile,
+    filter_invalid_enums,
+    get_fields_and_descriptions,
+)
 from app.ml_codes.agents import qwen_agent as agent
 from app.envs import GMAPS_API_KEY
 
@@ -33,16 +39,12 @@ CONSOLIDATE_SUMMARIES_PROMPT = Template("""\
 You are a professional cafe analyst piecing together multiple informations about the same cafe into one unified structured information.
 # INSTRUCTION
 You will be given multiple summaries derived from differing sources. All of the summaries refer to the same cafe.
-You will also be given a schema explaining the fields and possible values for each field for a JSON object.
-Here is the breakdown of your task:
-1. Identify every fields and their types in the schema.
-2. For each fields, list all relevant pieces of information you can find from all the summaries.
-3. For fields with enumerated values, standardize the values into the enumerated value.
-4. Then for each fields, choose an applicable merging strategy and merge the values.
-4. Then output the final JSON object that follows the schema. You must output only a single JSON object.
-
-Not following the breakdown properly and not adhering to the rules will make you unhelpful.
-
+Your job is to consolidate these summaries into a unified summary. 
+You will meet conflicts / differing information, use the provided merging strategy to tackle that.
+Here are all of the informations you are asked to consolidate together:
+```
+{{ information_list }}
+```
 ## MERGING STRATEGY 
 Use the following strategy to merge values
 - Values describing availability: as long as one information confirms it exists, it exists.
@@ -57,16 +59,19 @@ Adhere to the following rules:
 
 ## INPUTS
 Editorial summaries:
-
+```
 {{editorial_summaries}}
-
+```
+---
 Review summary:
-
+```
 {{review_summary}}
-
+```
+---
 Photo summaries:
-
+```
 {{photo_summaries}}
+```
 """)
 
 ONE_SENTENCE_SUMMARIZER = Template("""\
@@ -212,22 +217,37 @@ def consolidate_summaries(cafe_raw_features: dict) -> CafeProfile:
         if not len(editorial_summaries)
         else "\n".join([f" - {es}" for es in editorial_summaries])
     )
-    llm_output = agent.run_sync(
-        CONSOLIDATE_SUMMARIES_PROMPT.render(
-            editorial_summaries=editorial_summaries,
-            review_summary=cafe_raw_features["review_summary"],
-            photo_summaries="\n".join(
-                [f" - {v}" for v in cafe_raw_features["photos_summaries"].values()]
-            )
+    full_prompt = CONSOLIDATE_SUMMARIES_PROMPT.render(
+        editorial_summaries=editorial_summaries,
+        review_summary=cafe_raw_features["review_summary"],
+        photo_summaries="\n".join(
+            [f" - {v}" for v in cafe_raw_features["photos_summaries"].values()]
         ),
-        output_type=CafeProfile
+        information_list=get_fields_and_descriptions(
+            CafeProfile,
+            exclude_fields=set(
+                [
+                    "name",
+                    "latlong",
+                    "location",
+                    "rating",
+                    "user_rating_count",
+                    "opening_hours",
+                    "price_range",
+                    "one_sentence_summary",
+                ]
+            ),
+        ),
     )
+    llm_output = agent.run_sync(full_prompt, output_type=str)
+    print(llm_output.all_messages()[-3:])
+    exit()
     usage = llm_output.usage()
     print(
         f"LLM used {usage.request_tokens} request and {usage.response_tokens} response tokens totalling {usage.total_tokens}"
     )
     consolidated_summary = llm_output.output
-    return consolidated_summary
+    return consolidated_summary.profile
 
 
 def process_opportunity(place_object: dict) -> GeneralProfile:
@@ -432,6 +452,7 @@ def process_competitor_place(
     fullcachepath = os.path.join(OUTPUT_DIR, f"{placeid}.json")
     print(f"Finding cache for {placeid}...")
     if os.path.exists(fullcachepath):
+        print(fullcachepath)
         with open(fullcachepath, "r") as f:
             cafe_raw_features = json.load(f)
         print("Cache found and loaded.")
@@ -475,7 +496,7 @@ def process_competitor_place(
     else:
         print("calculating consolidated summary..")
         consolidator_output = consolidate_summaries(cafe_raw_features)
-        cafe_raw_features["final_raw_summary"] = consolidator_output
+        cafe_raw_features["final_raw_summary"] = dict(consolidator_output)
         persist_cache(fullcachepath, cafe_raw_features)
         print("finished consolidated summary..")
 

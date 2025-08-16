@@ -84,8 +84,9 @@ def generate_recommendation_for_one_query(
 if __name__ == "__main__":
     additional_prompt = "the user wants to create a cafe that combines a multimedia studio (for filmmakers) and a cafe, so that the cafe can be a hangout spot for people in the scene. The main demographic is probably film students, hobbyists and professionals alike that are likely to need a dedicated studio for shooting and a good spot to hang out before or after."
     inputs = [
-        ("tebet_barat", (-6.239663628729565, 106.8480532100155)),
-        ("tebet_timur", (-6.228977500155005, 106.85375064227549)),
+        # ("tebet_barat", (-6.239663628729565, 106.8480532100155)),
+        # ("tebet_timur", (-6.228977500155005, 106.85375064227549)),
+        ("dago_atas", (-6.870046395903662, 107.61963858654032)),
     ]
     for inp in inputs:
         req_id = inp[0]

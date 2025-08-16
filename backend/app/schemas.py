@@ -151,3 +151,65 @@ class request_schema(BaseModel):
     address: Optional[str] = None
     additional_prompts: Optional[str] = None
     reccommendation_result: str
+    
+    
+    
+    
+class FoodType(str, Enum):
+    LIGHT_BITES = "light bites"
+    RICE_BASED = "rice based meals"
+    NOODLES_BASED = "noodle based meals"
+    WESTERN = "western food"
+    KOREAN = "korean food"
+    JAPANESE = "japanese food"
+    CHINESE = "chinese food"
+    ASIAN = "asian food"
+    OTHERS = "other types"
+
+class DrinkType(str, Enum):
+    COFFEE = "coffee"
+    TEA = "tea"
+    DAIRY = "dairy"
+    JUICE = "juice"
+    REFRESHING_DRINKS = "refreshing drinks"
+    OTHERS = "other types"
+
+class MenuItem(BaseModel):
+    name: str
+    price: Optional[int] = None
+    item_type: list[FoodType | DrinkType]
+    
+class MenuObservation(BaseModel):
+    menu_items: list[MenuItem]
+
+class DesignObservation(BaseModel):
+    theme_and_branding: str = Field(description="the kind of theme / branding the data suggests")
+    layout_and_flow: str = Field(description="how the space is organized and zoned functionally or otherwise")
+    visual_identity: str = Field(description="description of color palette, tones, brand color integration, visual consistency")
+    atmosphere: str = Field(description="the atmosphere the space creates")
+    lighting: str = Field(description="lighting strategy of the space")
+    seating_arrangement: str = Field(description="how is seating organized (Examples: 2 person, large groups, large shared tables, private counters)")
+    furniture_choice: str = Field(description="types of furnitures used for seating")
+    materials_and_textures: str = Field(description="The tactile and visual materials used throughout the space that communicates the brand/theme")
+    decorative_elements: str = Field(description="decorative elements used to reinforce theme")
+    
+
+class WFCFriendlinessObservation(BaseModel):
+    wifi_quality: str = Field(description="availability and quality of the wifi")
+    power_outlets: str = Field(description="power outlet availability")
+    atmosphere_compatibility: str = Field(description="how suitable is the atmosphere for work based on the reviews")
+    wfc_complaints: str = Field(description="complaints related to wfc from reviews")
+    
+
+class ServiceObservation(BaseModel):
+    waiting_time: str = Field(description="qualitative (ex: quick, moderate, long) or quantitative (ex: under 15 mins, around 20-3 minutes) description of the waiting time")
+    service_model: list[str] = Field(description="ordering methods")
+    facilities: list[str] = Field(description="facilities mentioned or visible")
+
+
+class CompetitorCafeObservation(BaseModel):
+    menu_profile: MenuObservation
+    design_profile: DesignObservation
+    wfc_friendliness_profile: WFCFriendlinessObservation
+    service_profile: ServiceObservation
+    
